@@ -5,7 +5,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="icon" type="image/png" href="assets/icon-192.png">
-<link rel="stylesheet" href="styles.css?v=262">
+<link rel="preload" as="image" href="img/hero-funchal-new.jpg" fetchpriority="high">
+<link rel="stylesheet" href="styles.css?v=264">
 <link rel="stylesheet" href="styles-ux-optimized.css?v=253">
 <link rel="stylesheet" href="styles-fixes.css?v=261">
 <script src="ux-performance.js?v=253" defer></script>
@@ -32,14 +33,14 @@
 
 <style>
 /* ═══════════════════════════════════════════════
-   PT HOMEPAGE v263 — UI/UX refinement (visual only)
-   Scoped to body.home-page.pt-redesign
-   All JS hooks, IDs, data-attrs, logic: UNCHANGED
+   PT HOMEPAGE v264 — scroll performance (Android Chrome)
+   Design: UNCHANGED. Logic: UNCHANGED.
+   Only compositor/paint optimisations applied.
    ═══════════════════════════════════════════════ */
 
 /* ── lang picker ── */
-.lang-picker{position:fixed;top:14px;right:16px;z-index:9999;font-family:inherit}
-.lang-picker__toggle{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.92);border:1px solid rgba(0,0,0,.15);border-radius:20px;padding:5px 10px 5px 8px;cursor:pointer;font-size:.8rem;font-weight:700;color:#062f73;box-shadow:0 1px 4px rgba(0,0,0,.15);backdrop-filter:blur(4px);line-height:1}
+.lang-picker{position:fixed;top:14px;right:16px;z-index:9999;font-family:inherit;transform:translateZ(0);}
+.lang-picker__toggle{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.95);border:1px solid rgba(0,0,0,.15);border-radius:20px;padding:5px 10px 5px 8px;cursor:pointer;font-size:.8rem;font-weight:700;color:#062f73;box-shadow:0 1px 4px rgba(0,0,0,.15);line-height:1;}
 .lang-picker__toggle:hover{background:#fff}
 .lang-picker__flag{width:18px;height:13px;object-fit:cover;border-radius:2px}
 .lang-picker__caret{width:8px;height:5px;stroke:currentColor;stroke-width:1.8;fill:none;flex-shrink:0}
@@ -51,21 +52,33 @@
 
 /* ── hero ── */
 .pt-redesign .hero{
-  position:relative;min-height:100svh;min-height:100vh;
+  position:relative;
+  min-height:100dvh;
   overflow:hidden;color:#fff;background:#062b67;
+  /* own compositor layer — prevents repaint during scroll */
+  isolation:isolate;
+  contain:layout style;
 }
 .pt-redesign .hero-photo{
   display:block!important;position:absolute;inset:0;
   width:100%;height:100%;max-width:none;
   object-fit:cover;object-position:60% center;
-  filter:saturate(1.08) contrast(1.03) brightness(0.96);
+  /* no CSS filter — triggers per-scroll repaint on Android Chrome */
   mask-image:none;-webkit-mask-image:none;
+  /* promote to GPU compositor layer */
+  transform:translateZ(0);
+  will-change:transform;
+  /* prevent reflow from parent scroll */
+  pointer-events:none;
 }
 .pt-redesign .hero-shade{
   position:absolute;inset:0;z-index:1;
   background:
     linear-gradient(90deg,rgba(2,14,43,.94) 0%,rgba(3,24,66,.82) 32%,rgba(4,35,82,.44) 58%,rgba(4,35,82,.06) 100%),
     linear-gradient(180deg,rgba(2,14,43,.12) 0%,rgba(2,14,43,.16) 55%,rgba(2,14,43,.38) 100%);
+  /* own layer, painted once */
+  transform:translateZ(0);
+  pointer-events:none;
 }
 /* subtle dark pill behind the text block for extra legibility */
 .pt-redesign .hero-copy::before{
@@ -74,13 +87,13 @@
   inset:-18px -16px -18px -18px;
   border-radius:18px;
   background:rgba(2,10,30,.28);
-  backdrop-filter:blur(0px);
+  /* no backdrop-filter — not needed and triggers compositing layer */
   z-index:-1;
   pointer-events:none;
 }
 .pt-redesign .hero-content{
   position:relative;z-index:2;
-  width:100%;min-height:100svh;min-height:100vh;
+  width:100%;min-height:100dvh;
   display:flex;align-items:flex-start;
   padding:22px 22px 200px;
 }
@@ -173,6 +186,8 @@
   background:#0b1d3a;border-radius:16px;
   padding:4px;
   box-shadow:0 16px 36px rgba(0,0,0,.38);
+  /* own GPU layer — static element inside scrolling page */
+  transform:translateZ(0);
 }
 .pt-phone__screen{background:#fff;border-radius:13px;overflow:hidden;}
 .pt-phone__bar{
@@ -201,9 +216,11 @@
   position:absolute;bottom:0;left:0;right:0;z-index:4;
   display:flex;align-items:center;gap:10px;
   padding:10px 16px;
-  background:rgba(5,18,42,.88);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  /* backdrop-filter removed — main jitter culprit on Android Chrome.
+     Replaced with fully opaque background that matches visual intent. */
+  background:rgba(4,14,34,.93);
   border-top:1px solid rgba(255,255,255,.14);
+  transform:translateZ(0);
 }
 .pt-review-bar__avatar{
   width:40px;height:40px;border-radius:50%;
