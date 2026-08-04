@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cruisestop.eu/sitemap.xml

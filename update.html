@@ -1,0 +1,130 @@
+﻿<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#062f73">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Atualizar CruiseStop</title>
+  <link rel="stylesheet" href="styles-ux-optimized.css?v=253">
+  <script src="ux-performance.js?v=253" defer></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #062f73;
+      --gold: #ffc107;
+      --ink: #061f4c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #082f63;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 20px;
+    }
+
+    main {
+      width: min(100%, 420px);
+      background: #ffffff;
+      border: 3px solid var(--gold);
+      border-radius: 18px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.45rem;
+      line-height: 1.15;
+    }
+
+    p {
+      margin: 0 0 16px;
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .status {
+      min-height: 24px;
+      color: #159447;
+      font-weight: 950;
+    }
+
+    button,
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 54px;
+      border-radius: 14px;
+      border: 2px solid #c98e00;
+      background: linear-gradient(#ffdb3d, var(--gold));
+      color: var(--ink);
+      font-size: 1rem;
+      font-weight: 950;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 5px 0 #c98e00;
+    }
+
+    a {
+      margin-top: 14px;
+      border-color: var(--navy);
+      background: #ffffff;
+      box-shadow: none;
+    }
+  </style>
+<link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script></head>
+<body>
+  <main>
+    <h1>Atualizar CruiseStop</h1>
+    <p>Esta p&aacute;gina limpa a cache antiga do site e carrega sempre a vers&atilde;o mais recente. O acesso guardado neste dispositivo n&atilde;o &eacute; apagado.</p>
+    <p class="status" id="status">A preparar atualiza&ccedil;&atilde;o...</p>
+    <button id="updateBtn" type="button">Atualizar agora</button>
+    <a id="backLink" href="/relax_summary_pt">Voltar &agrave; rota</a>
+  </main>
+
+  <script src="site-update.js?v=253"></script>
+  <script>
+    const statusEl = document.getElementById("status");
+    const updateBtn = document.getElementById("updateBtn");
+    const backLink = document.getElementById("backLink");
+
+    function targetUrl() {
+      return new URLSearchParams(window.location.search).get("to") || "/relax_summary_pt";
+    }
+
+    async function runUpdate() {
+      updateBtn.disabled = true;
+      statusEl.textContent = "A limpar cache...";
+
+      try {
+        await window.CruiseStopUpdate.clearAndReload(targetUrl());
+      } catch (error) {
+        statusEl.textContent = "Nao foi possivel limpar automaticamente. Tente novamente.";
+        updateBtn.disabled = false;
+      }
+    }
+
+    backLink.href = targetUrl();
+    updateBtn.addEventListener("click", runUpdate);
+    window.addEventListener("load", function () {
+      setTimeout(runUpdate, 300);
+    });
+  </script>
+</body>
+</html>
+
+

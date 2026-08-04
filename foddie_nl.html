@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"><meta name="theme-color" content="#062f73"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="stylesheet" href="styles.css?v=253"><link rel="stylesheet" href="styles-route.css?v=253"><link rel="stylesheet" href="styles-ux-optimized.css?v=253"><script src="ux-performance.js?v=253" defer></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"><title>Taste Madeira Route App | CruiseStop</title><meta name="description" content="Taste Madeira is een zelfgeleide food walk in Funchal voor cruisepassagiers: lokale smaken, verborgen plekken en terug op tijd bij het schip."><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://cruisestop.eu/foodie_summary_nl.html"><link rel="alternate" hreflang="en" href="https://cruisestop.eu/foodie_summary.html"><link rel="alternate" hreflang="de" href="https://cruisestop.eu/foodie_summary_de.html"><link rel="alternate" hreflang="fr" href="https://cruisestop.eu/foodie_summary_fr.html"><link rel="alternate" hreflang="pt" href="https://cruisestop.eu/foodie_summary_pt.html"><link rel="alternate" hreflang="x-default" href="https://cruisestop.eu/foodie_summary.html"><meta property="og:title" content="Taste Madeira Route App | CruiseStop"><meta property="og:description" content="Taste Madeira is een zelfgeleide food walk in Funchal voor cruisepassagiers: lokale smaken, verborgen plekken en terug op tijd bij het schip."><meta property="og:type" content="website"><meta property="og:url" content="https://cruisestop.eu/foodie_summary_nl.html"><meta property="og:image" content="https://cruisestop.eu/assets/hero-main.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script></head><body class="route-stop-page"><div id="app" class="route-container"><div class="route-column"><section class="stop-card" aria-labelledby="stop-title"><header class="stop-header"><div class="stop-progress"><span class="stop-step">STOP 1</span><span class="stop-counter" aria-label="Voortgang">1/5</span></div><h1 id="stop-title" class="stop-title">Route laden...</h1><p class="stop-spend" id="stopSpend">&#9201; 15-20 min hier</p></header><div class="landscape-image-widget"><img id="stopImage" src="images/FOODIE/foodie-stop1.jpg" alt="Routestop" class="landscape-image"></div><p class="stop-description" id="stopDescription">Routegegevens laden...</p><aside class="stop-why" aria-label="Waarom deze stop?"><strong class="stop-why-title">Waarom deze stop?</strong><p class="stop-why-text" id="stopWhyText">Hoogtepunt laden...</p></aside><div class="stop-actions"><button class="btn btn-secondary" id="mapsBtn" type="button" onclick="openInGoogleMaps()">Openen in Google Maps</button></div><button class="btn btn-primary btn-next" id="nextBtn" type="button" onclick="nextStop()">VOLGENDE STOP -></button><div class="timer-widget" id="timerWidget" style="display:none;" role="status" aria-live="polite"><div class="time-remaining-label">Terug naar schip</div><div class="timer-display cruise-timer"><div class="timer-info"><div class="timer-value" id="timeRemaining">05:00:00</div><div class="return-time" id="returnTime">Terug om: 16:30</div><div class="buffer-badge" id="bufferBadge">+45 min buffer</div></div></div></div></section></div></div><style>.map-widget{padding:0 0 .5rem 0}.map-toggle-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;padding:.6rem 1.2rem;border-radius:50px;font-size:.85rem;font-weight:500;cursor:pointer;width:100%;transition:background .2s}.map-toggle-btn:hover{background:rgba(255,255,255,.15)}.leaflet-popup-content-wrapper{border-radius:8px;font-family:Inter,sans-serif}</style><script>window.ROUTE_CONFIG = {
+  "name": "FOODIE - Taste Madeira",
+  "key": "foodie",
+  "summaryUrl": "foodie_summary_nl.html",
+  "defaultDuration": "30 minuten",
+  "fallbackImage": "images/FOODIE/foodie-stop1.jpg",
+  "labels": {
+    "navAria": "Hoofdnavigatie",
+    "navStart": "Start",
+    "navRoutes": "Routes",
+    "navHelp": "Help",
+    "stopLabel": "STOP",
+    "stopFallback": "Stop",
+    "suggestedDuration": "Aanbevolen tijd:",
+    "nextStop": "VOLGENDE STOP ->",
+    "finishRoute": "ROUTE AFRONDEN",
+    "navigateHere": "Openen in Google Maps",
+    "whyThisStop": "Waarom deze stop?",
+    "backToShip": "Terug naar schip",
+    "returnBy": "Terug om:",
+    "buffer45": "+45 min buffer",
+    "buffer30": "+30 min buffer",
+    "buffer15": "+15 min buffer",
+    "timeUp": "Tijd is op - ga terug naar het schip",
+    "lockedTitle": "Route vergrendeld",
+    "lockedText": "Deze route is beschikbaar na aankoop op dit toestel.",
+    "unlockRoute": "Route ontgrendelen",
+    "openingMaps": "Kaart openen...",
+    "mapsWillOpen": "Google Maps opent met deze stop.",
+    "mapsBackButton": "Terug naar route",
+    "mapsReturnText": "Na het navigeren kom je terug naar CruiseStop.",
+    "cancel": "Annuleren",
+    "openMaps": "Kaart openen ->",
+    "mapUnavailable": "Kaart niet beschikbaar voor deze stop.",
+    "showMap": "Toon kaart",
+    "hideMap": "Verberg kaart",
+    "loadingRoute": "Route laden...",
+    "loadingDetails": "Routegegevens laden...",
+    "loadingHighlight": "Hoogtepunt laden...",
+    "usefulStop": "Een nuttige stop op deze Funchal-route.",
+    "audioLoading": "Audio laden...",
+    "audioPause": "Pauze",
+    "audioPlay": "Afspelen"
+  },
+  "urls": {
+    "home": "index_nl.html#inicio",
+    "routes": "index_nl.html#routes",
+    "help": "help_nl.html",
+    "whatsapp": "https://wa.me/351919430252?text=Hallo!%20Ik%20heb%20hulp%20nodig%20met%20mijn%20CruiseStop-route."
+  },
+  "stops": [
+    {
+      "name": "Mercado dos Lavradores",
+      "subtitle": "Start op de lokale markt",
+      "description": "Begin tussen fruit, bloemen, viskramen en lokale producten op een van de levendigste plekken van Funchal.",
+      "whyText": "Dit is de snelste manier om de eetcultuur van de stad te voelen zonder kostbare wal-tijd te verliezen.",
+      "duration": "35 minuten",
+      "image": "images/FOODIE/foodie-stop1.jpg",
+      "lat": 32.6495,
+      "lng": -16.9046
+    },
+    {
+      "name": "Seafood Stop",
+      "subtitle": "Atlantische smaken",
+      "description": "Proef een eenvoudig zee-moment zonder je route of timing ingewikkeld te maken.",
+      "whyText": "Madeira ligt aan de Atlantische Oceaan; deze stop brengt dat direct naar je bord.",
+      "duration": "30 minuten",
+      "image": "images/FOODIE/foodie-stop2.jpg",
+      "lat": 32.6492,
+      "lng": -16.9062
+    },
+    {
+      "name": "Cafe do Pateo",
+      "subtitle": "Koffie en gebak",
+      "description": "Neem een rustige pauze met koffie of iets zoets in een minder gehaast hoekje.",
+      "whyText": "Een goede food walk heeft ook zachte pauzes nodig, niet alleen proeven en doorlopen.",
+      "duration": "25 minuten",
+      "image": "images/FOODIE/foodie-stop3.jpg",
+      "lat": 32.6489,
+      "lng": -16.9075
+    },
+    {
+      "name": "Artisanal Cheese Stop",
+      "subtitle": "Lokale specialiteiten",
+      "description": "Ontdek een andere kant van Madeira via kleine lokale smaken.",
+      "whyText": "Deze stop geeft de route meer diepte dan alleen de bekendste plekken.",
+      "duration": "25 minuten",
+      "image": "images/FOODIE/foodie-stop4.jpg",
+      "lat": 32.6484,
+      "lng": -16.9087
+    },
+    {
+      "name": "Funchal Pastry Stop",
+      "subtitle": "Zoete afsluiting",
+      "description": "Rond de wandeling af met een zoet moment voordat je comfortabel naar het schip teruggaat.",
+      "whyText": "Een simpele, fijne afsluiting die past bij een korte cruisestop.",
+      "duration": "30 minuten",
+      "image": "images/FOODIE/foodie-stop5.jpg",
+      "lat": 32.6478,
+      "lng": -16.9103
+    }
+  ]
+};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script src="route-page.js?v=253"></script><script src="site-update.js?v=253"></script></body></html>

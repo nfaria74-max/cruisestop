@@ -1,0 +1,738 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Feedback - CruiseStop</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0077be">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=253">
+    <link rel="stylesheet" href="styles-route.css?v=253">
+    <link rel="stylesheet" href="styles-ux-optimized.css?v=253">
+    <script src="ux-performance.js?v=253" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script></head>
+<body>
+    <div id="app" class="route-container">
+        <div class="route-column">
+                        <!-- Success Message Widget -->
+            <div class="success-widget">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Congratulations! 🎉</h2>
+                <p>You've successfully completed your CruiseStop route. We hope you had an amazing time exploring the beautiful city of Funchal!</p>
+                <div class="completion-info" id="completionInfo">
+                    <div class="completion-detail">
+                        <i class="fas fa-route"></i>
+                        <span id="completedRouteName">Route: Loading...</span>
+                    </div>
+                    <div class="completion-detail">
+                        <i class="fas fa-calendar"></i>
+                        <span id="completedDate">Date: Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rating Widget -->
+            <div class="rating-widget">
+                <h3 style="color: blue;">How would you describe your experience?</h3>
+                <div class="star-rating" id="starRating">
+                    <i class="fas fa-star" data-rating="1"></i>
+                    <i class="fas fa-star" data-rating="2"></i>
+                    <i class="fas fa-star" data-rating="3"></i>
+                    <i class="fas fa-star" data-rating="4"></i>
+                    <i class="fas fa-star" data-rating="5"></i>
+                </div>
+            </div>
+
+            
+            </div>
+
+            <!-- Action Buttons Widget -->
+            <div class="action-buttons-widget">
+                <button class="action-btn primary" onclick="goHome()">
+                    <i class="fas fa-home"></i>
+                    Back to Home
+                </button>
+            
+            </div>
+
+            <!-- Thank You Message (Hidden initially) -->
+            <div class="thank-you-widget" id="thankYouMessage" style="display: none;">
+                <div class="thank-you-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Thank you for your feedback! 💙</h3>
+                <p>Your input helps us improve the CruiseStop experience for fellow travelers.</p>
+                <button class="action-btn primary" onclick="goHome()">
+                    <i class="fas fa-home"></i>
+                    Return to Home
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .success-widget {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            color: #FFC107;
+            margin-bottom: 1rem;
+        }
+
+        .success-widget h2 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .success-widget p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .completion-info {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .completion-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .completion-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .completion-detail i {
+            color: #FFC107;
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .rating-widget {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .star-rating i {
+            font-size: 2.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .star-rating i:hover {
+            color: #FFC107;
+            transform: scale(1.1);
+        }
+
+        .star-rating i.active {
+            color: #FFC107;
+        }
+
+        .rating-text {
+            color: #666;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .feedback-form-widget {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .radio-label:hover {
+            border-color: #2563eb;
+        }
+
+        .radio-label input[type="radio"] {
+            width: auto;
+        }
+
+        .submit-feedback-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-feedback-btn:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+        }
+
+        .share-widget {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .share-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .share-btn:nth-child(1) { background: #1877f2; color: white; }
+        .share-btn:nth-child(2) { background: #1da1f2; color: white; }
+        .share-btn:nth-child(3) { background: #25d366; color: white; }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .action-buttons-widget {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .action-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn.primary {
+            background: #FFC107;
+            color: #1f2937;
+        }
+
+        .action-btn.primary:hover {
+            background: #e6a800;
+            transform: translateY(-2px);
+        }
+
+        .action-btn.secondary {
+            background: white;
+            color: #333;
+            border: 2px solid #e5e7eb;
+        }
+
+        .action-btn.secondary:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        .thank-you-widget {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .thank-you-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .thank-you-widget h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .thank-you-widget p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .thank-you-widget .action-btn {
+            background: white;
+            color: #059669;
+        }
+
+        .thank-you-widget .action-btn:hover {
+            background: #f3f4f6;
+        }
+
+        small {
+            display: block;
+            margin-top: 0.25rem;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .share-buttons {
+                flex-direction: column;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+            }
+            
+            .action-buttons-widget {
+                gap: 0.75rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Star rating functionality
+        let selectedRating = 0;
+        const stars = document.querySelectorAll('.star-rating i');
+        const ratingTexts = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
+
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = parseInt(this.dataset.rating);
+                updateStars();
+                // Auto-submit feedback after star rating
+                submitFeedback();
+            });
+
+            star.addEventListener('mouseenter', function() {
+                const hoverRating = parseInt(this.dataset.rating);
+                highlightStars(hoverRating);
+            });
+        });
+
+        document.querySelector('.star-rating').addEventListener('mouseleave', function() {
+            updateStars();
+        });
+
+        function updateStars() {
+            stars.forEach((star, index) => {
+                if (index < selectedRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function highlightStars(rating) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        // Function to submit feedback automatically
+        function submitFeedback() {
+            if (selectedRating === 0) {
+                return;
+            }
+
+            // Get customer email from localStorage (Stripe)
+            const customerEmail = localStorage.getItem('cruisestop_customer_email');
+            
+            // Get route from URL parameter instead of form
+            const urlParams = new URLSearchParams(window.location.search);
+            const routeType = urlParams.get('route');
+            
+            const feedbackData = {
+                rating: selectedRating,
+                routeName: routeType, // Get from URL instead of form
+                experience: 'auto-submitted', // Auto-submitted from star rating
+                customerEmail: customerEmail,
+                timestamp: new Date().toISOString()
+            };
+
+            // Check if user has already submitted feedback for this route
+            if (hasUserAlreadySubmittedFeedback(feedbackData.routeName, feedbackData.customerEmail)) {
+                alert('You have already submitted feedback for this route. Thank you!');
+                return;
+            }
+            
+            // Store feedback in history array (in a real app, this would be sent to a server)
+            const feedbackHistory = JSON.parse(localStorage.getItem('cruisestop_feedback_history') || '[]');
+            feedbackHistory.push(feedbackData);
+            localStorage.setItem('cruisestop_feedback_history', JSON.stringify(feedbackHistory));
+            
+            // Also store the latest feedback for backward compatibility
+            localStorage.setItem('cruisestop_feedback', JSON.stringify(feedbackData));
+            
+            // Show thank you message
+            showThankYou();
+            console.log('Feedback submitted:', feedbackData);
+        }
+
+        function showThankYou() {
+            // Hide rating and buttons
+            const ratingWidget = document.querySelector('.rating-widget');
+            const actionWidget = document.querySelector('.action-buttons-widget');
+            if (ratingWidget) ratingWidget.style.display = 'none';
+            if (actionWidget) actionWidget.style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
+        }
+
+        // Function to detect completed route from URL
+        function detectCompletedRoute() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const routeType = urlParams.get('route');
+            // Route is now handled automatically via URL parameter
+        }
+
+        // Action functions
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        function viewOtherRoutes() {
+            window.location.href = 'index.html#routes';
+        }
+
+        function downloadRoute() {
+            // Create a simple text summary
+            const feedback = JSON.parse(localStorage.getItem('cruisestop_feedback') || '{}');
+            const summary = `CruiseStop - Route Summary\n` +
+                          `Route: ${feedback.routeName || 'N/A'}\n` +
+                          `Rating: ${feedback.rating || 'N/A'}/5\n` +
+                          `Completed: ${new Date().toLocaleDateString()}\n` +
+                          `\nThank you for using CruiseStop!`;
+            
+            const blob = new Blob([summary], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'cruisestop-route-summary.txt';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function shareOnSocial(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('I just completed an amazing CruiseStop route in Funchal! Highly recommended for cruise passengers 🚢🌴');
+            
+            let shareUrl = '';
+            switch(platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+                    break;
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${text}%20${url}`;
+                    break;
+            }
+            
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        }
+
+        // Function to populate form from localStorage access
+        function populateFormFromAccess() {
+            const routes = ['relax', 'foodie', 'panoramic'];
+            for (const route of routes) {
+                try {
+                    const access = localStorage.getItem(`access_${route}`);
+                    const data = JSON.parse(access);
+                    if (Date.now() < data.expiry) {
+                        // Route is now handled automatically via URL parameter
+                        break;
+                    }
+                } catch(e) {}
+            }
+        }
+
+        // Function to check if user has already submitted feedback for this route
+        function hasUserAlreadySubmittedFeedback(routeType, customerEmail) {
+            if (!customerEmail) return false;
+            
+            // Get all feedback submissions
+            const allFeedback = JSON.parse(localStorage.getItem('cruisestop_feedback') || '{}');
+            
+            // Check if this user has already submitted feedback for this route
+            if (allFeedback.customerEmail === customerEmail && allFeedback.routeName === routeType) {
+                return true;
+            }
+            
+            // Also check in feedback history array if it exists
+            const feedbackHistory = JSON.parse(localStorage.getItem('cruisestop_feedback_history') || '[]');
+            return feedbackHistory.some(feedback => 
+                feedback.customerEmail === customerEmail && feedback.routeName === routeType
+            );
+        }
+
+        // Function to display feedback already submitted message
+        function showFeedbackAlreadySubmitted() {
+            // Hide all other sections
+            const sw = document.querySelector('.success-widget');
+            const rw = document.querySelector('.rating-widget');
+            const aw = document.querySelector('.action-buttons-widget');
+            if (sw) sw.style.display = 'none';
+            if (rw) rw.style.display = 'none';
+            if (aw) aw.style.display = 'none';
+            
+            // Show feedback already submitted message
+            const alreadySubmittedDiv = document.createElement('div');
+            alreadySubmittedDiv.className = 'feedback-already-submitted-widget';
+            alreadySubmittedDiv.innerHTML = `
+                <div class="already-submitted-icon">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <h3>Feedback Already Submitted</h3>
+                <p>Thank you! You've already provided feedback for this route.</p>
+                <p>We appreciate your input and hope you enjoyed your Funchal adventure!</p>
+                <button class="action-btn primary" onclick="goHome()">
+                    <i class="fas fa-home"></i>
+                    Back to Home
+                </button>
+                <button class="action-btn secondary" onclick="viewOtherRoutes()">
+                    <i class="fas fa-route"></i>
+                    Try Another Route
+                </button>
+            `;
+            
+            // Insert after the header
+            const header = document.querySelector('.route-header');
+            header.parentNode.insertBefore(alreadySubmittedDiv, header.nextSibling);
+            
+            // Add styles
+            const style = document.createElement('style');
+            style.textContent = `
+                .feedback-already-submitted-widget {
+                    text-align: center;
+                    padding: 2rem;
+                    background: linear-gradient(135deg, #10b981, #059669);
+                    border-radius: 15px;
+                    color: white;
+                    margin-bottom: 2rem;
+                }
+                .already-submitted-icon {
+                    font-size: 3rem;
+                    margin-bottom: 1rem;
+                    color: #FFC107;
+                }
+                .feedback-already-submitted-widget h3 {
+                    margin-bottom: 1rem;
+                    font-size: 1.5rem;
+                }
+                .feedback-already-submitted-widget p {
+                    margin-bottom: 0.5rem;
+                    opacity: 0.9;
+                }
+                .feedback-already-submitted-widget .action-btn {
+                    margin: 0.5rem;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Function to display completed route information
+        function displayCompletionInfo() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const routeType = urlParams.get('route');
+            
+            console.log('Display completion info - route:', routeType);
+            
+            // Check if DOM elements exist
+            const routeNameElement = document.getElementById('completedRouteName');
+            const dateElement = document.getElementById('completedDate');
+            
+            if (!routeNameElement || !dateElement) {
+                console.log('DOM elements not found, retrying...');
+                setTimeout(displayCompletionInfo, 200);
+                return;
+            }
+            
+            if (routeType) {
+                // Get completed routes from localStorage
+                const completedRoutes = JSON.parse(localStorage.getItem('cruisestop_completed_routes') || '[]');
+                console.log('Completed routes found:', completedRoutes);
+                
+                const routeCompletion = completedRoutes.find(r => r.route === routeType);
+                console.log('Route completion data:', routeCompletion);
+                
+                // Always display the route name and current date
+                const routeNames = {
+                    'relax': 'Relax Route',
+                    'foodie': 'Foodie Route',
+                    'panoramic': 'Panoramic Route'
+                };
+                
+                routeNameElement.textContent = 
+                    `Route: ${routeNames[routeType] || routeType.charAt(0).toUpperCase() + routeType.slice(1)}`;
+                
+                // Read date from URL first, then localStorage, then today
+                const dateFromUrl = urlParams.get('date');
+                if (dateFromUrl) {
+                    dateElement.textContent = `Date: ${dateFromUrl}`;
+                } else if (routeCompletion && routeCompletion.completedDateFormatted) {
+                    dateElement.textContent = `Date: ${routeCompletion.completedDateFormatted}`;
+                } else {
+                    dateElement.textContent = `Date: ${new Date().toLocaleDateString('en-GB')}`;
+                }
+                        
+                // Pre-fill customer email if available
+                if (routeCompletion && routeCompletion.customerEmail) {
+                    localStorage.setItem('cruisestop_customer_email', routeCompletion.customerEmail);
+                }
+            } else {
+                // Hide completion info if no route specified
+                const completionInfo = document.getElementById('completionInfo');
+                if (completionInfo) {
+                    completionInfo.style.display = 'none';
+                }
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            detectCompletedRoute();
+            // Small delay to ensure DOM is fully loaded
+            setTimeout(displayCompletionInfo, 100);
+        });
+    </script>
+<script src="site-update.js?v=253"></script></body>
+
+<!-- CruiseStop Logo Footer -->
+<footer class="cruisestop-logo-footer">
+    <img src="images/cruisestop_logo.png" alt="CruiseStop Logo" class="footer-logo">
+</footer>
+
+<style>
+    .cruisestop-logo-footer {
+        text-align: center;
+        padding: 3rem 1rem 2rem;
+        margin-top: 2rem;
+    }
+    
+    .footer-logo {
+        max-width: 200px;
+        height: auto;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+    
+    .footer-logo:hover {
+        opacity: 1;
+    }
+    
+    @media (max-width: 768px) {
+        .cruisestop-logo-footer {
+            padding: 2rem 1rem 1.5rem;
+        }
+        
+        .footer-logo {
+            max-width: 160px;
+        }
+    }
+</style>
+
+</html>

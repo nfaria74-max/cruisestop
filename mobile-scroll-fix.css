@@ -1,0 +1,225 @@
+/* CruiseStop mobile scroll safety layer v253 */
+:root {
+  --mobile-shell-width: 430px;
+  --route-dock-width: min(calc(100vw - 30px), 360px);
+}
+
+html {
+  height: auto !important;
+  min-height: 100% !important;
+  min-width: 320px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  background: #061f4c !important;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  height: auto !important;
+  min-height: 100dvh !important;
+  min-width: 320px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+}
+
+body.home-page,
+body.route-summary-page,
+body.route-stop-page,
+body:has(.route-container) {
+  height: auto !important;
+  min-height: 100dvh !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+body.route-summary-page,
+body:has(.route-container):not(.route-stop-page) {
+  display: block !important;
+  align-items: initial !important;
+  justify-content: initial !important;
+}
+
+body.home-page .page-content,
+body.home-page .site-footer,
+body.route-summary-page .route-container,
+body.route-summary-page .route-column,
+body.route-summary-page .route-summary,
+body:has(.route-container) .route-container,
+body:has(.route-container) .route-column {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body.route-stop-page .route-container {
+  height: auto !important;
+  min-height: 100dvh !important;
+  max-height: none !important;
+  overflow: visible !important;
+  align-items: flex-start !important;
+}
+
+body.route-stop-page .route-column {
+  height: auto !important;
+  min-height: 100dvh !important;
+  max-height: none !important;
+  overflow: visible !important;
+  justify-content: flex-start !important;
+  padding-bottom: calc(132px + env(safe-area-inset-bottom)) !important;
+}
+
+body.route-stop-page .stop-card {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding-bottom: calc(278px + env(safe-area-inset-bottom)) !important;
+}
+
+body.route-stop-page .landscape-image-widget {
+  flex: 0 0 auto !important;
+  overflow: hidden !important;
+}
+
+body.route-stop-page .landscape-image {
+  width: 100% !important;
+  height: clamp(178px, 28svh, 246px) !important;
+  min-height: 178px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+body.route-stop-page .stop-description,
+body.route-stop-page .stop-why-text {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: initial !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body.route-stop-page .timer-widget {
+  position: fixed !important;
+  bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+  left: 50% !important;
+  right: auto !important;
+  width: var(--route-dock-width) !important;
+  transform: translateX(-50%) !important;
+  z-index: 70 !important;
+  border-radius: 0 0 18px 18px !important;
+}
+
+body.route-stop-page .stop-actions {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.route-stop-page #mapsBtn {
+  position: fixed !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: calc(
+    10px + env(safe-area-inset-bottom) + var(--route-timer-height, 104px) +
+      var(--route-next-height, 48px) - 2px
+  ) !important;
+  width: var(--route-dock-width) !important;
+  margin: 0 !important;
+  transform: translateX(-50%) !important;
+  z-index: 74 !important;
+  border-radius: 18px 18px 0 0 !important;
+  box-shadow: 0 12px 26px rgba(6, 31, 76, 0.18) !important;
+}
+
+body.route-stop-page .btn-next {
+  position: fixed !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: calc(10px + env(safe-area-inset-bottom) + var(--route-timer-height, 104px) - 1px) !important;
+  width: var(--route-dock-width) !important;
+  margin: 0 !important;
+  transform: translateX(-50%) !important;
+  z-index: 72 !important;
+  border-radius: 0 !important;
+  box-shadow: 0 12px 26px rgba(6, 31, 76, 0.18) !important;
+}
+
+body.route-stop-page #mapsBtn:active,
+body.route-stop-page .btn-next:active {
+  transform: translateX(-50%) translateY(1px) scale(0.99) !important;
+}
+
+@media (max-height: 700px) {
+  body.route-stop-page .landscape-image {
+    height: clamp(150px, 25svh, 190px) !important;
+    min-height: 150px !important;
+  }
+}
+
+body * {
+  touch-action: pan-y !important;
+}
+
+body.home-page,
+body.home-page * {
+  touch-action: auto !important;
+}
+
+a,
+button,
+[role="button"] {
+  touch-action: pan-y !important;
+}
+
+body.home-page a,
+body.home-page button,
+body.home-page [role="button"] {
+  touch-action: manipulation !important;
+}
+
+input,
+select,
+textarea,
+.leaflet-container,
+[data-no-touch-scroll] {
+  touch-action: auto !important;
+}
+
+body.home-page .sticky-cta,
+body.home-page .lang-picker__toggle {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+@media (min-width: 521px) {
+  body.home-page,
+  body.route-summary-page,
+  body.route-stop-page,
+  body:has(.route-container) {
+    width: var(--mobile-shell-width) !important;
+    max-width: var(--mobile-shell-width) !important;
+    margin-inline: auto !important;
+  }
+
+  body.home-page .hero,
+  body.home-page .page-content,
+  body.home-page .language-strip,
+  body.home-page .site-footer,
+  body.route-summary-page .route-container,
+  body.route-summary-page .route-column,
+  body.route-stop-page .route-container,
+  body.route-stop-page .route-column,
+  body:has(.route-container) .route-container,
+  body:has(.route-container) .route-column {
+    width: 100% !important;
+    max-width: var(--mobile-shell-width) !important;
+    margin-inline: auto !important;
+  }
+}

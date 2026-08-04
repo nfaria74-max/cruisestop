@@ -1,0 +1,387 @@
+/* ============================================================
+   styles-fixes.css?v=253 — CruiseStop UX corrections v2
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. FAIXA BRANCA — eliminar espaço no topo
+   ---------------------------------------------------------- */
+body.home-page {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+html body.home-page.landing-v160 .hero,
+html body.home-page .hero {
+  margin-top: 0 !important;
+}
+
+/* ----------------------------------------------------------
+   2. LANGUAGE STRIP — sem fundo, estilo original
+   ---------------------------------------------------------- */
+.landing-v160 .language-strip,
+html body .language-strip,
+html body.home-page .language-strip,
+html body.home-page.landing-v160 .language-strip {
+  position: relative !important;
+  top: unset !important;
+  left: unset !important;
+  right: unset !important;
+  z-index: 10 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 14px 18px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Links — estilo original escuro sobre fundo claro */
+.landing-v160 .language-strip a,
+html body .language-strip a,
+html body.home-page.landing-v160 .language-strip a {
+  background: rgba(6, 43, 103, 0.08) !important;
+  background-color: rgba(6, 43, 103, 0.08) !important;
+  border: 1px solid rgba(6, 43, 103, 0.18) !important;
+  color: #062b67 !important;
+  box-shadow: none !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  padding: 6px 12px !important;
+  min-height: 34px !important;
+  border-radius: 999px !important;
+}
+
+.landing-v160 .language-strip a.is-active,
+html body.home-page.landing-v160 .language-strip a.is-active {
+  background: #ffc400 !important;
+  background-color: #ffc400 !important;
+  border-color: #ffc400 !important;
+  color: #062b67 !important;
+  box-shadow: none !important;
+  font-weight: 900 !important;
+}
+
+/* ----------------------------------------------------------
+   3. REVIEW CARDS — texto completo sem truncagem
+   ---------------------------------------------------------- */
+.landing-v160 .review-strip {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  overflow: visible !important;
+  width: 100% !important;
+}
+
+.landing-v160 .review-card {
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.landing-v160 .review-card blockquote {
+  overflow: visible !important;
+  white-space: normal !important;
+  display: block !important;
+}
+
+@media (max-width: 719px) {
+  .landing-v160 .review-strip {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ----------------------------------------------------------
+   4. HERO MOBILE — altura reduzida para cortar flores
+      e mostrar o telemóvel com a mão
+   ---------------------------------------------------------- */
+@media (max-width: 820px) {
+
+  /* Reduzir altura do hero para mostrar ícones completos */
+  html body.home-page.landing-v160 .hero {
+    min-height: unset !important;
+    max-height: calc(78svh + 90px) !important;
+    overflow: hidden !important;
+  }
+
+  /* Imagem mobile */
+  html body.home-page.landing-v160 .hero-photo {
+    object-position: center 20% !important;
+    max-height: 78svh !important;
+  }
+
+  /* CTA ao nível do telemóvel mas sem tapar a Sé */
+  html body.home-page.landing-v160 .hero-actions {
+    margin-top: clamp(60px, 10svh, 90px) !important;
+  }
+
+  /* Telemóvel CSS — esconder no mobile pois a imagem já tem a mão com telemóvel */
+  html body.home-page.landing-v160 .hero-product {
+    display: none !important;
+  }
+
+  /* Ícones de features — 3 colunas sem overflow */
+  html body.home-page.landing-v160 .hero-trust-proof {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    padding: 12px 8px !important;
+  }
+
+  html body.home-page.landing-v160 .hero-trust-proof li {
+    padding: 0 4px !important;
+  }
+
+  html body.home-page.landing-v160 .hero-trust-proof span {
+    font-size: 0.72rem !important;
+  }
+
+  html body.home-page.landing-v160 .hero-trust-proof small {
+    font-size: 0.6rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* ----------------------------------------------------------
+   5. SCROLL OFFSET — compensar navegação
+   ---------------------------------------------------------- */
+#routes, #preview, #faq, #inicio {
+  scroll-margin-top: 16px;
+}
+
+/* ----------------------------------------------------------
+   6. STICKY CTA — bem visível no mobile
+   ---------------------------------------------------------- */
+html body.home-page.landing-v160 .sticky-cta__button {
+  background: #ffc400 !important;
+  color: #062b67 !important;
+  font-weight: 800 !important;
+}
+
+/* ----------------------------------------------------------
+   7. FOOTER — compacto no mobile
+   ---------------------------------------------------------- */
+@media (max-width: 820px) {
+  html body .site-footer,
+  html body.home-page.landing-v160 .site-footer {
+    min-height: unset !important;
+    padding: 24px 20px 32px !important;
+  }
+}
+
+/* ----------------------------------------------------------
+   8. OVERRIDE FINAL — language strip background
+   ---------------------------------------------------------- */
+:is(html) :is(body) .language-strip,
+:is(html) :is(body) .landing-v160 .language-strip,
+:is(html) :is(body.home-page) .language-strip,
+:is(html) :is(body.home-page.landing-v160) .language-strip {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ----------------------------------------------------------
+   HERO PROOF (review Emma) — mais compacta no mobile
+   ---------------------------------------------------------- */
+@media (max-width: 820px) {
+  html body.home-page.landing-v160 .hero-proof {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+    border-radius: 12px !important;
+    max-width: 65% !important;
+  }
+
+  html body.home-page.landing-v160 .hero-proof__quote {
+    font-size: 0.68rem !important;
+    line-height: 1.25 !important;
+  }
+
+  html body.home-page.landing-v160 .hero-proof__author {
+    font-size: 0.62rem !important;
+  }
+
+  html body.home-page.landing-v160 .hero-proof__avatar {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    font-size: 0.6rem !important;
+  }
+
+  html body.home-page.landing-v160 .hero-proof__photo img {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 50% !important;
+  }
+
+  html body.home-page.landing-v160 .hero-proof__stars {
+    font-size: 0.62rem !important;
+  }
+}
+
+/* ----------------------------------------------------------
+   HERO TRUST PROOF — ícones visíveis em 3 colunas
+   ---------------------------------------------------------- */
+@media (max-width: 820px) {
+  html body.home-page.landing-v160 .hero-trust-proof {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 8px !important;
+    background: rgba(6, 23, 64, 0.88) !important;
+    border-radius: 14px !important;
+    margin-top: 8px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  html body.home-page.landing-v160 .hero-trust-proof li {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 0 8px !important;
+    border-right: 1px solid rgba(255,255,255,0.15) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  html body.home-page.landing-v160 .hero-trust-proof li:last-child {
+    border-right: none !important;
+  }
+
+  html body.home-page.landing-v160 .hero-trust-proof span {
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    line-height: 1.2 !important;
+    display: block !important;
+  }
+
+  html body.home-page.landing-v160 .hero-trust-proof small {
+    font-size: 0.62rem !important;
+    color: rgba(255,255,255,0.75) !important;
+    line-height: 1.2 !important;
+    margin-top: 2px !important;
+    display: block !important;
+  }
+
+  html body.home-page.landing-v160 .hero-trust-proof svg {
+    display: block !important;
+    width: 20px !important;
+    height: 20px !important;
+    margin-bottom: 4px !important;
+    stroke: #fff !important;
+  }
+}
+
+/* ----------------------------------------------------------
+   Mobile-only shell v253
+   ---------------------------------------------------------- */
+:root {
+  --mobile-shell-width: 430px;
+}
+
+html {
+  min-width: 320px;
+  background: #061f4c;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.home-page {
+  height: auto !important;
+  min-height: 100dvh !important;
+  overflow-y: auto !important;
+  background: #061f4c !important;
+}
+
+a,
+button,
+[role="button"],
+input,
+select,
+textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+.btn,
+.primary-cta,
+.secondary-link,
+.sticky-cta__button,
+.buy-route-btn,
+.preview-btn,
+.preview-cta,
+.route-summary-start-btn,
+.start-now-btn {
+  min-height: 44px;
+}
+
+@media (min-width: 521px) {
+  body.home-page {
+    width: var(--mobile-shell-width) !important;
+    max-width: var(--mobile-shell-width) !important;
+    margin-inline: auto !important;
+    overflow-x: hidden !important;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 24px 80px rgba(0, 0, 0, 0.32);
+  }
+
+  body.home-page .hero,
+  body.home-page .page-content,
+  body.home-page .language-strip,
+  body.home-page .site-footer {
+    width: 100% !important;
+    max-width: var(--mobile-shell-width) !important;
+    margin-inline: auto !important;
+  }
+
+  body.home-page.landing-v160 .sticky-cta {
+    left: 50% !important;
+    right: auto !important;
+    width: min(calc(100vw - 24px), var(--mobile-shell-width)) !important;
+    max-width: var(--mobile-shell-width) !important;
+    transform: translateX(-50%) translateY(120%) !important;
+  }
+
+  body.home-page.landing-v160.has-sticky-cta-visible .sticky-cta {
+    transform: translateX(-50%) translateY(0) !important;
+  }
+}
+
+@media (max-width: 520px) {
+  body.home-page {
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  body.home-page.landing-v160 .sticky-cta {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
