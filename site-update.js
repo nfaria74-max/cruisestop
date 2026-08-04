@@ -1,5 +1,5 @@
 (function () {
-  const SITE_VERSION = "v253";
+  const SITE_VERSION = "v254";
   const CACHE_PREFIX = "cruisestop-funchal-";
   const VERSION_KEY = "cruisestop_site_version";
   const UPDATE_REDIRECT_KEY = "cruisestop_update_redirect_" + SITE_VERSION;
