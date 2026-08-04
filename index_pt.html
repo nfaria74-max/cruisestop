@@ -32,9 +32,9 @@
 
 <style>
 /* ═══════════════════════════════════════════════
-   PT HOMEPAGE v262 — mockup-exact, mobile-first
+   PT HOMEPAGE v263 — UI/UX refinement (visual only)
    Scoped to body.home-page.pt-redesign
-   Preserves all existing JS hooks & classes
+   All JS hooks, IDs, data-attrs, logic: UNCHANGED
    ═══════════════════════════════════════════════ */
 
 /* ── lang picker ── */
@@ -64,8 +64,19 @@
 .pt-redesign .hero-shade{
   position:absolute;inset:0;z-index:1;
   background:
-    linear-gradient(90deg,rgba(2,14,43,.90) 0%,rgba(3,24,66,.76) 34%,rgba(4,35,82,.40) 60%,rgba(4,35,82,.06) 100%),
-    linear-gradient(180deg,rgba(2,14,43,.10) 0%,rgba(2,14,43,.14) 55%,rgba(2,14,43,.32) 100%);
+    linear-gradient(90deg,rgba(2,14,43,.94) 0%,rgba(3,24,66,.82) 32%,rgba(4,35,82,.44) 58%,rgba(4,35,82,.06) 100%),
+    linear-gradient(180deg,rgba(2,14,43,.12) 0%,rgba(2,14,43,.16) 55%,rgba(2,14,43,.38) 100%);
+}
+/* subtle dark pill behind the text block for extra legibility */
+.pt-redesign .hero-copy::before{
+  content:"";
+  position:absolute;
+  inset:-18px -16px -18px -18px;
+  border-radius:18px;
+  background:rgba(2,10,30,.28);
+  backdrop-filter:blur(0px);
+  z-index:-1;
+  pointer-events:none;
 }
 .pt-redesign .hero-content{
   position:relative;z-index:2;
@@ -91,18 +102,19 @@
 .pt-redesign #hero-title{
   font-family:'Arial Black',Arial,sans-serif;
   font-size:clamp(2.55rem,11.5vw,3.6rem);
-  font-weight:900;line-height:1.0;
-  letter-spacing:-0.02em;color:#fff;
-  text-shadow:0 3px 18px rgba(0,0,0,.38);
-  margin:0 0 12px;max-width:none;text-wrap:balance;
+  font-weight:900;line-height:1.06;
+  letter-spacing:-0.025em;color:#fff;
+  text-shadow:0 3px 18px rgba(0,0,0,.4);
+  margin:0 0 14px;max-width:none;text-wrap:balance;
 }
 .pt-redesign #hero-title .hero-time-highlight{color:#ffc400;}
 
 /* subline */
 .pt-redesign .hero-subline{
-  font-size:.98rem;font-weight:600;color:#fff;
-  line-height:1.35;margin:0 0 12px;max-width:26ch;
-  text-shadow:0 2px 10px rgba(0,0,0,.42);
+  font-size:1.08rem;font-weight:700;color:rgba(255,255,255,.96);
+  line-height:1.5;margin:0 0 14px;max-width:28ch;
+  text-shadow:0 2px 12px rgba(0,0,0,.5);
+  letter-spacing:0.01em;
 }
 
 /* trust check */
@@ -123,14 +135,18 @@
   stroke-linecap:round;stroke-linejoin:round;
 }
 
-/* rating */
+/* rating — single horizontal line */
 .pt-rating{
-  display:flex;align-items:center;gap:6px;
-  font-size:.82rem;font-weight:700;color:#fff;
-  margin-bottom:18px;
+  display:flex;align-items:center;gap:5px;flex-wrap:nowrap;
+  font-size:.82rem;font-weight:700;color:rgba(255,255,255,.9);
+  margin-bottom:20px;
   text-shadow:0 1px 6px rgba(0,0,0,.38);
+  white-space:nowrap;
 }
-.pt-rating__stars{color:#ffc400;font-size:.9rem;letter-spacing:1px;}
+.pt-rating__stars{color:#ffc400;font-size:.88rem;letter-spacing:0.5px;flex-shrink:0;}
+.pt-rating__sep{color:rgba(255,255,255,.45);margin:0 1px;font-weight:400;}
+.pt-rating__score{font-weight:800;}
+.pt-rating__count{color:rgba(255,255,255,.72);font-weight:600;}
 
 /* primary CTA */
 .pt-redesign .primary-cta{
@@ -152,11 +168,11 @@
 
 /* phone mockup — absolute bottom-right of hero */
 .pt-phone{
-  position:absolute;bottom:88px;right:14px;
-  width:132px;z-index:3;
-  background:#0b1d3a;border-radius:18px;
-  padding:5px;
-  box-shadow:0 18px 40px rgba(0,0,0,.38);
+  position:absolute;bottom:64px;right:8px;
+  width:119px;z-index:3;
+  background:#0b1d3a;border-radius:16px;
+  padding:4px;
+  box-shadow:0 16px 36px rgba(0,0,0,.38);
 }
 .pt-phone__screen{background:#fff;border-radius:13px;overflow:hidden;}
 .pt-phone__bar{
@@ -206,83 +222,79 @@
 
 /* ── trust strip card ── */
 .pt-trust-strip{
-  margin:0 14px;
-  padding:18px 10px 14px;
-  background:#fff;border-radius:16px;
-  box-shadow:0 10px 28px rgba(6,43,103,.13);
+  margin:24px 14px 0;
+  padding:22px 8px 18px;
+  background:#fff;border-radius:20px;
+  box-shadow:0 8px 24px rgba(6,43,103,.09);
   position:relative;z-index:5;
 }
 .pt-trust-strip__grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px 4px;
-  margin-bottom:0;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px 2px;
 }
-.pt-trust-item{text-align:center;}
+.pt-trust-item{text-align:center;padding:0 2px;}
 .pt-trust-item svg{
-  display:block;width:22px;height:22px;margin:0 auto 6px;
+  display:block;width:20px;height:20px;margin:0 auto 6px;
   stroke:#062b67;fill:none;stroke-width:2;
   stroke-linecap:round;stroke-linejoin:round;
 }
-.pt-trust-item__label{font-size:.72rem;font-weight:800;color:#08295d;display:block;margin-bottom:1px;}
-.pt-trust-item__desc{font-size:.64rem;font-weight:600;color:#425b83;display:block;line-height:1.3;}
+.pt-trust-item__label{font-size:.66rem;font-weight:800;color:#08295d;display:block;margin-bottom:2px;line-height:1.2;}
+.pt-trust-item__desc{font-size:.6rem;font-weight:600;color:#425b83;display:block;line-height:1.25;}
 
-/* row-2 items (temporizador + buffer) hidden until desktop */
-.pt-trust-row2{
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:14px;margin-top:14px;
-}
+/* legacy — no longer used */
+.pt-trust-row2{display:none;}
 
 /* ── page content wrapper ── */
 .pt-redesign .page-content{
-  background:#fff;padding:0 0 100px;
+  background:#fff;padding:0 0 120px;
 }
 
 /* ── steps ── */
-.pt-steps{padding:30px 20px 8px;}
+.pt-steps{padding:44px 24px 12px;}
 .pt-steps__title{
-  text-align:center;font-size:1.08rem;font-weight:900;
-  color:#08295d;margin:0 0 20px;
+  text-align:center;font-size:1.12rem;font-weight:900;
+  color:#08295d;margin:0 0 28px;letter-spacing:-0.01em;
 }
 .pt-steps__list{
   display:flex;flex-direction:column;
-  gap:18px;list-style:none;margin:0;padding:0;
+  gap:24px;list-style:none;margin:0;padding:0;
 }
-.pt-steps__item{display:flex;align-items:flex-start;gap:13px;}
+.pt-steps__item{display:flex;align-items:flex-start;gap:14px;}
 .pt-steps__num{
-  width:30px;height:30px;border-radius:50%;
+  width:32px;height:32px;border-radius:50%;
   background:#062b67;color:#fff;
   font-weight:900;font-size:.82rem;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
 }
 .pt-steps__body strong{
-  display:block;font-size:.9rem;font-weight:800;
-  color:#08295d;margin-bottom:2px;
+  display:block;font-size:.92rem;font-weight:800;
+  color:#08295d;margin-bottom:4px;
 }
 .pt-steps__body p{
-  margin:0;font-size:.8rem;font-weight:600;
-  color:#425b83;line-height:1.35;
+  margin:0;font-size:.82rem;font-weight:600;
+  color:#5b6b82;line-height:1.45;
 }
 
 /* ── routes section ── */
-.pt-routes{padding:26px 16px 8px;}
+.pt-routes{padding:44px 18px 12px;}
 .pt-routes__head{
   display:flex;align-items:baseline;
-  justify-content:space-between;margin-bottom:14px;
+  justify-content:space-between;margin-bottom:20px;
 }
 .pt-routes__head h2{
-  font-size:1.02rem;font-weight:900;color:#08295d;
-  margin:0;line-height:1.2;max-width:68%;
+  font-size:1.08rem;font-weight:900;color:#08295d;
+  margin:0;line-height:1.25;max-width:68%;letter-spacing:-0.01em;
 }
 .pt-seeall{font-size:.78rem;font-weight:800;color:#062b67;white-space:nowrap;text-decoration:none;}
 .pt-routes__list{display:flex;flex-direction:column;gap:13px;}
 
 /* route card — vertical (image top, content bottom) */
 .pt-route-wrap{
-  border-radius:14px;overflow:hidden;
-  border:1px solid rgba(8,42,93,.12);
-  box-shadow:0 4px 14px rgba(6,43,103,.08);
+  border-radius:18px;overflow:hidden;
+  border:1px solid rgba(8,42,93,.08);
+  box-shadow:0 2px 8px rgba(6,43,103,.06),0 8px 24px rgba(6,43,103,.05);
   background:#fff;
 }
 /* keep existing .route-card anchor but override grid to block */
@@ -293,51 +305,58 @@
   box-shadow:none;background:transparent;
 }
 .pt-route-wrap .route-card img{
-  display:block;width:100%;height:118px;
+  display:block;width:100%;height:124px;
   object-fit:cover;clip-path:none;
 }
-/* route-badge uses existing class, add colour variants */
+/* route-badge: smaller, more refined */
 .pt-route-wrap .route-badge{
   position:absolute;top:10px;left:10px;
-  font-size:.64rem;font-weight:900;
-  letter-spacing:.04em;text-transform:uppercase;
-  padding:4px 9px;border-radius:999px;color:#fff;
+  font-size:.58rem;font-weight:800;
+  letter-spacing:.05em;text-transform:uppercase;
+  padding:3px 8px;border-radius:999px;color:#fff;
 }
 .pt-route-wrap .route-badge--relax{background:#1a7a42;}
 .pt-route-wrap .route-badge--food {background:#c05c10;}
 .pt-route-wrap .route-badge--views{background:#1460a8;}
-/* route-copy block inside the vertical card */
+/* route-copy block */
 .pt-route-wrap .route-copy{
-  display:block;padding:11px 13px 0;
+  display:block;padding:13px 15px 0;
   min-width:0;
 }
 .pt-route-wrap .route-copy strong{
-  display:block;font-size:.9rem;font-weight:800;
-  font-style:normal;color:#08295d;margin-bottom:3px;
+  display:block;font-size:.92rem;font-weight:800;
+  font-style:normal;color:#08295d;margin-bottom:4px;
   line-height:1.2;
 }
 .pt-route-copy-desc{
-  display:block;font-size:.76rem;font-weight:600;
-  color:#425b83;line-height:1.35;margin-bottom:8px;
+  display:block;font-size:.78rem;font-weight:500;
+  color:#5b6b82;line-height:1.4;margin-bottom:10px;
   font-style:normal;
 }
 .pt-route-meta{
   display:flex;align-items:center;flex-wrap:wrap;
-  gap:6px;font-size:.7rem;font-weight:700;
-  color:#425b83;margin-bottom:11px;
+  gap:6px;font-size:.7rem;font-weight:600;
+  color:#5b6b82;margin-bottom:12px;
 }
-.pt-route-price{margin-left:auto;font-size:.84rem;font-weight:900;color:#062b67;}
-/* route-actions below card image+copy */
+.pt-route-price{margin-left:auto;font-size:.86rem;font-weight:900;color:#062b67;}
+/* route-actions — equal-height buttons */
 .pt-route-wrap .route-actions{
-  display:grid;grid-template-columns:auto 1fr;
-  gap:7px;padding:0 13px 13px;
+  display:grid;grid-template-columns:1fr 2fr;
+  gap:8px;padding:0 15px 15px;
 }
-.pt-route-wrap .preview-btn{justify-self:start;}
-.pt-route-wrap .buy-route-btn{width:100%;}
+.pt-route-wrap .preview-btn{
+  min-height:38px;font-size:.8rem;
+  border-radius:8px;
+}
+.pt-route-wrap .buy-route-btn{
+  width:100%;min-height:38px;
+  font-size:.8rem;border-radius:8px;
+  box-shadow:0 3px 0 #c99100;
+}
 
 /* ── closing (review + trust mini) ── */
 .pt-closing{
-  margin:26px 16px 24px;padding:17px 14px;
+  margin:40px 18px 28px;padding:20px 16px;
   border-radius:16px;background:#f6f7fa;
   border:1px solid rgba(8,42,93,.08);
 }
@@ -372,25 +391,31 @@
 .pt-closing__trust-title{font-size:.77rem;font-weight:800;color:#08295d;}
 .pt-closing__trust-desc{font-size:.68rem;font-weight:600;color:#425b83;line-height:1.3;}
 
-/* ── sticky CTA (preserved from original) ── */
+/* ── sticky CTA — redesigned ── */
 .sticky-cta{
   position:fixed;bottom:0;left:0;right:0;z-index:50;
   display:flex;align-items:center;justify-content:space-between;
-  gap:12px;
-  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
-  background:rgba(5,18,42,.97);
-  border-top:1px solid rgba(255,255,255,.12);
+  gap:10px;
+  padding:10px 18px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(4,14,36,.82);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-top:1px solid rgba(255,255,255,.10);
 }
-.sticky-cta strong{display:block;color:#fff;font-size:.88rem;font-weight:900;}
-.sticky-cta span{display:block;color:rgba(255,255,255,.62);font-size:.74rem;font-weight:600;}
+.sticky-cta__left{display:flex;align-items:center;gap:8px;min-width:0;}
+.sticky-cta__icon{font-size:1.1rem;flex-shrink:0;line-height:1;}
+.sticky-cta__text{min-width:0;}
+.sticky-cta strong{display:block;color:#fff;font-size:.88rem;font-weight:800;line-height:1.15;}
+.sticky-cta span{display:block;color:rgba(255,255,255,.55);font-size:.72rem;font-weight:500;margin-top:1px;}
 .sticky-cta__button{
   flex-shrink:0;display:inline-flex;align-items:center;
-  justify-content:center;min-height:44px;padding:0 18px;
-  border-radius:10px;background:linear-gradient(#ffd735,#ffc400);
-  color:#09285d;font-size:.88rem;font-weight:900;
-  text-decoration:none;
-  box-shadow:0 4px 0 #c99100;
+  justify-content:center;min-height:40px;padding:0 20px;
+  border-radius:999px;background:#ffc400;
+  color:#09285d;font-size:.86rem;font-weight:900;
+  text-decoration:none;white-space:nowrap;
+  box-shadow:0 2px 0 #c99100;
+  transition:opacity .15s;
 }
+.sticky-cta__button:active{opacity:.85;}
 
 /* ── seo block ── */
 .pt-redesign .desktop-extra{
@@ -398,11 +423,10 @@
 }
 @media(min-width:820px){
   .pt-redesign .desktop-extra{display:block;}
-  .pt-trust-strip__grid{grid-template-columns:repeat(5,1fr);}
-  .pt-trust-row2{display:none;}
-  .pt-steps__list{flex-direction:row;gap:12px;}
+  .pt-steps__list{flex-direction:row;gap:16px;}
   .pt-steps__item{flex-direction:column;align-items:center;text-align:center;flex:1;}
   .pt-routes__list{display:grid;grid-template-columns:repeat(3,1fr);}
+  .pt-trust-strip{margin-inline:24px;}
 }
 </style>
 </head>
@@ -453,7 +477,9 @@
 
       <p class="pt-rating">
         <span class="pt-rating__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        4.9/5 baseado em 500+ avaliações
+        <span class="pt-rating__score">4.9/5</span>
+        <span class="pt-rating__sep">•</span>
+        <span class="pt-rating__count">baseado em mais de 500 avaliações</span>
       </p>
 
       <!-- primary CTA — href preserved -->
@@ -503,12 +529,23 @@
 </header>
 
 <!-- ════════ TRUST STRIP ════════ -->
+<!-- order: 1 Buffer, 2 Temporizador, 3 Google Maps, 4 Sem app, 5 Offline -->
 <div class="pt-trust-strip" aria-label="Características principais">
   <div class="pt-trust-strip__grid">
     <div class="pt-trust-item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2l20 20M8.5 16.5a5 5 0 0 1 7 0M5 13a9.5 9.5 0 0 1 3.5-2.3M19 13a9.5 9.5 0 0 0-2-1.7M12 20h.01"/></svg>
-      <span class="pt-trust-item__label">Offline</span>
-      <span class="pt-trust-item__desc">Funciona sem internet</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+      <span class="pt-trust-item__label">Buffer de segurança</span>
+      <span class="pt-trust-item__desc">Tempo extra garantido</span>
+    </div>
+    <div class="pt-trust-item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <span class="pt-trust-item__label">Temporizador</span>
+      <span class="pt-trust-item__desc">Para o seu regresso</span>
+    </div>
+    <div class="pt-trust-item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      <span class="pt-trust-item__label">Google Maps</span>
+      <span class="pt-trust-item__desc">Navegação incluída</span>
     </div>
     <div class="pt-trust-item">
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
@@ -516,20 +553,9 @@
       <span class="pt-trust-item__desc">Sem instalação</span>
     </div>
     <div class="pt-trust-item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-      <span class="pt-trust-item__label">Google Maps</span>
-      <span class="pt-trust-item__desc">Navegação incluída</span>
-    </div>
-    <!-- items 4+5: 3-col mobile grid wraps naturally, desktop gets 5-col override -->
-    <div class="pt-trust-item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-      <span class="pt-trust-item__label">Temporizador</span>
-      <span class="pt-trust-item__desc">Para o seu regresso</span>
-    </div>
-    <div class="pt-trust-item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-      <span class="pt-trust-item__label">Buffer de segurança</span>
-      <span class="pt-trust-item__desc">Tempo extra garantido</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2l20 20M8.5 16.5a5 5 0 0 1 7 0M5 13a9.5 9.5 0 0 1 3.5-2.3M19 13a9.5 9.5 0 0 0-2-1.7M12 20h.01"/></svg>
+      <span class="pt-trust-item__label">Offline</span>
+      <span class="pt-trust-item__desc">Funciona sem internet</span>
     </div>
   </div>
 </div>
@@ -679,9 +705,15 @@
   <p>Rotas pensadas para aproveitar cada hora em terra.<br>Mais tempo para explorar.<br class="footer-mobile-break"> Sempre de volta a tempo.</p>
 </footer>
 
-<!-- sticky CTA (preserved) -->
+<!-- sticky CTA — redesigned, href/aria preserved -->
 <div class="sticky-cta" aria-label="Comprar rota">
-  <div><strong>Começar por €4,99</strong><span>Escolha a rota</span></div>
+  <div class="sticky-cta__left">
+    <span class="sticky-cta__icon" aria-hidden="true">🚢</span>
+    <div class="sticky-cta__text">
+      <strong>Ver rotas disponíveis</strong>
+      <span>Começar por apenas €4,99</span>
+    </div>
+  </div>
   <a class="sticky-cta__button" href="#routes">Ver rotas</a>
 </div>
 
