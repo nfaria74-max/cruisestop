@@ -27,7 +27,17 @@
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://cruisestop.eu/#organization","name":"CruiseStop","url":"https://cruisestop.eu/","logo":"https://cruisestop.eu/assets/icon-512.png","areaServed":"Funchal, Madeira, Portugal"},{"@type":"WebSite","@id":"https://cruisestop.eu/#website","url":"https://cruisestop.eu/","name":"CruiseStop","inLanguage":"en","description":"Mobile self-guided Funchal routes for cruise passengers with limited time. Offline, no app install, back to the ship on time."},{"@type":"Product","@id":"https://cruisestop.eu/index.html/#product","name":"CruiseStop self-guided Funchal walking routes","description":"Mobile-first PWA with self-guided walking routes in Funchal for cruise passengers with short 4-5 hour stops.","brand":{"@type":"Brand","name":"CruiseStop"},"category":"Digital self-guided walking routes for cruise passengers","url":"https://cruisestop.eu/index.html","image":"https://cruisestop.eu/img/hero-funchal-new.jpg","offers":{"@type":"Offer","price":"4.99","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://cruisestop.eu/#routes"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","bestRating":"5","worstRating":"1","reviewCount":"1"},"inLanguage":"en"},{"@type":"ItemList","@id":"https://cruisestop.eu/index.html/#routes","name":"Funchal cruise port walking routes","itemListElement":[{"@type":"ListItem","position":1,"name":"Slow Funchal Cruise Port Walk","url":"https://cruisestop.eu/funchal-walk-relax/"},{"@type":"ListItem","position":2,"name":"Taste Madeira Foodie Cruise Port Walk","url":"https://cruisestop.eu/funchal-walk-gourmet/"},{"@type":"ListItem","position":3,"name":"Panoramic Funchal View Walk","url":"https://cruisestop.eu/funchal-walk-panoramic/"}]}]}</script>
   <script>sessionStorage.setItem('lang_chosen','1');</script>
-<link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script></head>
+<link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script>
+  <style>
+    /* Override placed after all external CSS to win the cascade */
+    @media (max-width: 430px) {
+      body.home-page.landing-v160 .hero-actions {
+        margin-top: 70px !important;
+      }
+      .home-page .hero-content { min-height: auto !important; }
+    }
+  </style>
+</head>
 <body class="home-page landing-v160">
   
   <header class="hero" id="inicio"><img class="hero-photo" src="img/hero-funchal-new.jpg" loading="eager" decoding="async" fetchpriority="high" alt="Funchal coastline with ocean, cruise ship, church tower and a phone showing the walking route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides for cruise passengers</p><h1 id="hero-title">See the best of Funchal in <span class="hero-time-highlight">5 hours</span></h1><p class="hero-subline">no tours, no stress &mdash; and always back to the ship on time</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>Start for &euro;4,99</span></a><a class="secondary-link" href="#preview">See how it works</a></div><div class="hero-product" aria-label="Phone route preview"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal Route</span><strong>5 hours</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Funchal Port <em>30 min</em></span><span><b>2</b> Historic Centre <em>45 min</em></span><span><b>3</b> Cathedral <em>20 min</em></span></div><div class="hero-phone__return">Back to the ship on time</div></div></div></section></div></header>
@@ -93,14 +103,8 @@
     .pt-trust-item__label{font-size:.66rem;font-weight:800;color:#08295d;display:block;margin-bottom:2px;line-height:1.2;}
     .pt-trust-item__desc{font-size:.6rem;font-weight:600;color:#425b83;display:block;line-height:1.25;}
 
-    /* Fix: collapse the empty blue space left by removing hero-trust-pills/proof/trust-proof.
-       hero-content had min-height:100svh which kept the container full-height even with less content.
-       On mobile only, set min-height:auto so the content drives the height instead.
-       The hero itself keeps min-height:100svh so the photo still covers the screen. */
-    @media (max-width: 430px) {
-      .home-page .hero-content { min-height: auto !important; }
-      .landing-v160 .hero-actions { margin-top: 270px !important; }
-    }
+    /* trust strip and lang picker CSS above — no mobile overrides here,
+       those are in the <head> style block after external CSS */
   </style>
   <script>
     (function(){
