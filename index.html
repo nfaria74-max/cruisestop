@@ -92,6 +92,15 @@
     .pt-trust-item svg{display:block;width:20px;height:20px;margin:0 auto 6px;stroke:#062b67;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
     .pt-trust-item__label{font-size:.66rem;font-weight:800;color:#08295d;display:block;margin-bottom:2px;line-height:1.2;}
     .pt-trust-item__desc{font-size:.6rem;font-weight:600;color:#425b83;display:block;line-height:1.25;}
+
+    /* Fix: collapse the empty blue space left by removing hero-trust-pills/proof/trust-proof.
+       hero-content had min-height:100svh which kept the container full-height even with less content.
+       On mobile only, set min-height:auto so the content drives the height instead.
+       The hero itself keeps min-height:100svh so the photo still covers the screen. */
+    @media (max-width: 430px) {
+      .home-page .hero-content { min-height: auto !important; }
+      .landing-v160 .hero-actions { margin-top: clamp(240px, 60vw, 260px); }
+    }
   </style>
   <script>
     (function(){
