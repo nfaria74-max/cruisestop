@@ -45,24 +45,9 @@ function detectDeviceLanguage() {
   return "en";
 }
 
-function redirectFromEnglishHomeToPreferredLanguage() {
-  const currentHomeLanguage = homeLanguageFromPath(window.location.pathname);
-  if (currentHomeLanguage !== "en") return;
-
-  const storedLanguage = readStoredLanguage();
-  const targetLanguage = supportedLangs.includes(storedLanguage)
-    ? storedLanguage
-    : detectDeviceLanguage();
-
-  if (targetLanguage === "en") return;
-
-  const targetUrl = new URL(languageHomePages[targetLanguage], window.location.href);
-  targetUrl.search = window.location.search;
-  targetUrl.hash = window.location.hash;
-  window.location.replace(targetUrl.href);
-}
-
-redirectFromEnglishHomeToPreferredLanguage();
+// redirectFromEnglishHomeToPreferredLanguage() removed 2026-08-04.
+// index.html opens always in English regardless of stored preference or device language.
+// Language switching is manual only via the lang picker.
 
 const cta = document.querySelector(".primary-cta span");
 const routeCards = [...document.querySelectorAll(".route-card")];
