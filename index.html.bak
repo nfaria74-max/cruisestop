@@ -30,38 +30,7 @@
 <link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script></head>
 <body class="home-page landing-v160">
   
-  <header class="hero" id="inicio"><img class="hero-photo" src="img/hero-funchal-new.jpg" loading="eager" decoding="async" fetchpriority="high" alt="Funchal coastline with ocean, cruise ship, church tower and a phone showing the walking route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides for cruise passengers</p><h1 id="hero-title">See the best of Funchal in <span class="hero-time-highlight">5 hours</span></h1><p class="hero-subline">no tours, no stress &mdash; and always back to the ship on time</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>Start for &euro;4,99</span></a><a class="secondary-link" href="#preview">See how it works</a></div><div class="hero-product" aria-label="Phone route preview"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal Route</span><strong>5 hours</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Funchal Port <em>30 min</em></span><span><b>2</b> Historic Centre <em>45 min</em></span><span><b>3</b> Cathedral <em>20 min</em></span></div><div class="hero-phone__return">Back to the ship on time</div></div></div></section></div></header>
-  <!-- trust strip — copied from index_pt.html, EN texts -->
-  <div class="pt-trust-strip" aria-label="Key features">
-    <div class="pt-trust-strip__grid">
-      <div class="pt-trust-item">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-        <span class="pt-trust-item__label">Safety Buffer</span>
-        <span class="pt-trust-item__desc">Extra time guaranteed</span>
-      </div>
-      <div class="pt-trust-item">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-        <span class="pt-trust-item__label">Return Timer</span>
-        <span class="pt-trust-item__desc">Never miss your ship</span>
-      </div>
-      <div class="pt-trust-item">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        <span class="pt-trust-item__label">Google Maps</span>
-        <span class="pt-trust-item__desc">Navigation included</span>
-      </div>
-      <div class="pt-trust-item">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
-        <span class="pt-trust-item__label">No App Required</span>
-        <span class="pt-trust-item__desc">Open in your browser</span>
-      </div>
-      <div class="pt-trust-item">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2l20 20M8.5 16.5a5 5 0 0 1 7 0M5 13a9.5 9.5 0 0 1 3.5-2.3M19 13a9.5 9.5 0 0 0-2-1.7M12 20h.01"/></svg>
-        <span class="pt-trust-item__label">Works Offline</span>
-        <span class="pt-trust-item__desc">No internet needed</span>
-      </div>
-    </div>
-  </div>
-
+  <header class="hero" id="inicio"><img class="hero-photo" src="img/hero-funchal-new.jpg" loading="eager" decoding="async" fetchpriority="high" alt="Funchal coastline with ocean, cruise ship, church tower and a phone showing the walking route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides for cruise passengers</p><h1 id="hero-title">See the best of Funchal in <span class="hero-time-highlight">5 hours</span></h1><p class="hero-subline">no tours, no stress &mdash; and always back to the ship on time</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>Start for &euro;4,99</span></a><a class="secondary-link" href="#preview">See how it works</a></div><ul class="hero-trust-pills" aria-label="Key reassurances"><li>✅ Works offline</li><li>✅ Back to port on time</li><li>✅ No roaming needed</li><li>✅ Made for short stops</li></ul><div class="hero-product" aria-label="Phone route preview"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal Route</span><strong>5 hours</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Funchal Port <em>30 min</em></span><span><b>2</b> Historic Centre <em>45 min</em></span><span><b>3</b> Cathedral <em>20 min</em></span></div><div class="hero-phone__return">Back to the ship on time</div></div></div><div class="hero-proof"><span class="hero-proof__photo"><img class="hero-proof__avatar" src="img/avatar-emma.jpg" alt="Emma, UK" style="width:44px;height:44px;border-radius:50%;object-fit:cover;"></span><span class="hero-proof__content"><span class="hero-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="hero-proof__quote">&ldquo;We got back to the ship without stress and saw much more than on a tour.&rdquo;</span><span class="hero-proof__author">&mdash; Emma, UK</span></span></div><ul class="hero-trust-proof" aria-label="Trust signals"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0"></path><path d="M5.5 12a10 10 0 0 1 13 0"></path><path d="M9 15.5a5 5 0 0 1 6 0"></path><path d="M12 19h.01"></path><path d="M3 3l18 18"></path></svg><span>Offline</span><small>Works without internet</small></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"></rect><path d="M11 18h2"></path></svg><span>Works on your phone</span><small>No app install</small></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"></path><path d="M12 10h.01"></path></svg><span>Made locally</span><small>By people who know Funchal</small></li></ul></section></div></header>
   <div class="lang-picker" aria-label="Language selector">
     <button class="lang-picker__toggle" aria-haspopup="listbox" aria-expanded="false" id="langToggle">
       <img src="icons/flag/EN.png" alt="" class="lang-picker__flag"><span class="lang-picker__code">EN</span><svg class="lang-picker__caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
@@ -84,14 +53,6 @@
     .lang-picker__menu li a:hover{background:#f0f4fb}
     .lang-picker__menu li[aria-selected="true"] a{color:#0a56c8}
     .lang-picker__menu img{width:18px;height:13px;object-fit:cover;border-radius:2px}
-
-    /* trust strip — copied from index_pt.html */
-    .pt-trust-strip{margin:-24px 14px 0;padding:22px 8px 18px;background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(6,43,103,.09);position:relative;z-index:5;}
-    .pt-trust-strip__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px 2px;}
-    .pt-trust-item{text-align:center;padding:0 2px;}
-    .pt-trust-item svg{display:block;width:20px;height:20px;margin:0 auto 6px;stroke:#062b67;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-    .pt-trust-item__label{font-size:.66rem;font-weight:800;color:#08295d;display:block;margin-bottom:2px;line-height:1.2;}
-    .pt-trust-item__desc{font-size:.6rem;font-weight:600;color:#425b83;display:block;line-height:1.25;}
   </style>
   <script>
     (function(){
