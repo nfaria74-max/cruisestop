@@ -36,6 +36,7 @@
       body.home-page.landing-v160 .hero-content {
         padding-top: clamp(34px, 5.2vw, 44px) !important;
         min-height: auto !important;
+        align-self: start !important;
       }
 
       /* 2. Hero altura máxima 100dvh (remove faixa azul excessiva) */
@@ -56,9 +57,9 @@
           ) !important;
       }
 
-      /* 4. Desloca a foto para cima ~9% — mostra flores no fundo, remove pavimento escuro */
+      /* 4. object-position revertido para o valor original */
       html body.home-page.landing-v160 .hero-photo {
-        object-position: 66% 65% !important;
+        object-position: 66% center !important;
       }
 
     }
