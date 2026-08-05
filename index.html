@@ -29,12 +29,20 @@
   <script>sessionStorage.setItem('lang_chosen','1');</script>
 <link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script>
   <style>
-    /* Override placed after all external CSS to win the cascade */
+    /* Overrides placed after all external CSS — higher specificity wins */
     @media (max-width: 430px) {
-      body.home-page.landing-v160 .hero-actions {
-        margin-top: 70px !important;
+
+      /* 1. Cápsula desce ~8px — padding-top de 26px para clamp(34px,5.2vw,44px) */
+      body.home-page.landing-v160 .hero-content {
+        padding-top: clamp(34px, 5.2vw, 44px) !important;
+        min-height: auto !important;
       }
-      .home-page .hero-content { min-height: auto !important; }
+
+      /* 2. Remove faixa azul — hero limitado a 100dvh, não a clamp(930px,130svh,1080px) */
+      html body.home-page.landing-v160 .hero {
+        min-height: 100dvh !important;
+      }
+
     }
   </style>
 </head>
