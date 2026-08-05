@@ -57,9 +57,19 @@
           ) !important;
       }
 
-      /* 4. object-position revertido para o valor original */
+      /* 4. Remove max-height:78svh da hero-photo — preenche os 102px de faixa azul
+         styles-fixes.css limitava a foto a 78svh; aqui sobrescrevemos para 100% */
       html body.home-page.landing-v160 .hero-photo {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: none !important;
+        object-fit: cover !important;
         object-position: 66% center !important;
+      }
+
+      /* 5. Telemóvel CSS continua escondido — foto já tem mão+telemóvel reais */
+      html body.home-page.landing-v160 .hero-product {
+        display: none !important;
       }
 
     }
