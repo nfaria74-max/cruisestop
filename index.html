@@ -32,15 +32,28 @@
     /* Overrides placed after all external CSS — higher specificity wins */
     @media (max-width: 430px) {
 
-      /* 1. Cápsula desce ~8px — padding-top de 26px para clamp(34px,5.2vw,44px) */
+      /* 1. Cápsula desce ~8px */
       body.home-page.landing-v160 .hero-content {
         padding-top: clamp(34px, 5.2vw, 44px) !important;
         min-height: auto !important;
       }
 
-      /* 2. Remove faixa azul — hero limitado a 100dvh, não a clamp(930px,130svh,1080px) */
+      /* 2. Hero altura máxima 100dvh (remove faixa azul excessiva) */
       html body.home-page.landing-v160 .hero {
         min-height: 100dvh !important;
+      }
+
+      /* 3. Gradiente do hero-shade — fundo mais transparente para revelar flores/telhados */
+      html body.home-page.landing-v160 .hero-shade {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(2,15,43,0.72)  0%,
+            rgba(3,31,78,0.34)  35%,
+            rgba(3,22,55,0.08)  56%,
+            rgba(2,10,25,0.18)  80%,
+            rgba(2,8,22,0.22)  100%
+          ) !important;
       }
 
     }
