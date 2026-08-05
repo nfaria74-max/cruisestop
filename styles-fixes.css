@@ -104,17 +104,18 @@ html body.home-page.landing-v160 .language-strip a.is-active {
    ---------------------------------------------------------- */
 @media (max-width: 820px) {
 
-  /* Reduzir altura do hero para mostrar ícones completos */
+  /* Hero — altura completa do ecrã */
   html body.home-page.landing-v160 .hero {
-    min-height: unset !important;
-    max-height: calc(78svh + 90px) !important;
+    min-height: 100dvh !important;
+    max-height: none !important;
     overflow: hidden !important;
   }
 
-  /* Imagem mobile */
+  /* Imagem mobile — preenche toda a altura do hero */
   html body.home-page.landing-v160 .hero-photo {
-    object-position: center 20% !important;
-    max-height: 78svh !important;
+    object-position: 66% center !important;
+    max-height: none !important;
+    height: 100% !important;
   }
 
   /* CTA ao nível do telemóvel mas sem tapar a Sé */
