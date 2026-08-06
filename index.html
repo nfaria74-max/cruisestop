@@ -29,7 +29,24 @@
   <script>sessionStorage.setItem('lang_chosen','1');</script>
 <link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script>
   <style>
-    /* Overrides placed after all external CSS — higher specificity wins */
+    /* Override placed after all external CSS — higher specificity wins */
+    .hero-picture {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .hero-picture .hero-photo {
+      position: static !important;
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+      max-height: none !important;
+      object-fit: cover !important;
+      object-position: 66% center !important;
+    }
     @media (max-width: 430px) {
 
       /* 1. Cápsula desce ~8px */
@@ -77,7 +94,7 @@
 </head>
 <body class="home-page landing-v160">
   
-  <header class="hero" id="inicio"><picture>
+  <header class="hero" id="inicio"><picture class="hero-picture">
   <source srcset="img/hero-funchal.webp" type="image/webp">
   <img
     class="hero-photo"
