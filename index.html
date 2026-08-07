@@ -111,7 +111,17 @@
     loading="eager"
     decoding="async"
     fetchpriority="high"
-    alt="Funchal coastline with cruise ship, cathedral and phone showing CruiseStop walking route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides for cruise passengers</p><h1 id="hero-title">See the best of Funchal in <span class="hero-time-highlight">5 hours</span></h1><p class="hero-subline">no tours, no stress &mdash; and always back to the ship on time</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>Start for &euro;4,99</span></a><a class="secondary-link" href="#preview">See how it works</a></div><div class="hero-product" aria-label="Phone route preview"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal Route</span><strong>5 hours</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Funchal Port <em>30 min</em></span><span><b>2</b> Historic Centre <em>45 min</em></span><span><b>3</b> Cathedral <em>20 min</em></span></div><div class="hero-phone__return">Back to the ship on time</div></div></div></section></div></header>
+    alt="Funchal coastline with cruise ship, cathedral and phone showing CruiseStop walking route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides for cruise passengers</p><h1 id="hero-title">See the best of Funchal in <span class="hero-time-highlight">5 hours</span></h1><p class="hero-subline">no tours, no stress &mdash; and always back to the ship on time</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>Start for &euro;4,99</span></a><a class="secondary-link" href="#preview">See how it works</a></div><div class="hero-product" aria-label="Phone route preview"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal Route</span><strong>5 hours</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Funchal Port <em>30 min</em></span><span><b>2</b> Historic Centre <em>45 min</em></span><span><b>3</b> Cathedral <em>20 min</em></span></div><div class="hero-phone__return">Back to the ship on time</div></div></div></section></div><div class="lang-picker" aria-label="Language selector">
+    <button class="lang-picker__toggle" aria-haspopup="listbox" aria-expanded="false" id="langToggle">
+      <img src="icons/flag/EN.png" alt="" class="lang-picker__flag"><span class="lang-picker__code">EN</span><svg class="lang-picker__caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+    </button>
+    <ul class="lang-picker__menu" role="listbox" aria-labelledby="langToggle" hidden>
+      <li role="option" aria-selected="true"><a href="index.html"><img src="icons/flag/EN.png" alt="">EN</a></li>
+      <li role="option"><a href="index_de.html"><img src="icons/flag/DE.png" alt="">DE</a></li>
+      <li role="option"><a href="index_fr.html"><img src="icons/flag/FR.png" alt="">FR</a></li>
+      <li role="option"><a href="index_pt.html"><img src="icons/flag/PT.png" alt="">PT</a></li>
+    </ul>
+  </div></header>
   <!-- trust strip — copied from index_pt.html, EN texts -->
   <div class="pt-trust-strip" aria-label="Key features">
     <div class="pt-trust-strip__grid">
@@ -143,19 +153,8 @@
     </div>
   </div>
 
-  <div class="lang-picker" aria-label="Language selector">
-    <button class="lang-picker__toggle" aria-haspopup="listbox" aria-expanded="false" id="langToggle">
-      <img src="icons/flag/EN.png" alt="" class="lang-picker__flag"><span class="lang-picker__code">EN</span><svg class="lang-picker__caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
-    </button>
-    <ul class="lang-picker__menu" role="listbox" aria-labelledby="langToggle" hidden>
-      <li role="option" aria-selected="true"><a href="index.html"><img src="icons/flag/EN.png" alt="">EN</a></li>
-      <li role="option"><a href="index_de.html"><img src="icons/flag/DE.png" alt="">DE</a></li>
-      <li role="option"><a href="index_fr.html"><img src="icons/flag/FR.png" alt="">FR</a></li>
-      <li role="option"><a href="index_pt.html"><img src="icons/flag/PT.png" alt="">PT</a></li>
-    </ul>
-  </div>
   <style>
-    .lang-picker{position:fixed;top:54px;right:14px;z-index:9999;font-family:inherit}
+    .lang-picker{position:absolute;top:54px;right:14px;z-index:9999;font-family:inherit}
     .lang-picker__toggle{display:flex;align-items:center;justify-content:center;gap:4px;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.10);border-radius:999px;padding:0 8px;width:70px;height:34px;min-height:34px !important;cursor:pointer;font-size:.75rem;font-weight:600;color:#062f73;box-shadow:0 1px 3px rgba(0,0,0,.10);line-height:1}
     .lang-picker__toggle:hover{background:rgba(255,255,255,.98)}
     .lang-picker__flag{width:16px;height:11px;object-fit:cover;border-radius:2px;flex-shrink:0}
