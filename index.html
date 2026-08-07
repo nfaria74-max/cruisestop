@@ -32,6 +32,11 @@
     /* Override placed after all external CSS — higher specificity wins */
     /* hero-title: 36px no mobile (era ~40px) — apenas font-size */
     @media (max-width: 719px) {
+      body.home-page.landing-v160 .hero::after {
+        display: none !important;
+      }
+    }
+    @media (max-width: 719px) {
       body.home-page.landing-v160 #hero-title {
         font-size: clamp(2.25rem, 8.25vw, 3.38rem) !important;
       }
