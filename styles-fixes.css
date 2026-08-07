@@ -196,7 +196,8 @@ html body.home-page.landing-v160 .sticky-cta__button {
   html body .site-footer,
   html body.home-page.landing-v160 .site-footer {
     min-height: unset !important;
-    padding: 24px 20px 32px !important;
+    padding: 16px 20px 22px !important;
+    gap: 12px !important;
   }
 }
 
