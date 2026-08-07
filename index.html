@@ -30,7 +30,12 @@
 <link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script>
   <style>
     /* Override placed after all external CSS — higher specificity wins */
-    /* Compensate for -140px trust strip overlap — keeps how-flow title fully visible */
+    /* hero-title: 36px no mobile (era ~40px) — apenas font-size */
+    @media (max-width: 719px) {
+      body.home-page.landing-v160 #hero-title {
+        font-size: clamp(2.25rem, 8.25vw, 3.38rem) !important;
+      }
+    }
     .how-flow {
       padding-top: 24px !important;
     }
