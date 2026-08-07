@@ -30,6 +30,10 @@
 <link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script>
   <style>
     /* Override placed after all external CSS — higher specificity wins */
+    /* Compensate for -140px trust strip overlap — keeps how-flow title fully visible */
+    .how-flow {
+      padding-top: 24px !important;
+    }
     .hero-photo {
       position: absolute !important;
       inset: 0 !important;
