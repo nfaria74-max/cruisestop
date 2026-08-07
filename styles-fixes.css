@@ -117,6 +117,11 @@ html body.home-page.landing-v160 .language-strip a.is-active {
   .landing-v160 .review-card:nth-child(n+2) {
     display: flex !important;
   }
+
+  /* Reduce space between last FAQ and footer */
+  .landing-v160 .page-content {
+    padding-bottom: 16px !important;
+  }
 }
 
 /* ----------------------------------------------------------
