@@ -4085,3 +4085,11 @@ body.route-stop-page .timer-main {
 body.route-stop-page .stop-card {
     justify-content: flex-start !important;
 }
+
+/* buffer-badge — melhor contraste, fundo mais sólido */
+body.route-stop-page .timer-widget .buffer-badge {
+    color: #24663c !important;
+    font-weight: 600 !important;
+    background: #dff3e4 !important;
+    border: 1px solid #a9d9b5 !important;
+}
