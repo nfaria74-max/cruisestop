@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
@@ -25,13 +25,92 @@
   <meta property="og:url" content="https://cruisestop.eu/index_de.html">
   <meta property="og:image" content="https://cruisestop.eu/img/hero-funchal-new.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://cruisestop.eu/#organization","name":"CruiseStop","url":"https://cruisestop.eu/","logo":"https://cruisestop.eu/assets/icon-512.png","areaServed":"Funchal, Madeira, Portugal"},{"@type":"WebSite","@id":"https://cruisestop.eu/#website","url":"https://cruisestop.eu/","name":"CruiseStop","inLanguage":"de","description":"Mobile Funchal-Routen f\u00fcr Kreuzfahrtg\u00e4ste mit wenig Zeit. Offline, ohne App-Installation, rechtzeitig zur\u00fcck zum Schiff."},{"@type":"Product","@id":"https://cruisestop.eu/index_de.html/#product","name":"CruiseStop self-guided Funchal walking routes","description":"Mobile-first PWA with self-guided walking routes in Funchal for cruise passengers with short 4-5 hour stops.","brand":{"@type":"Brand","name":"CruiseStop"},"category":"Digital self-guided walking routes for cruise passengers","url":"https://cruisestop.eu/index_de.html","image":"https://cruisestop.eu/img/hero-funchal-new.jpg","offers":{"@type":"Offer","price":"4.99","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://cruisestop.eu/#routes"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","bestRating":"5","worstRating":"1","reviewCount":"1"},"inLanguage":"de"},{"@type":"ItemList","@id":"https://cruisestop.eu/index_de.html/#routes","name":"Funchal cruise port walking routes","itemListElement":[{"@type":"ListItem","position":1,"name":"Slow Funchal Cruise Port Walk","url":"https://cruisestop.eu/funchal-walk-relax/"},{"@type":"ListItem","position":2,"name":"Taste Madeira Foodie Cruise Port Walk","url":"https://cruisestop.eu/funchal-walk-gourmet/"},{"@type":"ListItem","position":3,"name":"Panoramic Funchal View Walk","url":"https://cruisestop.eu/funchal-walk-panoramic/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://cruisestop.eu/#organization","name":"CruiseStop","url":"https://cruisestop.eu/","logo":"https://cruisestop.eu/assets/icon-512.png","areaServed":"Funchal, Madeira, Portugal"},{"@type":"WebSite","@id":"https://cruisestop.eu/#website","url":"https://cruisestop.eu/","name":"CruiseStop","inLanguage":"de","description":"Mobile Funchal-Routen für Kreuzfahrtgäste mit wenig Zeit. Offline, ohne App-Installation, rechtzeitig zurück zum Schiff."},{"@type":"Product","@id":"https://cruisestop.eu/index_de.html/#product","name":"CruiseStop selbstgeführte Funchal-Spaziergänge","description":"Mobile-first PWA mit selbstgeführten Spaziergängen in Funchal für Kreuzfahrtgäste.","brand":{"@type":"Brand","name":"CruiseStop"},"category":"Digitale selbstgeführte Spaziergänge für Kreuzfahrtgäste","url":"https://cruisestop.eu/index_de.html","image":"https://cruisestop.eu/img/hero-funchal-new.jpg","offers":{"@type":"Offer","price":"4.99","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://cruisestop.eu/index_de.html#routes"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","bestRating":"5","worstRating":"1","reviewCount":"1"},"inLanguage":"de"}]}</script>
   <script>sessionStorage.setItem('lang_chosen','1');</script>
-<link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script></head>
+<link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script>
+  <style>
+    /* Override placed after all external CSS — higher specificity wins */
+    /* hero-title: 36px im Mobile */
+    @media (max-width: 719px) {
+      body.home-page.landing-v160 .hero::after {
+        display: none !important;
+      }
+    }
+    @media (max-width: 719px) {
+      body.home-page.landing-v160 #hero-title {
+        font-size: clamp(2.25rem, 8.25vw, 3.38rem) !important;
+      }
+    }
+    .how-flow {
+      padding-top: 24px !important;
+    }
+    .hero-photo {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-height: none !important;
+      object-fit: cover !important;
+      object-position: 66% center !important;
+    }
+    @media (max-width: 430px) {
+
+      /* Kicker-Kapsel etwas tiefer */
+      body.home-page.landing-v160 .hero-content {
+        padding-top: clamp(34px, 5.2vw, 44px) !important;
+        min-height: auto !important;
+        align-self: start !important;
+      }
+
+      /* Hero volle Bildschirmhöhe */
+      html body.home-page.landing-v160 .hero {
+        min-height: 100dvh !important;
+      }
+
+      /* Verlauf des hero-shade */
+      html body.home-page.landing-v160 .hero-shade {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(2,15,43,0.72)  0%,
+            rgba(3,31,78,0.34)  35%,
+            rgba(3,22,55,0.08)  56%,
+            rgba(2,10,25,0.18)  80%,
+            rgba(2,8,22,0.22)  100%
+          ) !important;
+      }
+
+      /* hero-photo: volle Höhe */
+      html body.home-page.landing-v160 .hero-photo {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: none !important;
+        object-fit: cover !important;
+        object-position: 66% center !important;
+      }
+
+      /* CSS-Telefon ausblenden — Foto zeigt bereits Hand mit Telefon */
+      html body.home-page.landing-v160 .hero-product {
+        display: none !important;
+      }
+
+      /* CTA etwas tiefer */
+      body.home-page.landing-v160 .hero-actions {
+        margin-top: 40px !important;
+      }
+
+    }
+  </style>
+</head>
 <body class="home-page landing-v160">
   
-  <header class="hero" id="inicio"><img class="hero-photo" src="img/hero-funchal-new.jpg" loading="eager" decoding="async" fetchpriority="high" alt="Funchal coastline with ocean, cruise ship, church tower and a phone showing the walking route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides f&uuml;r Kreuzfahrtg&auml;ste</p><h1 id="hero-title">Das Beste von Funchal in <span class="hero-time-highlight">5 Stunden</span></h1><p class="hero-subline">ohne Ausfl&uuml;ge, ohne Stress &mdash; und immer rechtzeitig zur&uuml;ck zum Schiff</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>F&uuml;r &euro;4,99 starten</span></a><a class="secondary-link" href="#preview">So funktioniert es</a></div><ul class="hero-trust-pills" aria-label="Wichtige Vorteile"><li>✅ Funktioniert offline</li><li>✅ Rechtzeitig zurück im Hafen</li><li>✅ Kein Roaming</li><li>✅ Für kurze Landgänge</li></ul><div class="hero-product" aria-label="Vorschau der Route am Handy"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal-Route</span><strong>5 Stunden</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Hafen Funchal <em>30 min</em></span><span><b>2</b> Historisches Zentrum <em>45 min</em></span><span><b>3</b> Kathedrale <em>20 min</em></span></div><div class="hero-phone__return">Rechtzeitig zur&uuml;ck zum Schiff</div></div></div><div class="hero-proof"><span class="hero-proof__photo"><img class="hero-proof__avatar" src="img/avatar-emma.jpg" alt="Emma, UK" style="width:44px;height:44px;border-radius:50%;object-fit:cover;"></span><span class="hero-proof__content"><span class="hero-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="hero-proof__quote">&ldquo;Wir waren ohne Stress zur&uuml;ck am Schiff und haben viel mehr gesehen als bei einer Tour.&rdquo;</span><span class="hero-proof__author">&mdash; Emma, UK</span></span></div><ul class="hero-trust-proof" aria-label="Vertrauenssignale"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0"></path><path d="M5.5 12a10 10 0 0 1 13 0"></path><path d="M9 15.5a5 5 0 0 1 6 0"></path><path d="M12 19h.01"></path><path d="M3 3l18 18"></path></svg><span>Offline</span><small>Funktioniert ohne Internet</small></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"></rect><path d="M11 18h2"></path></svg><span>Funktioniert am Handy</span><small>Keine App-Installation</small></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"></path><path d="M12 10h.01"></path></svg><span>Lokal erstellt</span><small>Von Menschen, die Funchal kennen</small></li></ul></section></div></header>
-    <div class="lang-picker" aria-label="Language selector">
+  <header class="hero" id="inicio"><img
+    class="hero-photo"
+    src="img/hero-funchal.webp"
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+    alt="Funchal Küste mit Kreuzfahrtschiff, Kathedrale und Telefon mit der CruiseStop-Route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides f&uuml;r Kreuzfahrtg&auml;ste</p><h1 id="hero-title">Das Beste von Funchal in <span class="hero-time-highlight">5 Stunden</span></h1><p class="hero-subline">ohne Ausfl&uuml;ge, ohne Stress &mdash; und immer rechtzeitig zur&uuml;ck zum Schiff</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>F&uuml;r &euro;4,99 starten</span></a><a class="secondary-link" href="#preview">Wie es funktioniert</a></div><div class="hero-product" aria-label="Telefon-Routenvorschau"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal Route</span><strong>5 Stunden</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Hafen Funchal <em>30 Min</em></span><span><b>2</b> Historisches Zentrum <em>45 Min</em></span><span><b>3</b> Kathedrale <em>20 Min</em></span></div><div class="hero-phone__return">Rechtzeitig zur&uuml;ck zum Schiff</div></div></div></section></div><div class="lang-picker" aria-label="Sprachauswahl">
     <button class="lang-picker__toggle" aria-haspopup="listbox" aria-expanded="false" id="langToggle">
       <img src="icons/flag/DE.png" alt="" class="lang-picker__flag"><span class="lang-picker__code">DE</span><svg class="lang-picker__caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
     </button>
@@ -41,18 +120,56 @@
       <li role="option"><a href="index_fr.html"><img src="icons/flag/FR.png" alt="">FR</a></li>
       <li role="option"><a href="index_pt.html"><img src="icons/flag/PT.png" alt="">PT</a></li>
     </ul>
+  </div></header>
+  <div class="pt-trust-strip" aria-label="Hauptmerkmale">
+    <div class="pt-trust-strip__grid">
+      <div class="pt-trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+        <span class="pt-trust-item__label">Sicherheitspuffer</span>
+        <span class="pt-trust-item__desc">Extrazeit garantiert</span>
+      </div>
+      <div class="pt-trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <span class="pt-trust-item__label">R&uuml;ckkehr-Timer</span>
+        <span class="pt-trust-item__desc">Schiff nie verpassen</span>
+      </div>
+      <div class="pt-trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span class="pt-trust-item__label">Google Maps</span>
+        <span class="pt-trust-item__desc">Navigation inklusive</span>
+      </div>
+      <div class="pt-trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+        <span class="pt-trust-item__label">Keine App n&ouml;tig</span>
+        <span class="pt-trust-item__desc">Im Browser &ouml;ffnen</span>
+      </div>
+      <div class="pt-trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2l20 20M8.5 16.5a5 5 0 0 1 7 0M5 13a9.5 9.5 0 0 1 3.5-2.3M19 13a9.5 9.5 0 0 0-2-1.7M12 20h.01"/></svg>
+        <span class="pt-trust-item__label">Offline verf&uuml;gbar</span>
+        <span class="pt-trust-item__desc">Kein Internet n&ouml;tig</span>
+      </div>
+    </div>
   </div>
+
   <style>
-    .lang-picker{position:fixed;top:12px;right:14px;z-index:9999;font-family:inherit}
-    .lang-picker__toggle{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.92);border:1px solid rgba(0,0,0,.15);border-radius:20px;padding:5px 10px 5px 8px;cursor:pointer;font-size:.8rem;font-weight:600;color:#062f73;box-shadow:0 1px 4px rgba(0,0,0,.15);backdrop-filter:blur(4px);line-height:1}
-    .lang-picker__toggle:hover{background:#fff}
-    .lang-picker__flag{width:18px;height:13px;object-fit:cover;border-radius:2px}
-    .lang-picker__caret{width:8px;height:5px;stroke:currentColor;stroke-width:1.8;fill:none;flex-shrink:0}
+    .lang-picker{position:absolute;top:54px;right:14px;z-index:9999;font-family:inherit}
+    .lang-picker__toggle{display:flex;align-items:center;justify-content:center;gap:4px;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.10);border-radius:999px;padding:0 8px;width:70px;height:34px;min-height:34px !important;cursor:pointer;font-size:.75rem;font-weight:600;color:#062f73;box-shadow:0 1px 3px rgba(0,0,0,.10);line-height:1}
+    .lang-picker__toggle:hover{background:rgba(255,255,255,.98)}
+    .lang-picker__flag{width:16px;height:11px;object-fit:cover;border-radius:2px;flex-shrink:0}
+    .lang-picker__caret{width:7px;height:4px;stroke:currentColor;stroke-width:1.8;fill:none;flex-shrink:0}
     .lang-picker__menu{position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.14);list-style:none;margin:0;padding:4px 0;min-width:80px}
     .lang-picker__menu li a{display:flex;align-items:center;gap:7px;padding:7px 14px;font-size:.82rem;font-weight:600;color:#062f73;text-decoration:none;white-space:nowrap}
     .lang-picker__menu li a:hover{background:#f0f4fb}
     .lang-picker__menu li[aria-selected="true"] a{color:#0a56c8}
     .lang-picker__menu img{width:18px;height:13px;object-fit:cover;border-radius:2px}
+
+    /* trust strip */
+    .pt-trust-strip{margin:-140px 14px 0;padding:22px 8px 18px;background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(6,43,103,.09);position:relative;z-index:5;}
+    .pt-trust-strip__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px 2px;}
+    .pt-trust-item{text-align:center;padding:0 2px;}
+    .pt-trust-item svg{display:block;width:20px;height:20px;margin:0 auto 6px;stroke:#062b67;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .pt-trust-item__label{font-size:.66rem;font-weight:800;color:#08295d;display:block;margin-bottom:2px;line-height:1.2;}
+    .pt-trust-item__desc{font-size:.6rem;font-weight:600;color:#425b83;display:block;line-height:1.25;}
   </style>
   <script>
     (function(){
@@ -69,19 +186,17 @@
     })();
   </script>
   <main class="page-content">
-    <section class="how-flow" aria-labelledby="how-flow-title"><h2 id="how-flow-title" class="how-flow__title">Einfach. Flexibel. Sorglos.</h2><ol class="how-flow__steps"><li><span class="how-flow__number">1</span><span class="how-flow__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"></path><path d="M9 3v15"></path><path d="M15 6v15"></path><path d="M17 4.5c1.3 0 2.3 1 2.3 2.3 0 1.8-2.3 4.2-2.3 4.2s-2.3-2.4-2.3-4.2c0-1.3 1-2.3 2.3-2.3Z"></path><path d="M17 6.8h.01"></path></svg></span><strong>Route w&auml;hlen</strong><p>W&auml;hle die ideale Route f&uuml;r deinen Stopp.</p></li><li><span class="how-flow__number">2</span><span class="how-flow__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path><path d="m11.5 7.5-2.2 4 3.2 2.1-1.6 6"></path><path d="m13.2 8.1 2.7 2.2 2.1-.9"></path><path d="M9.2 12.1 6.8 15.2"></path></svg></span><strong>In deinem Tempo</strong><p>Offline-Navigation mit interessanten Stopps.</p></li><li><span class="how-flow__number">3</span><span class="how-flow__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15.5 6.2 8h11.6l2.2 7.5"></path><path d="M8 8V5.8h8V8"></path><path d="M10 5.8V3.8h4v2"></path><path d="M3 15.5c2.2 1.5 4.4 1.5 6.6 0 1.6 1.1 3.2 1.3 4.8.6.6-.2 1.2-.5 1.8-.9 1.6 1.1 3.2 1.3 4.8.6"></path><path d="M4 19c2.1 1.2 4.2 1.2 6.3 0 2.1 1.2 4.2 1.2 6.3 0 1.4.8 2.8 1.1 4.4.6"></path></svg></span><strong>Rechtzeitig zur&uuml;ck</strong><p>Countdown-Timer f&uuml;r den R&uuml;ckweg zum Schiff.</p></li></ol></section>
-    <section class="landing-section review-section" aria-labelledby="review-title"><p class="section-eyebrow">Vertrauen</p><h2 id="review-title">Gemacht f&uuml;r kurze Kreuzfahrtstopps</h2><p class="section-copy">Kurzes Feedback zu dem, was z&auml;hlt: Funchal sehen und ruhig zur&uuml;ckkommen.</p><div class="review-strip"><article class="review-card"><div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;Wir waren ohne Stress zur&uuml;ck am Schiff und haben viel mehr gesehen als bei einer Tour.&rdquo;</blockquote><div class="review-author"><img class="review-photo" src="icons/flag/EN.png" alt="" loading="lazy" decoding="async"><span>Emma, UK</span></div></article><article class="review-card"><div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;Der R&uuml;ckkehr-zum-Schiff-Timer hat uns Sicherheit gegeben, ohne Hektik zu laufen.&rdquo;</blockquote><div class="review-author"><span class="avatar" aria-hidden="true">MK</span><span>Mark, Deutschland</span></div></article><article class="review-card"><div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;Am Handy ge&ouml;ffnet, Stopps gefolgt und trotzdem Zeit f&uuml;r Kaffee gehabt.&rdquo;</blockquote><div class="review-author"><span class="avatar" aria-hidden="true">CL</span><span>Claire, Frankreich</span></div></article></div></section>
-    <section class="landing-section product-demo" id="preview" aria-labelledby="preview-title"><p class="section-eyebrow">Produktvorschau</p><h2 id="preview-title"><span>Sieh genau,</span> <span>was du kaufst</span></h2><p class="section-copy">Routenkarte, einfache Stoppliste, offlinefreundliche Hinweise und R&uuml;ckkehr-zum-Schiff-Timer f&uuml;r Kreuzfahrtg&auml;ste.</p><div class="phone-showcase phone-showcase--reference"><figure class="product-reference-mockup" aria-label="Premium-Handyvorschau des Guides"><img src="images/product-preview-phone-v235.png" loading="lazy" decoding="async" alt="Premium-Handymockup mit Routenstopp, Google-Maps-Button, n&auml;chstem Stopp und R&uuml;ckkehr-zum-Schiff-Timer"></figure></div></section>
-    <section id="routes" class="routes" aria-labelledby="routes-title"><div class="section-title"><h2 id="routes-title">W&auml;hle die passende Route f&uuml;r deinen Stopp</h2></div><p class="section-copy">Drei einfache Arten, Funchal ohne Gruppentour zu entdecken.</p><div class="route-list"><article class="route-option"><a class="route-card" href="relax_summary_de.html" data-route="Relaxed Funchal" aria-label="Relaxed Funchal"><img src="images/RELAX/relax-stop4.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Entspannteste</span><strong>Relaxed Funchal</strong><span class="route-title-desc">Historische Caf&eacute;s, G&auml;rten und lokale K&ouml;stlichkeiten</span><span class="route-meta"><span>5h</span><span>~3 km</span><span>Leicht</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="easy">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="relax">F&uuml;r &euro;4,99 starten</button></div></article><article class="route-option"><a class="route-card" href="foodie_summary_de.html" data-route="Taste Madeira" aria-label="Taste Madeira"><img src="images/FOODIE/foodie-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Bestes Essen</span><strong>Taste Madeira</strong><span class="route-title-desc">Lokale Aromen und Stra&szlig;en mit Charakter</span><span class="route-meta"><span>5h</span><span>~3.5 km</span><span>Leicht</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="food">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="foodie">F&uuml;r &euro;4,99 starten</button></div></article><article class="route-option"><a class="route-card" href="panoramic_summary_de.html" data-route="Panoramic" aria-label="Panoramic"><img src="images/panoramic/panoramic-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Beste Ausblicke</span><strong>Panoramic</strong><span class="route-title-desc">Aussichtspunkte, Meer und ruhige R&uuml;ckkehr zum Schiff</span><span class="route-meta"><span>5h</span><span>~4 km</span><span>Mittel</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="panoramic">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="panoramic">F&uuml;r &euro;4,99 starten</button></div></article></div><div class="conversion-panel"><strong>Eine komplette Funchal-Route f&uuml;r &euro;4,99</strong><p>Einmal zahlen. Am Handy &ouml;ffnen. W&auml;hrend deines Kreuzfahrtstopps folgen.</p></div></section>
+    <section class="how-flow" aria-labelledby="how-flow-title"><h2 id="how-flow-title" class="how-flow__title">Einfach. Flexibel. Sorglos.</h2><ol class="how-flow__steps"><li><span class="how-flow__number">1</span><span class="how-flow__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"></path><path d="M9 3v15"></path><path d="M15 6v15"></path><path d="M17 4.5c1.3 0 2.3 1 2.3 2.3 0 1.8-2.3 4.2-2.3 4.2s-2.3-2.4-2.3-4.2c0-1.3 1-2.3 2.3-2.3Z"></path><path d="M17 6.8h.01"></path></svg></span><strong>Route w&auml;hlen</strong><p>W&auml;hle die ideale Route f&uuml;r deinen Stopp.</p></li><li><span class="how-flow__number">2</span><span class="how-flow__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path><path d="m11.5 7.5-2.2 4 3.2 2.1-1.6 6"></path><path d="m13.2 8.1 2.7 2.2 2.1-.9"></path><path d="M9.2 12.1 6.8 15.2"></path></svg></span><strong>In deinem Tempo</strong><p>Offline-Navigation mit interessanten Stopps.</p></li><li><span class="how-flow__number">3</span><span class="how-flow__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15.5 6.2 8h11.6l2.2 7.5"></path><path d="M8 8V5.8h8V8"></path><path d="M10 5.8V3.8h4v2"></path><path d="M3 15.5c2.2 1.5 4.4 1.5 6.6 0 1.6 1.1 3.2 1.3 4.8.6.6-.2 1.2-.5 1.8-.9 1.6 1.1 3.2 1.3 4.8.6"></path><path d="M4 19c2.1 1.2 4.2 1.2 6.3 0 2.1 1.2 4.2 1.2 6.3 0 1.4.8 2.8 1.1 4.4.6"></path></svg></span><strong>Rechtzeitig zur&uuml;ck</strong><p>R&uuml;ckkehr-Timer bis zum Schiff.</p></li></ol></section>
+    <section class="landing-section review-section" aria-labelledby="review-title"><p class="section-eyebrow">Vertrauen</p><h2 id="review-title">Gemacht f&uuml;r kurze Kreuzfahrtstopps</h2><p class="section-copy">Kurzes Feedback zu dem, was z&auml;hlt: Funchal sehen und ruhig zur&uuml;ckkommen.</p><div class="review-strip"><article class="review-card"><div class="review-stars" aria-label="5 Sterne">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;Wir waren ohne Stress zur&uuml;ck am Schiff und haben viel mehr gesehen als bei einer Tour.&rdquo;</blockquote><div class="review-author"><img class="review-photo" src="icons/flag/EN.png" alt="" loading="lazy" decoding="async"><span>Emma, UK</span></div></article><article class="review-card"><div class="review-stars" aria-label="5 Sterne">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;Der R&uuml;ckkehr-zum-Schiff-Timer hat uns Sicherheit gegeben, ohne Hektik zu laufen.&rdquo;</blockquote><div class="review-author"><span class="avatar" aria-hidden="true">MK</span><span>Mark, Deutschland</span></div></article><article class="review-card"><div class="review-stars" aria-label="5 Sterne">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;Am Handy ge&ouml;ffnet, Stopps gefolgt und trotzdem Zeit f&uuml;r Kaffee gehabt.&rdquo;</blockquote><div class="review-author"><span class="avatar" aria-hidden="true">CL</span><span>Claire, Frankreich</span></div></article></div></section>
+    <section class="landing-section product-demo" id="preview" aria-labelledby="preview-title"><p class="section-eyebrow">Produktvorschau</p><h2 id="preview-title"><span>Sieh genau,</span> <span>was du kaufst</span></h2><p class="section-copy">Routenkarte, einfache Stoppliste, offlinefreundliche Hinweise und R&uuml;ckkehr-zum-Schiff-Timer f&uuml;r Kreuzfahrtg&auml;ste.</p><div class="phone-showcase phone-showcase--reference"><figure class="product-reference-mockup" aria-label="Premium-Telefonvorschau des Guides"><img src="images/product-preview-phone-v235.png" loading="lazy" decoding="async" alt="Premium-Telefonmodell mit Routenstopp, Google-Maps-Schaltfläche, nächstem Stopp und Rückkehr-zum-Schiff-Timer"></figure></div></section>
+    <section id="routes" class="routes" aria-labelledby="routes-title"><div class="section-title"><h2 id="routes-title">W&auml;hle die passende Route f&uuml;r deinen Stopp</h2></div><p class="section-copy">Drei einfache Arten, Funchal ohne Gruppentour zu entdecken.</p><div class="route-list"><article class="route-option"><a class="route-card" href="relax_summary_de.html" data-route="Relaxed Funchal" aria-label="Relaxed Funchal"><img src="images/RELAX/relax-stop4.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Entspannteste</span><strong>Relaxed Funchal</strong><span class="route-title-desc">Historische Caf&eacute;s, G&auml;rten und lokale K&ouml;stlichkeiten</span><span class="route-meta"><span>5h</span><span>~3 km</span><span>Leicht</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="easy">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="relax">F&uuml;r &euro;4,99 starten</button></div></article><article class="route-option"><a class="route-card" href="foodie_summary_de.html" data-route="Taste Madeira" aria-label="Taste Madeira"><img src="images/FOODIE/foodie-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Bestes Essen</span><strong>Taste Madeira</strong><span class="route-title-desc">Lokale Aromen und Stra&szlig;en mit Charakter</span><span class="route-meta"><span>5h</span><span>~3,5 km</span><span>Leicht</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="food">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="foodie">F&uuml;r &euro;4,99 starten</button></div></article><article class="route-option"><a class="route-card" href="panoramic_summary_de.html" data-route="Panoramic" aria-label="Panoramic"><img src="images/panoramic/panoramic-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Beste Ausblicke</span><strong>Panoramic</strong><span class="route-title-desc">Aussichtspunkte, Meer und ruhige R&uuml;ckkehr zum Schiff</span><span class="route-meta"><span>5h</span><span>~4 km</span><span>Mittel</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="panoramic">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="panoramic">F&uuml;r &euro;4,99 starten</button></div></article></div><div class="conversion-panel"><strong>Eine komplette Funchal-Route f&uuml;r &euro;4,99</strong><p>Einmal zahlen. Am Handy &ouml;ffnen. W&auml;hrend deines Kreuzfahrtstopps folgen.</p></div></section>
     <section class="landing-section faq-section" id="faq" aria-labelledby="faq-title"><p class="section-eyebrow">Fragen</p><h2 id="faq-title">Einfach vor dem Kauf</h2><div class="faq-list"><details><summary><span class="faq-icon" aria-hidden="true">&#128241;</span><span>Muss ich eine App installieren?</span></summary><p>Nein. &Ouml;ffne CruiseStop auf deinem Handy und folge der Route im Browser.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#128674;</span><span>Ist es f&uuml;r Kreuzfahrtg&auml;ste gemacht?</span></summary><p>Ja. Die Routen starten nahe am Hafen von Funchal und sind f&uuml;r begrenzte Landgangszeit geplant.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#128246;</span><span>Funktioniert es offline?</span></summary><p>Die wichtigsten Routenseiten bleiben nach dem Laden verf&uuml;gbar, hilfreich bei schwachem Mobilnetz.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#9200;</span><span>Was passiert, wenn ich nicht rechtzeitig zur&uuml;ck bin?</span></summary><p>Das Versprechen ist einfach: rechtzeitig zur&uuml;ck zum Schiff oder Geld zur&uuml;ck.</p></details></div></section>
-    <section class="desktop-extra seo-explainer" aria-labelledby="seo-explainer-title"><h2 id="seo-explainer-title">Selbstgef&uuml;hrte Funchal-Spazierg&auml;nge f&uuml;r Kreuzfahrtg&auml;ste</h2><p>CruiseStop ist ein mobile-first Produkt f&uuml;r Passagiere, die Funchal w&auml;hrend eines kurzen Stopps unabh&auml;ngig entdecken m&ouml;chten.</p><p>W&auml;hle eine entspannte Route, eine Food-Route oder eine Panorama-Route. Jede ist schnell verst&auml;ndlich, leicht zu starten und f&uuml;r die R&uuml;ckkehr in Hafenn&auml;he geplant.</p></section>
+    <section class="desktop-extra seo-explainer" aria-labelledby="seo-explainer-title"><h2 id="seo-explainer-title">Selbstgef&uuml;hrte Funchal-Spazierg&auml;nge f&uuml;r Kreuzfahrtg&auml;ste</h2><p>CruiseStop ist ein mobile-first digitales Produkt f&uuml;r Passagiere, die Funchal w&auml;hrend eines kurzen Stopps unabh&auml;ngig erkunden m&ouml;chten.</p><p>W&auml;hle einen entspannten Spaziergang, eine kulinarische Route oder eine Panoramaroute. Jede ist einfach zu &uuml;berblicken, leicht zu starten und endet in der N&auml;he des Kreuzfahrthafens.</p></section>
   </main>
-  <footer class="site-footer" aria-label="CruiseStop footer"><a class="footer-brand" href="#inicio" aria-label="CruiseStop"><svg viewBox="0 0 96 58" aria-hidden="true"><path d="M19 26c10-5 21-7 34-4 10 2 18 1 24-4 0 10-7 18-20 21-13 4-27 1-42-8 2-1 3-3 4-5Z" fill="currentColor"></path><path d="M30 13h30c3 0 6 2 7 5l2 7c-13 1-28-7-44-2l1-6c0-2 2-4 4-4Z" fill="currentColor"></path><path d="M43 5h8v8h-8z" fill="currentColor"></path><path d="M12 42c11-5 21 5 32 0s21 5 40-4" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path></svg><span>CruiseStop</span></a><p>Smarte Wege f&uuml;r Kreuzfahrtg&auml;ste.<br>Mehr Zeit zum Entdecken.<br class="footer-mobile-break"> Immer rechtzeitig zur&uuml;ck.</p></footer>
+  <footer class="site-footer" aria-label="CruiseStop Footer"><a class="footer-brand" href="#inicio" aria-label="CruiseStop"><svg viewBox="0 0 96 58" aria-hidden="true"><path d="M19 26c10-5 21-7 34-4 10 2 18 1 24-4 0 10-7 18-20 21-13 4-27 1-42-8 2-1 3-3 4-5Z" fill="currentColor"></path><path d="M30 13h30c3 0 6 2 7 5l2 7c-13 1-28-7-44-2l1-6c0-2 2-4 4-4Z" fill="currentColor"></path><path d="M43 5h8v8h-8z" fill="currentColor"></path><path d="M12 42c11-5 21 5 32 0s21 5 40-4" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path></svg><span>CruiseStop</span></a><p>Smarte Wege f&uuml;r Kreuzfahrtg&auml;ste.<br>Mehr Zeit zum Entdecken.<br class="footer-mobile-break"> Immer rechtzeitig zur&uuml;ck.</p></footer>
   <div class="sticky-cta" aria-label="Fester Kaufaufruf"><div><strong>F&uuml;r &euro;4,99 starten</strong><span>Route w&auml;hlen</span></div><a class="sticky-cta__button" href="#routes">Routen</a></div>
-  <div class="preview-modal" id="previewModal" aria-hidden="true"><div class="preview-backdrop" data-close-preview></div><section class="preview-dialog" role="dialog" aria-modal="true" aria-labelledby="previewTitle"><header class="preview-header"><strong id="previewEyebrow">Kostenlose Vorschau - Stopp 1</strong><button class="preview-close" type="button" data-close-preview aria-label="Close preview">&times;</button></header><img class="preview-image" id="previewImage" src="images/RELAX/relax-stop4.jpg" alt=""><div class="preview-body"><h3 id="previewTitle">Jardim Municipal</h3><p class="preview-subtitle" id="previewSubtitle">Ein Garten im Herzen der Stadt</p><p id="previewDescription"></p><aside class="preview-why"><strong>Warum dieser Stopp?</strong><p id="previewWhy"></p></aside><p class="preview-duration" id="previewDuration"></p><button class="preview-cta" id="previewCta" type="button" data-buy-route="relax">F&uuml;r &euro;4,99 starten</button><p class="preview-note">Geld-zur&uuml;ck-Garantie, wenn du nicht rechtzeitig zum Schiff zur&uuml;ckkommst.</p></div></section></div>
+  <div class="preview-modal" id="previewModal" aria-hidden="true"><div class="preview-backdrop" data-close-preview></div><section class="preview-dialog" role="dialog" aria-modal="true" aria-labelledby="previewTitle"><header class="preview-header"><strong id="previewEyebrow">Kostenlose Vorschau - Stopp 1</strong><button class="preview-close" type="button" data-close-preview aria-label="Vorschau schlie&szlig;en">&times;</button></header><img class="preview-image" id="previewImage" src="images/RELAX/relax-stop4.jpg" alt=""><div class="preview-body"><h3 id="previewTitle">Jardim Municipal</h3><p class="preview-subtitle" id="previewSubtitle">Ein Garten im Herzen der Stadt</p><p id="previewDescription"></p><aside class="preview-why"><strong>Warum dieser Stopp?</strong><p id="previewWhy"></p></aside><p class="preview-duration" id="previewDuration"></p><button class="preview-cta" id="previewCta" type="button" data-buy-route="relax">F&uuml;r &euro;4,99 starten</button><p class="preview-note">Geld-zur&uuml;ck-Garantie, wenn du nicht rechtzeitig zum Schiff zur&uuml;ckkommst.</p></div></section></div>
   <script src="app.js?v=253" defer></script>
   <script src="site-update.js?v=253"></script>
 </body>
 </html>
-
-
