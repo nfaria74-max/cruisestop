@@ -4024,21 +4024,24 @@ body.route-stop-page .timer-widget {
 }
 
 body.route-stop-page .timer-ship-icon {
-    flex: 0 0 auto !important;
+    flex: 0 0 clamp(50px, 15vw, 70px) !important;
     width: clamp(50px, 15vw, 70px) !important;
+    max-width: 70px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
 
 body.route-stop-page .timer-ship-icon svg {
+    display: block !important;
     width: 100% !important;
     height: auto !important;
-    display: block !important;
+    max-width: 70px !important;
+    max-height: 65px !important;
 }
 
 body.route-stop-page .timer-body {
-    flex: 1 !important;
+    flex: 1 1 0 !important;
     min-width: 0 !important;
     display: flex !important;
     flex-direction: column !important;
