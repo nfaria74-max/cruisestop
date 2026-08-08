@@ -4072,3 +4072,16 @@ body.route-stop-page {
 body.route-stop-page .stop-card {
     padding-bottom: var(--timer-clearance) !important;
 }
+
+/* === Timer layout fix v142 — ship + body in flex row, actions full width === */
+body.route-stop-page .timer-main {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 8px !important;
+}
+
+/* === Gap fix — stop-card justify-content was distributing space between stop-why and stop-actions === */
+body.route-stop-page .stop-card {
+    justify-content: flex-start !important;
+}
