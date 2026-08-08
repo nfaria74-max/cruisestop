@@ -4093,3 +4093,37 @@ body.route-stop-page .timer-widget .buffer-badge {
     background: #dff3e4 !important;
     border: 1px solid #a9d9b5 !important;
 }
+
+/* === Structural fix v143 — natural page scroll, no viewport-locked layout ===
+   Removes height:100dvh+overflow:hidden from route-column and stop-card
+   so content flows naturally and timer stays fixed above. */
+body.route-stop-page {
+    height: auto !important;
+    min-height: 100dvh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+body.route-stop-page .route-container {
+    height: auto !important;
+    overflow: visible !important;
+}
+
+body.route-stop-page .route-column {
+    height: auto !important;
+    overflow: visible !important;
+    justify-content: flex-start !important;
+}
+
+body.route-stop-page .stop-card {
+    flex: 0 0 auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* stop-header margin-bottom: 12px → 6px no mobile — aproxima título da foto */
+@media (max-width: 520px) {
+  body.route-stop-page .stop-header {
+    margin-bottom: 6px !important;
+  }
+}
