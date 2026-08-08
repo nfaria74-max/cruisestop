@@ -3984,3 +3984,31 @@ body:has(.route-container):not(.route-stop-page) {
     min-height: 100dvh !important;
     overflow-y: auto !important;
 }
+
+/* === Stop header mobile layout — badge ao centro na mesma linha === */
+@media (max-width: 520px) {
+    body.route-stop-page .stop-progress {
+        display: grid !important;
+        grid-template-columns: 1fr auto 1fr !important;
+        align-items: center !important;
+    }
+
+    body.route-stop-page .stop-step {
+        justify-self: start !important;
+    }
+
+    body.route-stop-page .stop-spend {
+        justify-self: center !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+    }
+
+    body.route-stop-page .stop-counter {
+        justify-self: end !important;
+    }
+
+    /* Foto mais próxima do título — reduz espaço de 12px para 4px */
+    body.route-stop-page .stop-title {
+        margin-bottom: 4px !important;
+    }
+}
