@@ -4012,3 +4012,60 @@ body:has(.route-container):not(.route-stop-page) {
         margin-bottom: 4px !important;
     }
 }
+
+/* === Ship icon + timer layout v141 ===
+   timer-widget: flex row — navio esquerda, timer-body direita
+   timer-actions: linha completa por baixo do conjunto */
+body.route-stop-page .timer-widget {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px 10px !important;
+}
+
+body.route-stop-page .timer-ship-icon {
+    flex: 0 0 auto !important;
+    width: clamp(50px, 15vw, 70px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+body.route-stop-page .timer-ship-icon svg {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+
+body.route-stop-page .timer-body {
+    flex: 1 !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+}
+
+/* timer-actions: ocupa largura completa por baixo do flex row */
+body.route-stop-page .timer-actions {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    margin-top: 0.4rem !important;
+}
+
+/* === Overlap fix — padding-bottom baseado na altura real do timer ===
+   timer height ≈ 157px + bottom offset 9px + safety 16px = 182px
+   Usamos --timer-clearance para poder ajustar num único sítio.
+   A página pode crescer e fazer scroll; stop-card não tem overflow interno. */
+body.route-stop-page {
+    --timer-clearance: 182px;
+}
+
+@media (max-height: 700px) {
+    body.route-stop-page {
+        --timer-clearance: 160px;
+    }
+}
+
+body.route-stop-page .stop-card {
+    padding-bottom: var(--timer-clearance) !important;
+}
