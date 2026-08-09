@@ -361,7 +361,7 @@
 
         const stop = getCurrentStop();
         const stopNumber = currentStopIndex + 1;
-        const widgets = document.querySelectorAll('.stop-header, .landscape-image-widget, .stop-description, .stop-why');
+        const widgets = document.querySelectorAll('.stop-header, .landscape-image-widget, .stop-description, .stop-why, .stop-actions, .btn-next');
 
         widgets.forEach((widget) => {
             widget.style.transition = 'none';
