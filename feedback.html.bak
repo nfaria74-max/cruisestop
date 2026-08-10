@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,7 +39,7 @@
 
             <!-- Rating Widget -->
             <div class="rating-widget">
-                <h3>How would you describe your experience?</h3>
+                <h3 style="color: blue;">How would you describe your experience?</h3>
                 <div class="star-rating" id="starRating">
                     <i class="fas fa-star" data-rating="1"></i>
                     <i class="fas fa-star" data-rating="2"></i>
@@ -47,6 +47,9 @@
                     <i class="fas fa-star" data-rating="4"></i>
                     <i class="fas fa-star" data-rating="5"></i>
                 </div>
+            </div>
+
+            
             </div>
 
             <!-- Action Buttons Widget -->
@@ -72,19 +75,6 @@
             </div>
         </div>
     </div>
-
-    <footer class="site-footer" aria-label="CruiseStop footer">
-        <div class="footer-brand">
-            <svg viewBox="0 0 96 58" aria-hidden="true">
-                <path d="M19 26c10-5 21-7 34-4 10 2 18 1 24-4 0 10-7 18-20 21-13 4-27 1-42-8 2-1 3-3 4-5Z" fill="currentColor"></path>
-                <path d="M30 13h30c3 0 6 2 7 5l2 7c-13 1-28-7-44-2l1-6c0-2 2-4 4-4Z" fill="currentColor"></path>
-                <path d="M43 5h8v8h-8z" fill="currentColor"></path>
-                <path d="M12 42c11-5 21 5 32 0s21 5 40-4" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path>
-            </svg>
-            <span>CruiseStop</span>
-        </div>
-        <p>Smart walks for cruise passengers.<br>More time to explore.<br class="footer-mobile-break"> Always back on time.</p>
-    </footer>
 
     <style>
         .success-widget {
@@ -379,108 +369,6 @@
             margin-top: 0.25rem;
             color: #666;
             font-size: 0.875rem;
-        }
-
-
-        /* ---- v256: identidade do rating + footer + compactacao mobile ---- */
-        .rating-widget h3 {
-            margin: 0;
-            color: #062f73;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        /* footer da homepage, mas sem a altura minima generosa dela */
-        .site-footer {
-            min-height: auto;
-            margin-top: 0.5rem;
-        }
-
-        @media (max-width: 520px) {
-            .success-widget {
-                padding: 1.25rem 1rem;
-                margin-bottom: 1rem;
-                border-radius: 14px;
-            }
-
-            .success-icon {
-                font-size: 2.3rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .success-widget h2 {
-                font-size: 1.45rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .success-widget p {
-                margin: 0;
-                font-size: 0.95rem;
-                line-height: 1.45;
-            }
-
-            .completion-info {
-                margin-top: 0.9rem;
-                padding: 0.75rem 0.85rem;
-                border-radius: 10px;
-            }
-
-            .completion-detail {
-                margin-bottom: 0.35rem;
-                font-size: 0.9rem;
-            }
-
-            .completion-detail:last-child {
-                margin-bottom: 0;
-            }
-
-            .rating-widget {
-                padding: 1.25rem 1rem;
-                margin-bottom: 1rem;
-                border-radius: 14px;
-            }
-
-            .rating-widget h3 {
-                font-size: 1.05rem;
-            }
-
-            .star-rating {
-                gap: 0.4rem;
-                margin: 0.9rem 0 0;
-            }
-
-            .action-buttons-widget {
-                gap: 0.6rem;
-                margin-bottom: 1rem;
-            }
-
-            .action-btn {
-                padding: 0.8rem 1.25rem;
-                font-size: 0.95rem;
-            }
-
-            .thank-you-widget {
-                padding: 1.25rem 1rem;
-                margin-bottom: 1rem;
-            }
-
-            .site-footer {
-                gap: 10px;
-                padding: 1.5rem 1.25rem;
-            }
-
-            .footer-brand {
-                font-size: 1.6rem;
-            }
-
-            .footer-brand svg {
-                width: 46px;
-            }
-
-            .site-footer p {
-                font-size: 1rem;
-                line-height: 1.32;
-            }
         }
 
         @media (max-width: 768px) {
@@ -812,4 +700,39 @@
         });
     </script>
 <script src="site-update.js?v=253"></script></body>
+
+<!-- CruiseStop Logo Footer -->
+<footer class="cruisestop-logo-footer">
+    <img src="images/cruisestop_logo.png" alt="CruiseStop Logo" class="footer-logo">
+</footer>
+
+<style>
+    .cruisestop-logo-footer {
+        text-align: center;
+        padding: 3rem 1rem 2rem;
+        margin-top: 2rem;
+    }
+    
+    .footer-logo {
+        max-width: 200px;
+        height: auto;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+    
+    .footer-logo:hover {
+        opacity: 1;
+    }
+    
+    @media (max-width: 768px) {
+        .cruisestop-logo-footer {
+            padding: 2rem 1rem 1.5rem;
+        }
+        
+        .footer-logo {
+            max-width: 160px;
+        }
+    }
+</style>
+
 </html>
