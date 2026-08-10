@@ -481,8 +481,12 @@
         localStorage.setItem('cruisestop_completed_routes', JSON.stringify(completedRoutes));
         localStorage.removeItem(progressStorageKey);
         
-        // Redirect to feedback page with route parameter
-        window.location.href = `feedback.html?route=${routeName}`;
+        // Redirect to feedback page with route parameter (per language)
+        const feedbackLang = (document.documentElement.lang || 'en').slice(0, 2);
+        const feedbackPage = ['pt', 'fr', 'de'].includes(feedbackLang)
+            ? `feedback_${feedbackLang}.html`
+            : 'feedback.html';
+        window.location.href = `${feedbackPage}?route=${routeName}`;
     }
 
     function setAudioButton(html, disabled) {

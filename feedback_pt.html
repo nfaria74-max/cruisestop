@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Route Feedback - CruiseStop</title>
+    <title>Avaliação da rota - CruiseStop</title>
     <meta name="robots" content="noindex, follow">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0077be">
@@ -24,8 +24,8 @@
                 <div class="success-icon">
                     <i class="fas fa-check-circle"></i>
                 </div>
-                <h2>Congratulations! 🎉</h2>
-                <p>You've successfully completed your CruiseStop route. We hope you had an amazing time exploring the beautiful city of Funchal!</p>
+                <h2>Parabéns! 🎉</h2>
+                <p>Concluiu a sua rota CruiseStop! Esperamos que tenha aproveitado ao máximo o seu tempo em terra.</p>
                 <div class="completion-info" id="completionInfo">
                     <div class="completion-detail">
                         <i class="fas fa-route"></i>
@@ -40,7 +40,7 @@
 
             <!-- Rating Widget -->
             <div class="rating-widget">
-                <h3>How would you describe your experience?</h3>
+                <h3>Como descreveria a sua experiência?</h3>
                 <div class="star-rating" id="starRating">
                     <i class="fas fa-star" data-rating="1"></i>
                     <i class="fas fa-star" data-rating="2"></i>
@@ -54,7 +54,7 @@
             <div class="action-buttons-widget">
                 <button class="action-btn primary" onclick="goHome()">
                     <i class="fas fa-home"></i>
-                    Back to Home
+                    Voltar ao início
                 </button>
             
             </div>
@@ -64,11 +64,11 @@
                 <div class="thank-you-icon">
                     <i class="fas fa-heart"></i>
                 </div>
-                <h3>Thank you for your feedback! 💙</h3>
-                <p>Your input helps us improve the CruiseStop experience for fellow travelers.</p>
+                <h3>Obrigado pela sua avaliação! 💙</h3>
+                <p>O seu contributo ajuda-nos a melhorar a experiência CruiseStop para outros viajantes.</p>
                 <button class="action-btn primary" onclick="goHome()">
                     <i class="fas fa-home"></i>
-                    Return to Home
+                    Voltar ao início
                 </button>
             </div>
         </div>
@@ -84,7 +84,7 @@
             </svg>
             <span>CruiseStop</span>
         </div>
-        <p>Smart walks for cruise passengers.<br>More time to explore.<br class="footer-mobile-break"> Always back on time.</p>
+        <p>Passeios inteligentes para passageiros de cruzeiro.<br>Mais tempo para explorar.<br class="footer-mobile-break"> Sempre de volta a tempo.</p>
     </footer>
 
     <style>
@@ -566,7 +566,7 @@
 
             // Check if user has already submitted feedback for this route
             if (hasUserAlreadySubmittedFeedback(feedbackData.routeName, feedbackData.customerEmail)) {
-                alert('You have already submitted feedback for this route. Thank you!');
+                alert('Já enviou uma avaliação para esta rota. Obrigado!');
                 return;
             }
             
@@ -780,16 +780,16 @@
                 };
                 
                 routeNameElement.textContent = 
-                    `Route: ${routeNames[routeType] || routeType.charAt(0).toUpperCase() + routeType.slice(1)}`;
+                    `Rota: ${routeNames[routeType] || routeType.charAt(0).toUpperCase() + routeType.slice(1)}`;
                 
                 // Read date from URL first, then localStorage, then today
                 const dateFromUrl = urlParams.get('date');
                 if (dateFromUrl) {
-                    dateElement.textContent = `Date: ${dateFromUrl}`;
+                    dateElement.textContent = `Data: ${dateFromUrl}`;
                 } else if (routeCompletion && routeCompletion.completedDateFormatted) {
-                    dateElement.textContent = `Date: ${routeCompletion.completedDateFormatted}`;
+                    dateElement.textContent = `Data: ${routeCompletion.completedDateFormatted}`;
                 } else {
-                    dateElement.textContent = `Date: ${new Date().toLocaleDateString('en-GB')}`;
+                    dateElement.textContent = `Data: ${new Date().toLocaleDateString('pt-PT')}`;
                 }
                         
                 // Pre-fill customer email if available

@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Route Feedback - CruiseStop</title>
+    <title>Routen-Feedback - CruiseStop</title>
     <meta name="robots" content="noindex, follow">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0077be">
@@ -24,8 +24,8 @@
                 <div class="success-icon">
                     <i class="fas fa-check-circle"></i>
                 </div>
-                <h2>Congratulations! 🎉</h2>
-                <p>You've successfully completed your CruiseStop route. We hope you had an amazing time exploring the beautiful city of Funchal!</p>
+                <h2>Geschafft! 🎉</h2>
+                <p>Sie haben Ihre CruiseStop-Route abgeschlossen! Wir hoffen, dass Sie Ihre Zeit an Land optimal genutzt haben.</p>
                 <div class="completion-info" id="completionInfo">
                     <div class="completion-detail">
                         <i class="fas fa-route"></i>
@@ -40,7 +40,7 @@
 
             <!-- Rating Widget -->
             <div class="rating-widget">
-                <h3>How would you describe your experience?</h3>
+                <h3>Wie würden Sie Ihre Erfahrung beschreiben?</h3>
                 <div class="star-rating" id="starRating">
                     <i class="fas fa-star" data-rating="1"></i>
                     <i class="fas fa-star" data-rating="2"></i>
@@ -54,7 +54,7 @@
             <div class="action-buttons-widget">
                 <button class="action-btn primary" onclick="goHome()">
                     <i class="fas fa-home"></i>
-                    Back to Home
+                    Zur Startseite
                 </button>
             
             </div>
@@ -64,11 +64,11 @@
                 <div class="thank-you-icon">
                     <i class="fas fa-heart"></i>
                 </div>
-                <h3>Thank you for your feedback! 💙</h3>
-                <p>Your input helps us improve the CruiseStop experience for fellow travelers.</p>
+                <h3>Vielen Dank für Ihr Feedback! 💙</h3>
+                <p>Ihre Rückmeldung hilft uns, das CruiseStop-Erlebnis für andere Reisende zu verbessern.</p>
                 <button class="action-btn primary" onclick="goHome()">
                     <i class="fas fa-home"></i>
-                    Return to Home
+                    Zur Startseite
                 </button>
             </div>
         </div>
@@ -84,7 +84,7 @@
             </svg>
             <span>CruiseStop</span>
         </div>
-        <p>Smart walks for cruise passengers.<br>More time to explore.<br class="footer-mobile-break"> Always back on time.</p>
+        <p>Smarte Rundgänge für Kreuzfahrtgäste.<br>Mehr Zeit zum Entdecken.<br class="footer-mobile-break"> Immer rechtzeitig zurück.</p>
     </footer>
 
     <style>
@@ -566,7 +566,7 @@
 
             // Check if user has already submitted feedback for this route
             if (hasUserAlreadySubmittedFeedback(feedbackData.routeName, feedbackData.customerEmail)) {
-                alert('You have already submitted feedback for this route. Thank you!');
+                alert('Sie haben für diese Route bereits Feedback abgegeben. Vielen Dank!');
                 return;
             }
             
@@ -785,11 +785,11 @@
                 // Read date from URL first, then localStorage, then today
                 const dateFromUrl = urlParams.get('date');
                 if (dateFromUrl) {
-                    dateElement.textContent = `Date: ${dateFromUrl}`;
+                    dateElement.textContent = `Datum: ${dateFromUrl}`;
                 } else if (routeCompletion && routeCompletion.completedDateFormatted) {
-                    dateElement.textContent = `Date: ${routeCompletion.completedDateFormatted}`;
+                    dateElement.textContent = `Datum: ${routeCompletion.completedDateFormatted}`;
                 } else {
-                    dateElement.textContent = `Date: ${new Date().toLocaleDateString('en-GB')}`;
+                    dateElement.textContent = `Datum: ${new Date().toLocaleDateString('de-DE')}`;
                 }
                         
                 // Pre-fill customer email if available
