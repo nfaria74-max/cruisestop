@@ -49,8 +49,8 @@ body.route-stop-page .btn-next:active {
 /* ---------- Linha 2 + 3: timer compacto ---------- */
 body.route-stop-page .timer-widget {
   border-radius: 16px !important;
-  padding: 8px 10px !important;
-  gap: 6px !important;
+  padding: 5px 10px 6px !important;
+  gap: 4px !important;
 }
 
 body.route-stop-page .timer-main {
@@ -77,9 +77,9 @@ body.route-stop-page .timer-body {
 }
 
 body.route-stop-page .time-remaining-label {
-  font-size: 11px !important;
-  line-height: 1.1 !important;
-  margin: 0 0 1px !important;
+  font-size: 10.5px !important;
+  line-height: 1 !important;
+  margin: 0 !important;
 }
 
 body.route-stop-page .timer-display {
@@ -101,7 +101,7 @@ body.route-stop-page .timer-value {
   order: 1 !important;
   flex: 0 0 auto !important;
   font-size: 23px !important;
-  line-height: 1.05 !important;
+  line-height: 1 !important;
   margin: 0 !important;
 }
 
@@ -123,17 +123,52 @@ body.route-stop-page .return-time {
 }
 
 body.route-stop-page .timer-actions {
-  margin: 6px 0 0 !important;
+  margin: 4px 0 0 !important;
   padding: 0 !important;
 }
 
 body.route-stop-page .timer-return-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
   width: 100% !important;
   min-height: 36px !important;
   height: 36px !important;
-  padding: 0 10px !important;
+  padding: 0 12px !important;
+  background: #eef6ff !important;
+  border: 1.5px solid rgba(6, 47, 115, 0.38) !important;
+  color: #062f73 !important;
   font-size: 12.5px !important;
-  border-radius: 10px !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  text-align: left !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  transition: background .15s, border-color .15s, transform .12s !important;
+}
+
+/* icone e chevron por CSS: o textContent do JS nao os afeta */
+body.route-stop-page .timer-return-btn::before {
+  content: "\1F5FA\FE0F";
+  flex: 0 0 auto;
+  font-size: 15px;
+  line-height: 1;
+}
+
+body.route-stop-page .timer-return-btn::after {
+  content: "\203A";
+  flex: 0 0 auto;
+  margin-left: auto;
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 700;
+  opacity: .7;
+}
+
+body.route-stop-page .timer-return-btn:active {
+  background: #d9e9ff !important;
+  border-color: #062f73 !important;
+  transform: translateY(1px) scale(0.995) !important;
 }
 
 /* ---------- folga do conteudo, ajustada ao dock mais baixo ---------- */
