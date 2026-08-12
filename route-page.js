@@ -636,7 +636,7 @@
             if (isIOS) {
                 url = `http://maps.apple.com/?daddr=${stop.lat},${stop.lng}&dirflg=w`;
             } else if (isAndroid) {
-                url = `geo:${stop.lat},${stop.lng}?q=${stop.lat},${stop.lng}(${encodeURIComponent(stop.name || label('stopFallback', 'Stop'))})`;
+                url = `https://www.google.com/maps/dir/?api=1&destination=${stop.lat},${stop.lng}&travelmode=walking`;
             } else {
                 url = `https://www.google.com/maps/dir/?api=1&destination=${stop.lat},${stop.lng}&travelmode=walking`;
             }
@@ -644,7 +644,7 @@
             const query = (stop && stop.mapQuery) || `${(stop && stop.name) || 'Funchal'}, Madeira, Portugal`;
             url = isIOS
                 ? `http://maps.apple.com/?q=${encodeURIComponent(query)}&dirflg=w`
-                : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+                : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}&travelmode=walking`;
         }
 
         return url;
