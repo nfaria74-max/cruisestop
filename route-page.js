@@ -33,12 +33,15 @@
             audioLoading: 'LOADING...',
             audioPause: 'PAUSE',
             audioPlay: 'PLAY AUDIO',
-            openingMaps: 'Opening Maps',
-            mapsWillOpen: 'Maps will open for navigation.',
+            openingMaps: 'Opening Google Maps',
+            mapsWillOpen: "Google Maps will guide you **on foot** to your next stop.",
+            mapsWillOpenReturn: "Google Maps will guide you **on foot** back to the port.",
+            mapsReturnFull: "When you arrive, use your phone's **Back** button or gesture to return to CruiseStop and continue your route.",
+            mapsReturnFullReturn: "When you arrive, use your phone's **Back** button or gesture to return to CruiseStop and check your timer.",
             mapsBackButton: 'Use your back button',
             mapsReturnText: 'to return to your route.',
             cancel: 'Cancel',
-            openMaps: 'Open Maps ->',
+            openMaps: 'Open Google Maps →',
             mapUnavailable: 'Map unavailable offline',
             showMap: 'Show on Map',
             hideMap: 'Hide Map',
@@ -68,12 +71,15 @@
             audioLoading: 'A CARREGAR...',
             audioPause: 'PAUSA',
             audioPlay: 'OUVIR ÁUDIO',
-            openingMaps: 'A abrir o mapa',
-            mapsWillOpen: 'A aplicação de mapas vai abrir a navegação.',
+            openingMaps: 'A abrir o Google Maps',
+            mapsWillOpen: 'O Google Maps vai guiá-lo **a pé** até à próxima paragem.',
+            mapsWillOpenReturn: 'O Google Maps vai guiá-lo **a pé** de volta ao porto.',
+            mapsReturnFull: 'Quando chegar, use o botão ou gesto **Voltar** do telemóvel para regressar à CruiseStop e continuar a sua rota.',
+            mapsReturnFullReturn: 'Quando chegar, use o botão ou gesto **Voltar** do telemóvel para regressar à CruiseStop e consultar o seu temporizador.',
             mapsBackButton: 'Use o botão Voltar',
             mapsReturnText: 'para regressar à sua rota.',
             cancel: 'Cancelar',
-            openMaps: 'Abrir mapa →',
+            openMaps: 'Abrir Google Maps →',
             mapUnavailable: 'Mapa indisponível offline',
             showMap: 'Ver no mapa',
             hideMap: 'Ocultar mapa',
@@ -100,12 +106,15 @@
             audioLoading: 'WIRD GELADEN...',
             audioPause: 'PAUSE',
             audioPlay: 'AUDIO ABSPIELEN',
-            openingMaps: 'Karten werden geöffnet',
-            mapsWillOpen: 'Die Karten-App öffnet sich zur Navigation.',
+            openingMaps: 'Google Maps wird geöffnet',
+            mapsWillOpen: 'Google Maps führt Sie **zu Fuß** zum nächsten Stopp.',
+            mapsWillOpenReturn: 'Google Maps führt Sie **zu Fuß** zurück zum Hafen.',
+            mapsReturnFull: 'Nutzen Sie nach der Ankunft die **Zurück**-Taste oder -Geste Ihres Handys, um zu CruiseStop zurückzukehren und Ihre Route fortzusetzen.',
+            mapsReturnFullReturn: 'Nutzen Sie nach der Ankunft die **Zurück**-Taste oder -Geste Ihres Handys, um zu CruiseStop zurückzukehren und Ihren Timer zu prüfen.',
             mapsBackButton: 'Nutze die Zurück-Taste',
             mapsReturnText: 'um zur Route zurückzukehren.',
             cancel: 'Abbrechen',
-            openMaps: 'Karten öffnen ->',
+            openMaps: 'Google Maps öffnen →',
             mapUnavailable: 'Karte offline nicht verfügbar',
             showMap: 'Auf Karte anzeigen',
             hideMap: 'Karte ausblenden',
@@ -132,12 +141,15 @@
             audioLoading: 'CHARGEMENT...',
             audioPause: 'PAUSE',
             audioPlay: "ÉCOUTER L'AUDIO",
-            openingMaps: 'Ouverture de Maps',
-            mapsWillOpen: 'Maps va s’ouvrir pour la navigation.',
+            openingMaps: 'Ouverture de Google Maps',
+            mapsWillOpen: "Google Maps va vous guider **à pied** jusqu'au prochain arrêt.",
+            mapsWillOpenReturn: "Google Maps va vous guider **à pied** jusqu'au port.",
+            mapsReturnFull: "À votre arrivée, utilisez le bouton ou le geste **Retour** de votre téléphone pour revenir sur CruiseStop et continuer votre parcours.",
+            mapsReturnFullReturn: "À votre arrivée, utilisez le bouton ou le geste **Retour** de votre téléphone pour revenir sur CruiseStop et consulter votre minuteur.",
             mapsBackButton: 'Utilisez le bouton retour',
             mapsReturnText: 'pour revenir à votre route.',
             cancel: 'Annuler',
-            openMaps: 'Ouvrir Maps ->',
+            openMaps: 'Ouvrir Google Maps →',
             mapUnavailable: 'Carte indisponible hors ligne',
             showMap: 'Voir sur la carte',
             hideMap: 'Masquer la carte',
@@ -164,12 +176,15 @@
             audioLoading: 'AUDIO LADEN...',
             audioPause: 'PAUZE',
             audioPlay: 'AUDIO AFSPELEN',
-            openingMaps: 'Kaart openen...',
-            mapsWillOpen: 'Google Maps opent voor navigatie.',
+            openingMaps: 'Google Maps wordt geopend',
+            mapsWillOpen: 'Google Maps begeleidt u **te voet** naar de volgende stop.',
+            mapsWillOpenReturn: 'Google Maps begeleidt u **te voet** terug naar de haven.',
+            mapsReturnFull: 'Gebruik na aankomst de **Terug**-knop of -beweging van uw telefoon om terug te gaan naar CruiseStop en uw route voort te zetten.',
+            mapsReturnFullReturn: 'Gebruik na aankomst de **Terug**-knop of -beweging van uw telefoon om terug te gaan naar CruiseStop en uw timer te bekijken.',
             mapsBackButton: 'Gebruik de terugknop',
             mapsReturnText: 'om terug te keren naar je route.',
             cancel: 'Annuleren',
-            openMaps: 'Kaart openen ->',
+            openMaps: 'Google Maps openen →',
             mapUnavailable: 'Kaart offline niet beschikbaar',
             showMap: 'Toon op kaart',
             hideMap: 'Verberg kaart',
@@ -623,7 +638,7 @@
             }, 1400);
         }
 
-        showMapsPopup(buildMapsNavigationUrl(getReturnStop()));
+        showMapsPopup(buildMapsNavigationUrl(getReturnStop()), true);
     }
 
     function buildMapsNavigationUrl(stop) {
@@ -650,13 +665,23 @@
         return url;
     }
 
-    function showMapsPopup(url) {
+    function showMapsPopup(url, isReturn) {
         // Remove existing popup if any
         const existing = document.getElementById('mapsPopup');
         if (existing) existing.remove();
 
         const popup = document.createElement('div');
         popup.id = 'mapsPopup';
+        var intro = isReturn
+            ? label('mapsWillOpenReturn', 'Google Maps will guide you **on foot** back to the port.')
+            : label('mapsWillOpen', 'Google Maps will guide you **on foot** to your next stop.');
+        var backLine = isReturn
+            ? label('mapsReturnFullReturn', "When you arrive, use your phone's **Back** button or gesture to return to CruiseStop and check your timer.")
+            : label('mapsReturnFull', "When you arrive, use your phone's **Back** button or gesture to return to CruiseStop and continue your route.");
+        var bold = function (s) {
+            return String(s).replace(/\*\*(.+?)\*\*/g, '<strong style="font-weight:800; color:#062f73;">$1</strong>');
+        };
+
         popup.innerHTML = `
             <div id="mapsPopupOverlay" style="
                 position:fixed; inset:0; background:rgba(0,0,0,0.6);
@@ -665,30 +690,32 @@
                 animation:fadeIn 0.2s ease;
             ">
                 <div style="
-                    background:#1a2f4a; border-radius:16px; padding:1.5rem;
-                    width:100%; max-width:400px; text-align:center;
+                    background:#ffffff; border-radius:20px; padding:26px 22px 22px;
+                    width:100%; max-width:420px; text-align:center;
                     box-shadow:0 -4px 30px rgba(0,0,0,0.4);
                     animation:slideUp 0.25s ease;
                 ">
-                    <div style="font-size:2rem; margin-bottom:0.5rem;">🗺️</div>
-                    <h3 style="color:#fff; font-size:1rem; margin-bottom:0.5rem; font-weight:600;">
-                        ${label('openingMaps', 'Opening Maps')}
+                    <div style="font-size:42px; line-height:1; margin-bottom:14px;">🗺️</div>
+                    <h3 style="color:#062f73; font-size:25px; line-height:1.25; font-weight:800; margin:0 0 18px;">
+                        ${label('openingMaps', 'Opening Google Maps')}
                     </h3>
-                    <p style="color:rgba(255,255,255,0.7); font-size:0.85rem; line-height:1.5; margin-bottom:1.25rem;">
-                        ${label('mapsWillOpen', 'Maps will open for navigation.')}<br>
-                        <strong style="color:#FFC107;">${label('mapsBackButton', 'Use your back button')}</strong> ${label('mapsReturnText', 'to return to your route.')}
+                    <p style="color:#08295d; font-size:19px; line-height:1.5; margin:0 0 18px; text-align:left;">
+                        ${bold(intro)}
                     </p>
-                    <div style="display:flex; gap:0.75rem;">
+                    <p style="color:#08295d; font-size:19px; line-height:1.5; margin:0 0 24px; text-align:left;">
+                        ${bold(backLine)}
+                    </p>
+                    <div style="display:flex; gap:12px;">
                         <button onclick="document.getElementById('mapsPopup').remove()" style="
-                            flex:1; padding:0.75rem; border-radius:50px;
-                            background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
-                            color:#fff; font-size:0.9rem; cursor:pointer;
+                            flex:1; min-height:52px; padding:14px 10px; border-radius:50px;
+                            background:#ffffff; border:2px solid #062b67;
+                            color:#062b67; font-size:17px; font-weight:700; cursor:pointer;
                         ">${label('cancel', 'Cancel')}</button>
                         <button onclick="document.getElementById('mapsPopup').remove(); window.location.href='${url}';" style="
-                            flex:2; padding:0.75rem; border-radius:50px;
+                            flex:1.5; min-height:52px; padding:14px 10px; border-radius:50px;
                             background:#FFC107; border:none;
-                            color:#1f2937; font-size:0.9rem; font-weight:700; cursor:pointer;
-                        ">${label('openMaps', 'Open Maps ->')}</button>
+                            color:#062b67; font-size:18px; font-weight:800; cursor:pointer;
+                        ">${label('openMaps', 'Open Google Maps →')}</button>
                     </div>
                 </div>
             </div>
@@ -697,7 +724,6 @@
                 @keyframes slideUp { from { transform:translateY(40px); opacity:0 } to { transform:translateY(0); opacity:1 } }
             </style>
         `;
-
         // Close on backdrop click
         popup.querySelector('#mapsPopupOverlay').addEventListener('click', function(e) {
             if (e.target === this) popup.remove();
