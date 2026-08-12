@@ -1,7 +1,7 @@
 const ROUTES = {
-  relax: { name: "RELAX - Slow Funchal Route", price: 499 },
-  foodie: { name: "FOODIE - Taste Madeira Route", price: 499 },
-  panoramic: { name: "Panoramic Route - Funchal", price: 499 }
+  relax: { name: "Relaxed Funchal", price: 499 },
+  foodie: { name: "Taste Madeira", price: 499 },
+  panoramic: { name: "Panoramic", price: 499 }
 };
 
 const ALLOWED_ORIGINS = new Set([
