@@ -103,13 +103,30 @@
     }
   </style>
 
-  <style id="cruisestop-desktop-v1">
+  <style id="cruisestop-desktop-v2">
     /* Desktop presentation layer only. Mobile/tablet layout below 900px is untouched. */
     .cs-desktop-only{display:none !important;}
 
     @media (min-width: 900px) {
-      html{scroll-behavior:smooth;}
-      body.home-page.landing-v160{background:#f4f7fb;}
+      html{scroll-behavior:smooth;width:100% !important;max-width:none !important;margin:0 !important;}
+
+      /* Desktop v2: remove the mobile shell width limit.
+         These overrides only exist at >=900px, so the mobile layout stays untouched. */
+      html body.home-page.landing-v160{
+        width:100% !important;
+        max-width:none !important;
+        min-width:0 !important;
+        margin:0 !important;
+        padding:0 !important;
+        background:#f4f7fb;
+      }
+      html body.home-page.landing-v160 > .hero{
+        width:100% !important;
+        max-width:none !important;
+        margin-left:0 !important;
+        margin-right:0 !important;
+        border-radius:0 !important;
+      }
 
       body.home-page.landing-v160 .hero{
         min-height:720px !important;
