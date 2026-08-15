@@ -102,6 +102,246 @@
 
     }
   </style>
+
+  <style id="cruisestop-desktop-v1">
+    /* Desktop presentation layer only. Mobile/tablet layout below 900px is untouched. */
+    .cs-desktop-only{display:none !important;}
+
+    @media (min-width: 900px) {
+      html{scroll-behavior:smooth;}
+      body.home-page.landing-v160{background:#f4f7fb;}
+
+      body.home-page.landing-v160 .hero{
+        min-height:720px !important;
+        height:min(82vh,820px) !important;
+        max-height:820px !important;
+        overflow:hidden !important;
+      }
+      body.home-page.landing-v160 .hero-photo{
+        width:100% !important;
+        height:100% !important;
+        max-height:none !important;
+        object-fit:cover !important;
+        object-position:62% center !important;
+      }
+      body.home-page.landing-v160 .hero-shade{
+        background:linear-gradient(90deg,rgba(2,18,48,.84) 0%,rgba(3,30,75,.72) 31%,rgba(3,25,62,.28) 58%,rgba(3,20,48,.08) 78%,rgba(3,20,48,.16) 100%) !important;
+      }
+      body.home-page.landing-v160 .hero-content{
+        width:min(1180px,calc(100% - 64px)) !important;
+        max-width:1180px !important;
+        margin:0 auto !important;
+        padding:0 !important;
+        min-height:100% !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:flex-start !important;
+      }
+      body.home-page.landing-v160 .hero-copy{
+        width:min(650px,56vw) !important;
+        max-width:650px !important;
+        margin:0 !important;
+        padding:68px 0 96px !important;
+        text-align:left !important;
+      }
+      body.home-page.landing-v160 #hero-title{
+        font-size:clamp(3.4rem,5.2vw,5.6rem) !important;
+        line-height:.96 !important;
+        letter-spacing:-.045em !important;
+        max-width:650px !important;
+      }
+      body.home-page.landing-v160 .hero-kicker{margin-left:0 !important;}
+      body.home-page.landing-v160 .hero-subline{
+        max-width:580px !important;
+        margin-left:0 !important;
+        margin-right:0 !important;
+        font-size:1.2rem !important;
+        line-height:1.5 !important;
+      }
+      body.home-page.landing-v160 .hero-actions{
+        justify-content:flex-start !important;
+        gap:18px !important;
+        margin-top:34px !important;
+      }
+      body.home-page.landing-v160 .hero-actions .primary-cta{min-width:220px !important;}
+      body.home-page.landing-v160 .hero-product{display:none !important;}
+      body.home-page.landing-v160 .lang-picker{top:28px !important;right:32px !important;}
+
+      body.home-page.landing-v160 .pt-trust-strip{
+        width:min(1120px,calc(100% - 64px)) !important;
+        margin:-68px auto 0 !important;
+        padding:24px 28px 22px !important;
+        border-radius:22px !important;
+        box-shadow:0 18px 55px rgba(6,43,103,.13) !important;
+      }
+      body.home-page.landing-v160 .pt-trust-strip__grid{gap:18px !important;}
+      body.home-page.landing-v160 .pt-trust-item svg{width:26px !important;height:26px !important;margin-bottom:9px !important;}
+      body.home-page.landing-v160 .pt-trust-item__label{font-size:.82rem !important;}
+      body.home-page.landing-v160 .pt-trust-item__desc{font-size:.72rem !important;}
+
+      body.home-page.landing-v160 .page-content{
+        width:min(1180px,calc(100% - 64px)) !important;
+        max-width:1180px !important;
+        margin:0 auto !important;
+        padding-bottom:80px !important;
+      }
+      body.home-page.landing-v160 .how-flow,
+      body.home-page.landing-v160 .landing-section,
+      body.home-page.landing-v160 .routes,
+      body.home-page.landing-v160 .desktop-extra{
+        max-width:none !important;
+        width:100% !important;
+      }
+      body.home-page.landing-v160 .how-flow{padding:96px 0 48px !important;}
+      body.home-page.landing-v160 .how-flow__title,
+      body.home-page.landing-v160 .landing-section h2,
+      body.home-page.landing-v160 .routes h2{font-size:clamp(2rem,3vw,3rem) !important;}
+      body.home-page.landing-v160 .how-flow__steps{
+        display:grid !important;
+        grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+        gap:24px !important;
+      }
+      body.home-page.landing-v160 .how-flow__steps li{
+        height:100% !important;
+        padding:28px 26px !important;
+        border-radius:20px !important;
+      }
+
+      body.home-page.landing-v160 .review-section{padding:68px 0 !important;}
+      body.home-page.landing-v160 .review-strip{
+        display:grid !important;
+        grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+        gap:22px !important;
+        overflow:visible !important;
+      }
+      body.home-page.landing-v160 .review-card{min-width:0 !important;height:100% !important;}
+
+      body.home-page.landing-v160 .product-demo{
+        padding:72px 0 50px !important;
+      }
+      body.home-page.landing-v160 .phone-showcase{
+        max-width:760px !important;
+        margin-left:auto !important;
+        margin-right:auto !important;
+      }
+      body.home-page.landing-v160 .product-reference-mockup img{max-height:720px !important;object-fit:contain !important;}
+
+      .cs-desktop-only{display:block !important;}
+      .cs-desktop-handoff{
+        margin:26px 0 88px !important;
+        padding:38px 42px !important;
+        display:grid !important;
+        grid-template-columns:minmax(0,1fr) 210px !important;
+        align-items:center !important;
+        gap:42px !important;
+        background:linear-gradient(135deg,#062f73 0%,#0a57b8 100%) !important;
+        color:#fff !important;
+        border-radius:26px !important;
+        box-shadow:0 20px 55px rgba(6,47,115,.20) !important;
+      }
+      .cs-desktop-handoff__eyebrow{
+        display:inline-flex !important;
+        margin:0 0 10px !important;
+        font-size:.78rem !important;
+        font-weight:800 !important;
+        letter-spacing:.12em !important;
+        text-transform:uppercase !important;
+        color:#d7e8ff !important;
+      }
+      .cs-desktop-handoff h2{
+        margin:0 0 12px !important;
+        max-width:720px !important;
+        font-size:clamp(2rem,3.2vw,3rem) !important;
+        line-height:1.05 !important;
+        color:#fff !important;
+      }
+      .cs-desktop-handoff p{
+        margin:0 !important;
+        max-width:720px !important;
+        font-size:1.08rem !important;
+        line-height:1.6 !important;
+        color:#eaf3ff !important;
+      }
+      .cs-desktop-handoff__points{
+        display:flex !important;
+        flex-wrap:wrap !important;
+        gap:10px 14px !important;
+        margin-top:20px !important;
+      }
+      .cs-desktop-handoff__points span{
+        display:inline-flex !important;
+        align-items:center !important;
+        gap:7px !important;
+        padding:8px 11px !important;
+        border:1px solid rgba(255,255,255,.22) !important;
+        background:rgba(255,255,255,.08) !important;
+        border-radius:999px !important;
+        font-size:.84rem !important;
+        font-weight:700 !important;
+        color:#fff !important;
+      }
+      .cs-desktop-handoff__qr{
+        background:#fff !important;
+        border-radius:20px !important;
+        padding:14px !important;
+        text-align:center !important;
+        box-shadow:0 12px 30px rgba(0,0,0,.18) !important;
+      }
+      .cs-desktop-handoff__qr img{
+        display:block !important;
+        width:182px !important;
+        height:182px !important;
+        margin:0 auto 8px !important;
+      }
+      .cs-desktop-handoff__qr strong{display:block !important;color:#062f73 !important;font-size:.9rem !important;}
+      .cs-desktop-handoff__qr small{display:block !important;color:#5e7391 !important;font-size:.7rem !important;margin-top:2px !important;}
+
+      body.home-page.landing-v160 .routes{padding:70px 0 !important;}
+      body.home-page.landing-v160 .route-list{
+        display:grid !important;
+        grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+        gap:24px !important;
+        align-items:stretch !important;
+      }
+      body.home-page.landing-v160 .route-option{
+        display:flex !important;
+        flex-direction:column !important;
+        min-width:0 !important;
+        height:100% !important;
+      }
+      body.home-page.landing-v160 .route-card{
+        display:flex !important;
+        flex-direction:column !important;
+        flex:1 1 auto !important;
+        min-height:100% !important;
+        border-radius:22px !important;
+        overflow:hidden !important;
+      }
+      body.home-page.landing-v160 .route-card > img{
+        width:100% !important;
+        height:230px !important;
+        object-fit:cover !important;
+      }
+      body.home-page.landing-v160 .route-copy{padding:24px !important;display:flex !important;flex-direction:column !important;flex:1 !important;}
+      body.home-page.landing-v160 .route-copy > strong{font-size:1.35rem !important;}
+      body.home-page.landing-v160 .route-title-desc{min-height:48px !important;}
+      body.home-page.landing-v160 .route-meta{margin-top:auto !important;padding-top:18px !important;}
+      body.home-page.landing-v160 .route-actions{display:grid !important;grid-template-columns:1fr 1.25fr !important;gap:10px !important;margin-top:12px !important;}
+      body.home-page.landing-v160 .conversion-panel{max-width:820px !important;margin:34px auto 0 !important;}
+
+      body.home-page.landing-v160 .faq-section{padding:76px 0 !important;}
+      body.home-page.landing-v160 .faq-list{
+        display:grid !important;
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:14px 18px !important;
+      }
+      body.home-page.landing-v160 .faq-list details{height:fit-content !important;}
+      body.home-page.landing-v160 .seo-explainer{margin:28px auto 20px !important;max-width:900px !important;text-align:center !important;}
+      body.home-page.landing-v160 .site-footer{padding:54px max(32px,calc((100vw - 1180px)/2)) !important;}
+      body.home-page.landing-v160 .sticky-cta{display:none !important;}
+    }
+  </style>
+
 </head>
 <body class="home-page landing-v160">
   
@@ -194,6 +434,19 @@
     <section class="how-flow" aria-labelledby="how-flow-title"><h2 id="how-flow-title" class="how-flow__title">Simple. Flexible. No worries.</h2><ol class="how-flow__steps"><li><span class="how-flow__number">1</span><span class="how-flow__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"></path><path d="M9 3v15"></path><path d="M15 6v15"></path><path d="M17 4.5c1.3 0 2.3 1 2.3 2.3 0 1.8-2.3 4.2-2.3 4.2s-2.3-2.4-2.3-4.2c0-1.3 1-2.3 2.3-2.3Z"></path><path d="M17 6.8h.01"></path></svg></span><strong>Choose the route</strong><p>Select the ideal route for your stop.</p></li><li><span class="how-flow__number">2</span><span class="how-flow__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path><path d="m11.5 7.5-2.2 4 3.2 2.1-1.6 6"></path><path d="m13.2 8.1 2.7 2.2 2.1-.9"></path><path d="M9.2 12.1 6.8 15.2"></path></svg></span><strong>Go at your pace</strong><p>Offline navigation with points of interest.</p></li><li><span class="how-flow__number">3</span><span class="how-flow__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15.5 6.2 8h11.6l2.2 7.5"></path><path d="M8 8V5.8h8V8"></path><path d="M10 5.8V3.8h4v2"></path><path d="M3 15.5c2.2 1.5 4.4 1.5 6.6 0 1.6 1.1 3.2 1.3 4.8.6.6-.2 1.2-.5 1.8-.9 1.6 1.1 3.2 1.3 4.8.6"></path><path d="M4 19c2.1 1.2 4.2 1.2 6.3 0 2.1 1.2 4.2 1.2 6.3 0 1.4.8 2.8 1.1 4.4.6"></path></svg></span><strong>Back on time</strong><p>Countdown timer to return to the ship.</p></li></ol></section>
     <section class="landing-section review-section" aria-labelledby="review-title"><p class="section-eyebrow">Passenger proof</p><h2 id="review-title">Built for short cruise stops</h2><p class="section-copy">Short, practical feedback focused on what matters most: seeing Funchal and returning calmly.</p><div class="review-strip"><article class="review-card"><div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;We got back to the ship without stress and saw much more than on a tour.&rdquo;</blockquote><div class="review-author"><img class="review-photo" src="icons/flag/EN.png" alt="" loading="lazy" decoding="async"><span>Emma, UK</span></div></article><article class="review-card"><div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;The Back to Ship timer made the walk feel relaxed, not risky.&rdquo;</blockquote><div class="review-author"><span class="avatar" aria-hidden="true">MK</span><span>Mark, Germany</span></div></article><article class="review-card"><div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;Opened it on the phone, followed the stops and still had time for coffee.&rdquo;</blockquote><div class="review-author"><span class="avatar" aria-hidden="true">CL</span><span>Claire, France</span></div></article></div></section>
     <section class="landing-section product-demo" id="preview" aria-labelledby="preview-title"><p class="section-eyebrow">Product preview</p><h2 id="preview-title"><span>See exactly</span> <span>what you buy</span></h2><p class="section-copy">A route map, simple stop list, offline-friendly guidance and a Back to Ship timer designed for cruise passengers.</p><div class="phone-showcase phone-showcase--reference"><figure class="product-reference-mockup" aria-label="Premium phone preview of the guide"><img src="images/product-preview-phone-v235.png" loading="lazy" decoding="async" alt="Premium phone mockup showing a route stop, Google Maps button, next stop and Back to Ship timer"></figure></div></section>
+    <section class="cs-desktop-handoff cs-desktop-only" aria-label="Planning at home?">
+      <div>
+        <span class="cs-desktop-handoff__eyebrow">Planning at home?</span>
+        <h2>Choose your Funchal route now. Use it on your phone when you arrive.</h2>
+        <p>CruiseStop is designed for both moments: plan and buy from your computer, then open the same route on your phone in Funchal. No app installation and no separate account needed.</p>
+        <div class="cs-desktop-handoff__points"><span>✓ Choose your route</span><span>✓ Open on your phone</span><span>✓ Follow Google Maps</span><span>✓ Watch the return timer</span></div>
+      </div>
+      <div class="cs-desktop-handoff__qr">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYAQAAAAA+F9ntAAACcElEQVR4nO2bwW7kMAxDySL//8vsgZLsuRUp0pWy7hST6fgdCMGQKVml8OOfr5+jhz3sYV/AXgDoj6JAgX4SAqG12kPvNPYCAAFwMEH5nSIobqs99M5kScIxFAFQEAHRm9ernfTOZEWIALXiLf6xhpezBKB4QYrk8LcaXsVeADKKBOXtC8AbGdxi3EHvNPYCyiJAGeGPzFAfOuidxl5Y+1Pc061tg7YM0UHvRNY2gT7doHAP9GZ2pjj+7CZbIVQ+qC0llKk49cU9FpJTgGDDkOYByqXwE1IHvdNY71bVc31fJx3kTd5C7zSWLodX7eauA9f55ujz5IdbrP1vlGoOc7nhej/79zab/TORohNw/K0sL5CPDnqnseEf5FZktCgzY4jhHs7+vcumG1sHWZk0VB84uA56p7HR/yWFeIsWZawzTcSDGt7MRv9B0VmvDqVWXHNXt9A7kZVNGUFKUbARVDUoIwN30TuPJUUq/JkisNzcGZ/X8E42828VFtoyrzdyJIseeieypO8z0zxsVTKkPPj66J3Guqpwos075Ei7AN24PPn3PhuVcGTgKNnicIuqTsc/3GdVWUH1m011Rev9aQ1vZt3YsU0g4+4iTNnWhGijdxor1xR1Xcy9206d/u8v2DK3qubO3m6v0bRzP3SPXffHdgxRKq+5h5MffsXu85PIcUlV0yEmIo5/uMt+zE8SQk5O+lW93yc1vJn1/VCGMVuTHuBRTVA+q+G/YrNwYw37pXnrqXcQm8OT6dCUV5wxONVN7wR2n59UXtQDWDPsiNZlD73T2G0aStnd+Vxn/mNGC73T2M9o/hsNhz3sYXuy32tRM7+QvilQAAAAAElFTkSuQmCC" alt="QR code to open CruiseStop on a phone">
+        <strong>Scan to open CruiseStop</strong>
+        <small>cruisestop.eu</small>
+      </div>
+    </section>
     <section id="routes" class="routes" aria-labelledby="routes-title"><div class="section-title"><h2 id="routes-title">Choose the right route for your stop</h2></div><p class="section-copy">Three simple ways to explore Funchal without joining a group tour.</p><div class="route-list"><article class="route-option"><a class="route-card" href="relax_summary.html" data-route="Relaxed Funchal" aria-label="Relaxed Funchal"><img src="images/RELAX/relax-stop4.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Most relaxed</span><strong>Relaxed Funchal</strong><span class="route-title-desc">Historic caf&eacute;s, gardens and local flavours</span><span class="route-meta"><span>5h</span><span>~3 km</span><span>Easy</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="easy">Preview</button><button class="buy-route-btn route-buy" type="button" data-buy-route="relax">Start for &euro;4,99</button></div></article><article class="route-option"><a class="route-card" href="foodie_summary.html" data-route="Taste Madeira" aria-label="Taste Madeira"><img src="images/FOODIE/foodie-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Best food</span><strong>Taste Madeira</strong><span class="route-title-desc">Local flavours and characterful streets</span><span class="route-meta"><span>5h</span><span>~3.5 km</span><span>Easy</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="food">Preview</button><button class="buy-route-btn route-buy" type="button" data-buy-route="foodie">Start for &euro;4,99</button></div></article><article class="route-option"><a class="route-card" href="panoramic_summary.html" data-route="Panoramic Funchal" aria-label="Panoramic Funchal"><img src="images/panoramic/panoramic-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Best views</span><strong>Panoramic Funchal</strong><span class="route-title-desc">Cable car, Monte, Funchal views and a calm return to the ship</span><span class="route-meta"><span>5h</span><span>~4 km</span><span>Moderate</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="panoramic">Preview</button><button class="buy-route-btn route-buy" type="button" data-buy-route="panoramic">Start for &euro;4,99</button></div></article></div><div class="conversion-panel"><strong>A complete Funchal route for &euro;4,99</strong><p>Pay once. Open on your phone. Follow the route during your cruise stop.</p></div></section>
     <section class="landing-section faq-section" id="faq" aria-labelledby="faq-title"><p class="section-eyebrow">Questions</p><h2 id="faq-title">Simple before you buy</h2><div class="faq-list"><details><summary><span class="faq-icon" aria-hidden="true">&#128241;</span><span>Do I need to install an app?</span></summary><p>No. Open CruiseStop on your phone and follow the route in the browser.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#128674;</span><span>Is it made for cruise passengers?</span></summary><p>Yes. Routes start near the Funchal cruise port and are planned for limited shore time.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#128246;</span><span>Does it work offline?</span></summary><p>The main route pages stay available after loading, useful when mobile data is weak.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#9200;</span><span>What if I do not return on time?</span></summary><p>The promise is simple: back to the ship on time or your money back.</p></details></div></section>
     <section class="desktop-extra seo-explainer" aria-labelledby="seo-explainer-title"><h2 id="seo-explainer-title">Self-guided Funchal walking routes for cruise passengers</h2><p>CruiseStop is a mobile-first digital product for passengers who want to explore Funchal independently during a short stop.</p><p>Choose a relaxed walk, a food-focused route or a panoramic route. Each one is easy to scan, easy to start and designed to finish near the cruise port.</p></section>
