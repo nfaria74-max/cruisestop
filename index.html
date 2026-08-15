@@ -630,18 +630,64 @@
       body.home-page.landing-v160 .faq-section h2{margin-bottom:24px !important;}
       body.home-page.landing-v160 .faq-list details{text-align:left !important;border-radius:16px !important;}
 
-      /* SEO copy remains available but no longer looks like a primary sales section */
+      /* Final desktop section: compact, balanced and still useful for SEO */
       body.home-page.landing-v160 .seo-explainer{
-        margin:0 auto 44px !important;
-        padding:26px 34px !important;
-        max-width:880px !important;
-        background:transparent !important;
-        border:0 !important;
-        box-shadow:none !important;
-        opacity:.82 !important;
+        margin:12px auto 0 !important;
+        padding:34px 42px !important;
+        max-width:1180px !important;
+        display:grid !important;
+        grid-template-columns:minmax(260px,.78fr) minmax(0,1.4fr) !important;
+        column-gap:54px !important;
+        row-gap:10px !important;
+        align-items:center !important;
+        background:#f7faff !important;
+        border:1px solid #dce6f4 !important;
+        border-radius:24px !important;
+        box-shadow:0 12px 34px rgba(25,55,100,.06) !important;
+        opacity:1 !important;
+        text-align:left !important;
       }
-      body.home-page.landing-v160 .seo-explainer h2{font-size:1.35rem !important;line-height:1.25 !important;margin-bottom:10px !important;}
-      body.home-page.landing-v160 .seo-explainer p{font-size:.88rem !important;line-height:1.55 !important;margin:6px auto !important;max-width:760px !important;}
+      body.home-page.landing-v160 .seo-explainer h2{
+        grid-row:1 / span 2 !important;
+        margin:0 !important;
+        max-width:300px !important;
+        font-size:1.42rem !important;
+        line-height:1.18 !important;
+        color:#081c3d !important;
+        text-align:left !important;
+      }
+      body.home-page.landing-v160 .seo-explainer p{
+        margin:0 !important;
+        max-width:none !important;
+        font-size:.95rem !important;
+        line-height:1.55 !important;
+        color:#49607f !important;
+        font-weight:650 !important;
+        text-align:left !important;
+      }
+      body.home-page.landing-v160 .seo-explainer p + p{margin-top:4px !important;}
+
+      /* Desktop footer: replace the narrow mobile footer with a full-width finish */
+      body.home-page.landing-v160 > .site-footer{display:none !important;}
+      .cs-desktop-footer{
+        width:100% !important;
+        margin-top:38px !important;
+        padding:30px max(54px,calc((100vw - 1380px)/2)) !important;
+        display:grid !important;
+        grid-template-columns:auto 1fr auto !important;
+        align-items:center !important;
+        gap:34px !important;
+        background:linear-gradient(120deg,#061f4d 0%,#07377d 100%) !important;
+        color:#fff !important;
+        border-top:1px solid rgba(255,255,255,.08) !important;
+      }
+      .cs-desktop-footer__brand{display:flex !important;align-items:center !important;gap:12px !important;font-weight:950 !important;font-size:1.5rem !important;white-space:nowrap !important;}
+      .cs-desktop-footer__brand img{width:38px !important;height:38px !important;border-radius:10px !important;}
+      .cs-desktop-footer__tagline{margin:0 !important;text-align:center !important;color:#d7e6fb !important;font-size:.92rem !important;font-weight:700 !important;}
+      .cs-desktop-footer__links{display:flex !important;align-items:center !important;gap:18px !important;white-space:nowrap !important;}
+      .cs-desktop-footer__links a{color:#fff !important;text-decoration:none !important;font-size:.9rem !important;font-weight:800 !important;opacity:.92 !important;}
+      .cs-desktop-footer__links a:hover{opacity:1 !important;text-decoration:underline !important;}
+      .cs-desktop-footer__links span{color:#9fb7d8 !important;font-size:.82rem !important;font-weight:650 !important;}
     }
   </style>
 
@@ -760,8 +806,9 @@
     </section>
     <section id="routes" class="routes" aria-labelledby="routes-title"><div class="section-title"><h2 id="routes-title">Choose the right route for your stop</h2></div><p class="section-copy">Three simple ways to explore Funchal without joining a group tour.</p><div class="route-list"><article class="route-option"><a class="route-card" href="relax_summary.html" data-route="Relaxed Funchal" aria-label="Relaxed Funchal"><img src="images/RELAX/relax-stop4.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Most relaxed</span><strong>Relaxed Funchal</strong><span class="route-title-desc">Historic caf&eacute;s, gardens and local flavours</span><span class="route-meta"><span>5h</span><span>~3 km</span><span>Easy</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="easy">Preview</button><button class="buy-route-btn route-buy" type="button" data-buy-route="relax">Start for &euro;4,99</button></div></article><article class="route-option"><a class="route-card" href="foodie_summary.html" data-route="Taste Madeira" aria-label="Taste Madeira"><img src="images/FOODIE/foodie-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Best food</span><strong>Taste Madeira</strong><span class="route-title-desc">Local flavours and characterful streets</span><span class="route-meta"><span>5h</span><span>~3.5 km</span><span>Easy</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="food">Preview</button><button class="buy-route-btn route-buy" type="button" data-buy-route="foodie">Start for &euro;4,99</button></div></article><article class="route-option"><a class="route-card" href="panoramic_summary.html" data-route="Panoramic Funchal" aria-label="Panoramic Funchal"><img src="images/panoramic/panoramic-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Best views</span><strong>Panoramic Funchal</strong><span class="route-title-desc">Cable car, Monte, Funchal views and a calm return to the ship</span><span class="route-meta"><span>5h</span><span>~4 km</span><span>Moderate</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="panoramic">Preview</button><button class="buy-route-btn route-buy" type="button" data-buy-route="panoramic">Start for &euro;4,99</button></div></article></div><div class="conversion-panel"><strong>A complete Funchal route for &euro;4,99</strong><p>Pay once. Open on your phone. Follow the route during your cruise stop.</p></div></section>
     <section class="landing-section faq-section" id="faq" aria-labelledby="faq-title"><p class="section-eyebrow">Questions</p><h2 id="faq-title">Simple before you buy</h2><div class="faq-list"><details><summary><span class="faq-icon" aria-hidden="true">&#128241;</span><span>Do I need to install an app?</span></summary><p>No. Open CruiseStop on your phone and follow the route in the browser.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#128674;</span><span>Is it made for cruise passengers?</span></summary><p>Yes. Routes start near the Funchal cruise port and are planned for limited shore time.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#128246;</span><span>Does it work offline?</span></summary><p>The main route pages stay available after loading, useful when mobile data is weak.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#9200;</span><span>What if I do not return on time?</span></summary><p>The promise is simple: back to the ship on time or your money back.</p></details></div></section>
-    <section class="desktop-extra seo-explainer" aria-labelledby="seo-explainer-title"><h2 id="seo-explainer-title">Self-guided Funchal walking routes for cruise passengers</h2><p>CruiseStop is a mobile-first digital product for passengers who want to explore Funchal independently during a short stop.</p><p>Choose a relaxed walk, a food-focused route or a panoramic route. Each one is easy to scan, easy to start and designed to finish near the cruise port.</p></section>
+    <section class="desktop-extra seo-explainer" aria-labelledby="seo-explainer-title"><h2 id="seo-explainer-title">Self-guided Funchal routes for cruise passengers</h2><p>Explore Funchal independently during a short cruise stop, with a clear route, practical guidance and time kept under control.</p><p>Choose Relaxed Funchal, Taste Madeira or Panoramic Funchal — each route is designed to be easy to follow and to finish near the cruise port.</p></section>
   </main>
+  <footer class="cs-desktop-footer cs-desktop-only" aria-label="CruiseStop desktop footer"><div class="cs-desktop-footer__brand"><img src="assets/icon-192.png" alt=""><span>CruiseStop</span></div><p class="cs-desktop-footer__tagline">Smart self-guided routes for cruise passengers · Explore more · Return with confidence</p><div class="cs-desktop-footer__links"><a href="#routes">Routes</a><a href="#preview">What you get</a><a href="#faq">FAQ</a><span>© 2026 CruiseStop</span></div></footer>
   <footer class="site-footer" aria-label="CruiseStop footer"><a class="footer-brand" href="#inicio" aria-label="CruiseStop"><svg viewBox="0 0 96 58" aria-hidden="true"><path d="M19 26c10-5 21-7 34-4 10 2 18 1 24-4 0 10-7 18-20 21-13 4-27 1-42-8 2-1 3-3 4-5Z" fill="currentColor"></path><path d="M30 13h30c3 0 6 2 7 5l2 7c-13 1-28-7-44-2l1-6c0-2 2-4 4-4Z" fill="currentColor"></path><path d="M43 5h8v8h-8z" fill="currentColor"></path><path d="M12 42c11-5 21 5 32 0s21 5 40-4" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path></svg><span>CruiseStop</span></a><p>Smart walks for cruise passengers.<br>More time to explore.<br class="footer-mobile-break"> Always back on time.</p></footer>
   <div class="sticky-cta" aria-label="Sticky purchase call to action"><div><strong>Start for &euro;4,99</strong><span>Choose a route</span></div><a class="sticky-cta__button" href="#routes">View routes</a></div>
   <div class="preview-modal" id="previewModal" aria-hidden="true"><div class="preview-backdrop" data-close-preview></div><section class="preview-dialog" role="dialog" aria-modal="true" aria-labelledby="previewTitle"><header class="preview-header"><strong id="previewEyebrow">Free preview - Stop 1</strong><button class="preview-close" type="button" data-close-preview aria-label="Close preview">&times;</button></header><img class="preview-image" id="previewImage" src="images/RELAX/relax-stop4.jpg" alt=""><div class="preview-body"><h3 id="previewTitle">Jardim Municipal</h3><p class="preview-subtitle" id="previewSubtitle">A garden in the heart of the city</p><p id="previewDescription"></p><aside class="preview-why"><strong>Why this stop?</strong><p id="previewWhy"></p></aside><p class="preview-duration" id="previewDuration"></p><button class="preview-cta" id="previewCta" type="button" data-buy-route="relax">Start for &euro;4,99</button><p class="preview-note">Money-back guarantee if you do not get back to the ship on time.</p></div></section></div>
