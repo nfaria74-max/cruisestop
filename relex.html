@@ -176,10 +176,10 @@ body.route-stop-page .stop-card {
   padding-bottom: calc(200px + env(safe-area-inset-bottom, 0px)) !important;
 }
 </style><style>.map-widget{padding:0 0 .5rem 0}.map-toggle-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;padding:.6rem 1.2rem;border-radius:50px;font-size:.85rem;font-weight:500;cursor:pointer;width:100%;transition:background .2s}.map-toggle-btn:hover{background:rgba(255,255,255,.15)}.leaflet-popup-content-wrapper{border-radius:8px;font-family:Inter,sans-serif}</style><script>window.ROUTE_CONFIG = {
-  "name": "RELAX - Slow Funchal",
+  "name": "Relaxed Funchal",
   "key": "relax",
   "summaryUrl": "relax_summary.html",
-  "defaultDuration": "20 minutes",
+  "defaultDuration": "20 min",
   "fallbackImage": "images/RELAX/relax-stop1.png",
   "labels": {
     "navAria": "Main navigation",
@@ -194,7 +194,7 @@ body.route-stop-page .stop-card {
     "navigateHere": "Open in Google Maps",
     "whyThisStop": "Why this stop?",
     "backToShip": "Back to Ship",
-    "returnBy": "Return by:",
+    "returnBy": "Return by",
     "buffer45": "+45 min buffer",
     "buffer30": "+30 min buffer",
     "buffer15": "+15 min buffer",
@@ -215,7 +215,9 @@ body.route-stop-page .stop-card {
     "usefulStop": "A useful stop on this Funchal route.",
     "audioLoading": "LOADING...",
     "audioPause": "PAUSE",
-    "audioPlay": "PLAY AUDIO"
+    "audioPlay": "PLAY AUDIO",
+    "returnToShip": "Return to ship",
+    "returnStopLabel": "RETURN TO\nSHIP"
   },
   "urls": {
     "home": "index.html#inicio",
@@ -225,100 +227,161 @@ body.route-stop-page .stop-card {
   },
   "stops": [
     {
-        "name": "Mercado dos Lavradores",
-        "title": "Where Funchal Comes Alive",
-        "summary": "Colour, flowers and local life.",
-        "description": "Enter through the south gate. Tropical fruit, fresh fish and cut flowers all hit at once. Walk slowly, look around and let the market energy do the work.",
-        "whyText": "This is Funchal at its most vivid: local, colourful and easy to enjoy.",
-        "duration": "20 minutes",
-        "image": "images/RELAX/relax-stop1.png",
-        "mapQuery": "Mercado dos Lavradores, Funchal, Madeira",
-        "lat": 32.648641,
-        "lng": -16.904178
-    },
-      {
-        "name": "Fábrica Santo António",
-        "title": "Since 1893 — Flavours With History",
-        "summary": "Madeira's first biscuit factory, still family-run.",
-        "description": "The Fábrica Santo António opened in 1893 as the first biscuit and cookie factory on the island of Madeira. More than 130 years later, it still keeps Madeiran flavours and traditions alive. Step inside, take in the historic space and discover the traditional biscuits and cookies made here.",
-        "whyText": "A historic Funchal house tied to the tradition of Madeiran biscuits and cookies.",
-        "duration": "10 minutes",
-        "image": "images/RELAX/SANTO_ANTONIO.jpg",
-        "mapQuery": "Fábrica Santo António, Travessa do Forno, Funchal, Madeira",
-        "lat": 32.649527,
-        "lng": -16.907397
-      },
-    {
-        "name": "UAUCACAU",
-        "title": "Flavours of Madeira Island",
-        "summary": "A small chocolate stop with a local, unhurried feel.",
-        "description": "Flavours of Madeira Island. Inspired by the richness of the land, made with natural ingredients.",
-        "whyText": "A tiny local reward in the middle of the walk.",
-        "duration": "20 minutes",
-        "image": "images/RELAX/relax-stop2.png",
-        "mapQuery": "UAUCACAU Rua da Queimada de Cima Funchal Madeira",
-        "lat": 32.648689,
-        "lng": -16.908596
+      "name": "Mercado dos Lavradores",
+      "title": "Where Funchal Comes Alive",
+      "summary": "Colour, aromas, flavours and local life.",
+      "description": "Enter through the south entrance and discover a market full of colour, aromas and flavours. Take your time, browse the stalls and sample a few products. There is no need to buy — the experience is about discovering the atmosphere and flavours of Madeira.",
+      "whyText": "Funchal at its most vibrant: local, colourful and full of character.",
+      "duration": "20 min",
+      "image": "images/RELAX/relax-stop1.png",
+      "mapQuery": "Mercado dos Lavradores, Funchal, Madeira",
+      "lat": 32.648641,
+      "lng": -16.904178
     },
     {
-        "name": "Sé Cathedral",
-        "title": "Gothic Silence in the Middle of Everything",
-        "summary": "A quiet historic pause in the middle of the old city.",
-        "description": "Step inside Funchal's oldest cathedral and feel the temperature drop. Built in the 15th century, the Sé is a rare moment of quiet in a city that never really stops.",
-        "whyText": "One of the few places in Funchal where you can truly pause and feel the weight of history.",
-        "duration": "20 minutes",
-        "image": "images/RELAX/relax-stop3.jpg",
-        "mapQuery": "Sé Catedral, Funchal, Madeira",
-        "lat": 32.648027,
-        "lng": -16.908638
+      "name": "Fábrica Santo António",
+      "title": "Since 1893 — Flavours With History",
+      "summary": "A historic house preserving Madeiran flavours and traditions.",
+      "description": "Since 1893, Fábrica Santo António has preserved Madeiran flavours and traditions. Step inside, discover the historic shop and sample some of the house specialities.",
+      "whyText": "A historic Funchal institution where Madeiran tradition can still be tasted.",
+      "duration": "10 min",
+      "image": "images/RELAX/SANTO_ANTONIO.jpg",
+      "mapQuery": "Fábrica Santo António, Travessa do Forno, Funchal, Madeira",
+      "lat": 32.649527,
+      "lng": -16.907397
     },
     {
-        "name": "Golden Gate",
-        "title": "The Most Iconic Terrace in Funchal",
-        "summary": "A classic terrace moment to watch Funchal move around you.",
-        "description": "Sit down, order something - a coffee, a poncha, whatever feels right - and just watch. People walking, boats in the distance, the sound of the city around you.",
-        "whyText": "This is the postcard moment of the route. Simple, beautiful, and completely authentic.",
-        "duration": "20 minutes",
-        "image": "images/RELAX/relax-stop4.jpg",
-        "mapQuery": "Golden Gate Funchal, Madeira",
-        "lat": 32.647801,
-        "lng": -16.909749
+      "name": "UAUCACAU",
+      "title": "Artisan Chocolate With Island Flavours",
+      "summary": "Artisan chocolate inspired by the flavours of Madeira.",
+      "description": "Discover artisan chocolate inspired by the flavours of Madeira, with combinations such as passion fruit, banana, sour cherry, sugarcane honey and Madeira wine. Step inside, explore the different creations and choose the flavour that sparks your curiosity.",
+      "whyText": "A sweet and original way to discover some of Madeira’s most distinctive flavours.",
+      "duration": "20 min",
+      "image": "images/RELAX/relax-stop2.png",
+      "mapQuery": "UAUCACAU Rua da Queimada de Cima Funchal Madeira",
+      "lat": 32.648689,
+      "lng": -16.908596
     },
     {
-        "name": "Jardim Municipal",
-        "title": "A Garden in the Heart of the City",
-        "summary": "A calm garden stop in the heart of the city.",
-        "description": "Step into one of Funchal's most peaceful corners. Sit on a bench under a century-old tree, watch the locals pass by and let the city come to you. No rush. No plan. Just this.",
-        "whyText": "One of the most peaceful gardens in central Funchal — perfect for a mid-route pause.",
-        "duration": "20 minutes",
-        "image": "images/RELAX/relax-stop5.png",
-        "mapQuery": "Jardim Municipal, Funchal, Madeira",
-        "lat": 32.648088,
-        "lng": -16.911607
+      "name": "Funchal Cathedral (Sé)",
+      "title": "Silence and History in the Heart of Funchal",
+      "summary": "A historic pause in the heart of the city.",
+      "description": "Step inside the Sé and let the pace of the city slow down. Admire the magnificent wooden Mudéjar ceiling. In the chancel, discover the main altarpiece with 16th-century Flemish paintings and the choir stalls, with unique regional details — including cherubs with bunches of bananas.",
+      "whyText": "One of Funchal’s great historic treasures, where European art meets details unique to Madeira.",
+      "duration": "20 min",
+      "image": "images/RELAX/relax-stop3.jpg",
+      "mapQuery": "Sé Catedral, Funchal, Madeira",
+      "lat": 32.648027,
+      "lng": -16.908638
     },
     {
-        "name": "Parque de Santa Catarina",
-        "title": "The Best View Over Funchal Bay",
-        "summary": "Created in 1966, one of the most privileged spots to enjoy Funchal Bay.",
-        "description": "Created in 1966, Parque de Santa Catarina is one of the most privileged spots to enjoy Funchal Bay. With well-kept gardens, sculptures and a stunning view over the port and ocean.",
-        "whyText": "The best view over the bay before returning to your ship — an unforgettable end to the route.",
-        "duration": "20 minutes",
-        "image": "images/RELAX/relax-stop6.png",
-        "mapQuery": "Parque de Santa Catarina, Funchal, Madeira",
-        "lat": 32.646111,
-        "lng": -16.913412
+      "name": "Golden Gate Grand Café",
+      "title": "The Corner of the World",
+      "summary": "A historic café to pause, watch and feel the city.",
+      "description": "Take a seat on the terrace, order a coffee or simply whatever you feel like, and watch the city go by. It was here that writer Ferreira de Castro called the Golden Gate “A Esquina do Mundo” — “The Corner of the World” — inspired by the diversity of people and cultures that crossed paths here.",
+      "whyText": "A historic Funchal café and a perfect place to pause, watch and feel the city.",
+      "duration": "20 min",
+      "image": "images/RELAX/relax-stop4.jpg",
+      "mapQuery": "Golden Gate Funchal, Madeira",
+      "lat": 32.647801,
+      "lng": -16.909749
     },
     {
-        "name": "Funchal Port",
-        "title": "Back to Your Ship",
-        "summary": "Return calmly to your cruise ship with the timer still visible.",
-        "description": "Finish by returning calmly to Funchal Port. Keep your timer visible, follow the final walk back and arrive with time to spare.",
-        "whyText": "This final stop closes the loop and brings you safely back to your cruise ship.",
-        "duration": "15 minutes",
-        "image": "images/funchal-hero.webp.jpg",
-        "mapQuery": "Funchal Cruise Port, Madeira",
-        "lat": 32.641239,
-        "lng": -16.916657
+      "name": "Jardim Municipal",
+      "title": "A Garden in the Heart of the City",
+      "summary": "A calm garden pause in the city centre.",
+      "description": "Step into one of the most peaceful gardens in central Funchal. Sit in the shade, watch the city go by and enjoy a few unhurried minutes. No plans. Just this moment.",
+      "whyText": "A small green refuge in the city centre — perfect for pausing and breathing.",
+      "duration": "20 min",
+      "image": "images/RELAX/relax-stop5.png",
+      "mapQuery": "Jardim Municipal, Funchal, Madeira",
+      "lat": 32.648088,
+      "lng": -16.911607
+    },
+    {
+      "name": "Parque de Santa Catarina",
+      "title": "One of the Best Views Over Funchal Bay",
+      "summary": "A final pause with one of the best views over Funchal Bay.",
+      "description": "End your walk with one of the best views over Funchal Bay. Stroll through the garden, find a bench and spend a few minutes simply looking out to sea.",
+      "whyText": "The bay, the port and the ocean before you — the perfect ending before returning to your ship.",
+      "duration": "20 min",
+      "image": "images/RELAX/relax-stop6.png",
+      "mapQuery": "Parque de Santa Catarina, Funchal, Madeira",
+      "lat": 32.646111,
+      "lng": -16.913412
+    },
+    {
+      "name": "Funchal Port",
+      "title": "Return to Your Ship",
+      "summary": "A calm return to the ship with the timer still visible.",
+      "description": "Return calmly to Funchal Port. Keep the timer visible, follow the final walk and arrive with time to spare.",
+      "whyText": "The final point of the route, so you can return to your ship calmly and with a safe time buffer.",
+      "duration": "15 min",
+      "image": "images/funchal-hero.webp.jpg",
+      "mapQuery": "Funchal Cruise Port, Madeira",
+      "lat": 32.641239,
+      "lng": -16.916657
     }
-]
-};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script src="route-page.js?v=259"></script><script src="site-update.js?v=253"></script></body></html>
+  ]
+};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script src="route-page.js?v=259"></script><script src="site-update.js?v=253"></script><style id="route-final-label-fix-v260">
+body.route-stop-page .stop-step.route-return-label {
+  white-space: pre-line !important;
+  text-align: center !important;
+  font-size: 10px !important;
+  line-height: 1.05 !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+body.route-stop-page .stop-card.route-cathedral .stop-why {
+  position: relative;
+  top: -6px;
+}
+</style>
+<script id="route-final-label-fix-v260">
+(function () {
+  var cfg = window.ROUTE_CONFIG;
+  if (!cfg || !cfg.stops || cfg.stops.length < 2) return;
+  var scenicLast = cfg.stops[cfg.stops.length - 2];
+  var returnStop = cfg.stops[cfg.stops.length - 1];
+  var cathedral = cfg.stops[3];
+
+  function syncFinalRouteLabels() {
+    var title = document.getElementById('stop-title');
+    var step = document.querySelector('.stop-step');
+    var next = document.getElementById('nextBtn');
+    var card = document.querySelector('.stop-card');
+    if (!title || !step || !next || !card) return;
+
+    var currentName = title.textContent.trim();
+    var isReturn = currentName === returnStop.name;
+    var isScenicLast = currentName === scenicLast.name;
+    var isCathedral = cathedral && currentName === cathedral.name;
+
+    card.classList.toggle('route-cathedral', !!isCathedral);
+
+    if (isReturn) {
+      var returnLabel = (cfg.labels && cfg.labels.returnStopLabel) || 'RETURN TO SHIP';
+      if (step.textContent !== returnLabel) step.textContent = returnLabel;
+      step.classList.add('route-return-label');
+    } else {
+      step.classList.remove('route-return-label');
+    }
+
+    if (isScenicLast) {
+      var returnText = ((cfg.labels && cfg.labels.returnToShip) || 'Return to ship') + ' →';
+      if (next.textContent !== returnText) next.textContent = returnText;
+    }
+  }
+
+  var target = document.querySelector('.stop-card');
+  if (target) {
+    new MutationObserver(syncFinalRouteLabels).observe(target, {subtree:true, childList:true, characterData:true});
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', syncFinalRouteLabels, {once:true});
+  } else {
+    syncFinalRouteLabels();
+  }
+  setTimeout(syncFinalRouteLabels, 0);
+})();
+</script></body></html>

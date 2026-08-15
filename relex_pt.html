@@ -215,7 +215,9 @@ body.route-stop-page .stop-card {
     "usefulStop": "Uma paragem útil nesta rota do Funchal.",
     "audioLoading": "A CARREGAR...",
     "audioPause": "PAUSA",
-    "audioPlay": "OUVIR ÁUDIO"
+    "audioPlay": "OUVIR ÁUDIO",
+    "returnToShip": "Regressar ao navio",
+    "returnStopLabel": "REGRESSO AO\nNAVIO"
   },
   "urls": {
     "home": "index_pt.html#inicio",
@@ -227,7 +229,7 @@ body.route-stop-page .stop-card {
     {
       "name": "Mercado dos Lavradores",
       "title": "Onde o Funchal ganha vida",
-      "summary": "Cor, flores e vida local.",
+      "summary": "Cor, aromas, sabores e vida local.",
       "description": "Entre pela porta sul e descubra um mercado cheio de cor, aromas e sabores. Caminhe devagar, observe as bancas e aproveite para provar alguns produtos. Não precisa de comprar — aqui, a experiência está sobretudo em descobrir o ambiente e os sabores da Madeira.",
       "whyText": "O Funchal na sua versão mais viva: local, colorido e cheio de personalidade.",
       "duration": "20 min",
@@ -239,7 +241,7 @@ body.route-stop-page .stop-card {
     {
       "name": "Fábrica Santo António",
       "title": "Desde 1893 — sabores com história",
-      "summary": "A primeira fábrica de bolachas da Madeira, ainda de família.",
+      "summary": "Uma casa histórica ligada aos sabores e tradições madeirenses.",
       "description": "Desde 1893, a Fábrica Santo António preserva sabores e tradições madeirenses. Entre, descubra o espaço histórico e prove algumas das especialidades da casa.",
       "whyText": "Uma casa histórica do Funchal onde ainda se saboreia a tradição madeirense.",
       "duration": "10 min",
@@ -263,8 +265,8 @@ body.route-stop-page .stop-card {
     {
       "name": "Sé do Funchal",
       "title": "Silêncio e história no coração do Funchal",
-      "summary": "Uma pausa histórica e tranquila no centro da cidade antiga.",
-      "description": "Entre na Sé e deixe o ritmo da cidade abrandar. Olhe para cima e descubra o magnífico teto de madeira em estilo mudéjar. Na capela-mor, observe o retábulo-mor com pinturas flamengas do século XVI e o cadeiral, onde pequenos detalhes regionais surpreendem — incluindo querubins com cachos de bananas.",
+      "summary": "Uma pausa histórica no coração da cidade.",
+      "description": "Entre na Sé e deixe o ritmo da cidade abrandar. Admire o magnífico teto de madeira em estilo mudéjar. Na capela-mor, descubra o retábulo-mor com pinturas flamengas do século XVI e o cadeiral com detalhes regionais únicos — incluindo querubins com cachos de bananas.",
       "whyText": "Um dos grandes tesouros históricos do Funchal, onde a arte europeia se cruza com detalhes únicos da Madeira.",
       "duration": "20 min",
       "image": "images/RELAX/relax-stop3.jpg",
@@ -311,9 +313,9 @@ body.route-stop-page .stop-card {
     {
       "name": "Porto do Funchal",
       "title": "Regresso ao navio",
-      "summary": "Regresso calmo ao navio com o temporizador sempre visível.",
-      "description": "Termine regressando tranquilamente ao porto do Funchal. Mantenha o temporizador visível, siga a caminhada final e chegue com tempo de sobra.",
-      "whyText": "Esta última paragem fecha o circuito e leva-o em segurança de volta ao navio.",
+      "summary": "Regresso tranquilo ao navio com o temporizador sempre visível.",
+      "description": "Regresse tranquilamente ao Porto do Funchal. Mantenha o temporizador visível, siga a caminhada final e chegue com tempo de sobra.",
+      "whyText": "O ponto final da rota, para regressar ao navio com calma e margem de segurança.",
       "duration": "15 min",
       "image": "images/funchal-hero.webp.jpg",
       "mapQuery": "Funchal Cruise Port, Madeira",
@@ -321,4 +323,65 @@ body.route-stop-page .stop-card {
       "lng": -16.916657
     }
   ]
-};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script src="route-page.js?v=259"></script><script src="site-update.js?v=253"></script></body></html>
+};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script src="route-page.js?v=259"></script><script src="site-update.js?v=253"></script><style id="route-final-label-fix-v260">
+body.route-stop-page .stop-step.route-return-label {
+  white-space: pre-line !important;
+  text-align: center !important;
+  font-size: 10px !important;
+  line-height: 1.05 !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+body.route-stop-page .stop-card.route-cathedral .stop-why {
+  position: relative;
+  top: -6px;
+}
+</style>
+<script id="route-final-label-fix-v260">
+(function () {
+  var cfg = window.ROUTE_CONFIG;
+  if (!cfg || !cfg.stops || cfg.stops.length < 2) return;
+  var scenicLast = cfg.stops[cfg.stops.length - 2];
+  var returnStop = cfg.stops[cfg.stops.length - 1];
+  var cathedral = cfg.stops[3];
+
+  function syncFinalRouteLabels() {
+    var title = document.getElementById('stop-title');
+    var step = document.querySelector('.stop-step');
+    var next = document.getElementById('nextBtn');
+    var card = document.querySelector('.stop-card');
+    if (!title || !step || !next || !card) return;
+
+    var currentName = title.textContent.trim();
+    var isReturn = currentName === returnStop.name;
+    var isScenicLast = currentName === scenicLast.name;
+    var isCathedral = cathedral && currentName === cathedral.name;
+
+    card.classList.toggle('route-cathedral', !!isCathedral);
+
+    if (isReturn) {
+      var returnLabel = (cfg.labels && cfg.labels.returnStopLabel) || 'RETURN TO SHIP';
+      if (step.textContent !== returnLabel) step.textContent = returnLabel;
+      step.classList.add('route-return-label');
+    } else {
+      step.classList.remove('route-return-label');
+    }
+
+    if (isScenicLast) {
+      var returnText = ((cfg.labels && cfg.labels.returnToShip) || 'Return to ship') + ' →';
+      if (next.textContent !== returnText) next.textContent = returnText;
+    }
+  }
+
+  var target = document.querySelector('.stop-card');
+  if (target) {
+    new MutationObserver(syncFinalRouteLabels).observe(target, {subtree:true, childList:true, characterData:true});
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', syncFinalRouteLabels, {once:true});
+  } else {
+    syncFinalRouteLabels();
+  }
+  setTimeout(syncFinalRouteLabels, 0);
+})();
+</script></body></html>
