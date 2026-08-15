@@ -386,7 +386,8 @@
 
         window.setTimeout(() => {
             setText('.stop-step', `${label('stopLabel', 'STOP')} ${stopNumber}`);
-            setText('.stop-counter', `${stopNumber}/${stops.length}`);
+            const displayTotal = getDisplayStopCount();
+            setText('.stop-counter', `${Math.min(stopNumber, displayTotal)}/${displayTotal}`);
             // total-stops-indicator removed
             setText('#stop-title', stop.name || `${label('stopFallback', 'Stop')} ${stopNumber}`);
             setText('#stopDescription', stop.description || '');
@@ -611,6 +612,17 @@
         showMapsPopup(buildMapsNavigationUrl(stop));
     }
 
+    // Total apresentado ao utilizador: exclui a paragem final de regresso ao
+    // porto. NAO altera stops.length, que continua a comandar a navegacao.
+    function getDisplayStopCount() {
+        if (stops.length < 2) {
+            return stops.length;
+        }
+        const last = stops[stops.length - 1] || {};
+        const text = `${last.name || ''} ${last.title || ''} ${last.mapQuery || ''}`;
+        return /(port|porto|ship|navio|cruise)/i.test(text) ? stops.length - 1 : stops.length;
+    }
+
     function getReturnStop() {
         const explicitReturnStop = [...stops].reverse().find((stop) => {
             const text = `${stop.name || ''} ${stop.title || ''} ${stop.mapQuery || ''}`;
@@ -620,8 +632,8 @@
         return explicitReturnStop || {
             name: 'Funchal Cruise Port',
             mapQuery: 'Funchal Cruise Port, Madeira',
-            lat: 32.6419,
-            lng: -16.9166
+            lat: 32.641239,
+            lng: -16.916657
         };
     }
 
