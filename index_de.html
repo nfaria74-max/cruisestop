@@ -710,6 +710,108 @@
     }
   </style>
 
+
+  <style id="cruisestop-real-route-preview-v1">
+    /* Real route preview: uses the same visual language as the purchased route screen. */
+    .preview-modal .preview-dialog{
+      width:min(560px,calc(100vw - 24px)) !important;
+      max-width:560px !important;
+      max-height:min(92dvh,860px) !important;
+      padding:0 !important;
+      overflow-y:auto !important;
+      overflow-x:hidden !important;
+      border-radius:28px !important;
+      background:#fff !important;
+      box-shadow:0 30px 90px rgba(0,18,55,.34) !important;
+      scrollbar-width:thin;
+    }
+    .preview-modal .preview-header{
+      min-height:72px !important;
+      padding:16px 18px 14px 22px !important;
+      display:flex !important;
+      align-items:center !important;
+      justify-content:space-between !important;
+      gap:16px !important;
+      position:sticky !important;
+      top:0 !important;
+      z-index:8 !important;
+      background:#0b1425 !important;
+      color:#fff !important;
+      border:0 !important;
+    }
+    .preview-modal .preview-header strong{
+      font-size:.92rem !important;
+      line-height:1.15 !important;
+      font-weight:950 !important;
+      letter-spacing:.01em !important;
+      color:#fff !important;
+    }
+    .preview-modal .preview-close{
+      width:46px !important;height:46px !important;min-width:46px !important;
+      border-radius:50% !important;border:1px solid rgba(255,255,255,.36) !important;
+      background:rgba(255,255,255,.06) !important;color:#fff !important;
+      font-size:2rem !important;line-height:1 !important;
+    }
+    .preview-modal .preview-body{padding:18px 22px 24px !important;background:#fff !important;color:#08295d !important;}
+    .preview-modal .cs-preview-status{display:grid !important;grid-template-columns:auto 1fr auto !important;align-items:center !important;gap:12px !important;margin:0 0 16px !important;}
+    .preview-modal .cs-preview-stop,.preview-modal .cs-preview-time,.preview-modal .cs-preview-counter{display:inline-flex !important;align-items:center !important;justify-content:center !important;min-height:42px !important;border-radius:999px !important;font-size:.88rem !important;font-weight:900 !important;white-space:nowrap !important;}
+    .preview-modal .cs-preview-stop{padding:0 16px !important;background:#ffc400 !important;color:#071f49 !important;border:2px solid #d99d00 !important;}
+    .preview-modal .cs-preview-time{justify-self:center !important;padding:0 17px !important;background:#fff4ce !important;color:#08295d !important;border:1px solid #efd67a !important;gap:5px !important;}
+    .preview-modal .cs-preview-time::before{content:'◷';font-size:1rem !important;}
+    .preview-modal .cs-preview-counter{padding:0 15px !important;background:#062f73 !important;color:#fff !important;}
+    .preview-modal #previewDuration{margin:0 !important;padding:0 !important;background:none !important;border:0 !important;color:inherit !important;font:inherit !important;display:inline !important;}
+    .preview-modal #previewTitle{margin:0 0 18px !important;font-size:clamp(1.85rem,4.5vw,2.25rem) !important;line-height:1.05 !important;letter-spacing:-.035em !important;color:#0a3476 !important;font-weight:950 !important;text-align:left !important;}
+    .preview-modal #previewSubtitle{display:none !important;}
+    .preview-modal #previewImage{display:block !important;width:100% !important;height:225px !important;object-fit:cover !important;object-position:center !important;margin:0 0 18px !important;border-radius:22px !important;}
+    .preview-modal #previewDescription{margin:0 2px 18px !important;font-size:1rem !important;line-height:1.48 !important;color:#0c2c61 !important;font-weight:650 !important;text-align:left !important;}
+    .preview-modal .preview-why{margin:0 0 16px !important;padding:16px 17px !important;border:0 !important;border-left:4px solid #ffc400 !important;border-radius:18px !important;background:#f4f7fb !important;color:#08295d !important;}
+    .preview-modal .preview-why strong{display:block !important;margin:0 0 6px !important;font-size:1.03rem !important;color:#081a37 !important;font-weight:900 !important;}
+    .preview-modal .preview-why p{margin:0 !important;font-size:.95rem !important;line-height:1.45 !important;color:#405876 !important;font-weight:650 !important;}
+    .preview-modal .cs-preview-actions{display:grid !important;grid-template-columns:1fr 1fr !important;gap:10px !important;margin:0 6px 10px !important;}
+    .preview-modal .cs-preview-actions a,.preview-modal .cs-preview-actions button{min-height:54px !important;padding:8px 12px !important;border-radius:16px !important;display:flex !important;align-items:center !important;justify-content:center !important;text-align:center !important;text-decoration:none !important;font-size:.92rem !important;line-height:1.12 !important;font-weight:900 !important;cursor:pointer !important;}
+    .preview-modal .cs-preview-maps{background:#ffc400 !important;color:#062f73 !important;border:0 !important;box-shadow:0 8px 18px rgba(255,196,0,.22) !important;}
+    .preview-modal .cs-preview-next{background:#fff !important;color:#0a3476 !important;border:2px solid #c6d3e5 !important;box-shadow:0 5px 14px rgba(13,48,99,.08) !important;}
+    .preview-modal .cs-preview-timer{margin:0 6px !important;padding:12px 13px 10px !important;border-radius:20px !important;background:#fff !important;border:1px solid #e4ebf5 !important;box-shadow:0 8px 24px rgba(13,48,99,.12) !important;}
+    .preview-modal .cs-preview-timer-main{display:grid !important;grid-template-columns:52px 1fr auto !important;align-items:center !important;gap:10px !important;}
+    .preview-modal .cs-preview-ship{width:44px !important;height:44px !important;display:grid !important;place-items:center !important;color:#063a83 !important;}
+    .preview-modal .cs-preview-ship svg{width:42px !important;height:30px !important;fill:currentColor !important;}
+    .preview-modal .cs-preview-back-label{display:block !important;font-size:.88rem !important;line-height:1.05 !important;color:#08295d !important;font-weight:750 !important;}
+    .preview-modal .cs-preview-clock{display:block !important;margin-top:2px !important;font-size:1.85rem !important;line-height:1 !important;color:#11954d !important;font-weight:900 !important;font-variant-numeric:tabular-nums !important;letter-spacing:-.03em !important;}
+    .preview-modal .cs-preview-return{display:block !important;margin-top:5px !important;font-size:.78rem !important;color:#08295d !important;font-weight:750 !important;}
+    .preview-modal .cs-preview-buffer{padding:7px 11px !important;border-radius:999px !important;background:#e5f6e9 !important;border:1px solid #a4d9b1 !important;color:#237240 !important;font-size:.77rem !important;font-weight:850 !important;white-space:nowrap !important;}
+    .preview-modal .cs-preview-return-btn{width:100% !important;min-height:42px !important;margin-top:9px !important;border-radius:13px !important;border:1.5px solid #99b6db !important;background:#eef5ff !important;color:#0a3476 !important;font-size:.84rem !important;font-weight:850 !important;cursor:pointer !important;}
+    .preview-modal .cs-preview-demo-note{margin:8px 0 0 !important;text-align:center !important;font-size:.68rem !important;color:#7a8da8 !important;font-weight:700 !important;}
+    .preview-modal .cs-preview-unlock{display:none !important;margin:14px 6px 0 !important;padding:17px !important;border-radius:18px !important;background:#071f4f !important;color:#fff !important;text-align:center !important;}
+    .preview-modal .cs-preview-unlock.is-visible{display:block !important;}
+    .preview-modal .cs-preview-unlock strong{display:block !important;margin-bottom:6px !important;color:#fff !important;font-size:1.05rem !important;font-weight:950 !important;}
+    .preview-modal .cs-preview-unlock p{margin:0 0 12px !important;color:#dce9fb !important;font-size:.86rem !important;line-height:1.4 !important;font-weight:650 !important;}
+    .preview-modal #previewCta{width:100% !important;min-height:50px !important;margin:0 !important;border:0 !important;border-radius:14px !important;background:#ffc400 !important;color:#062f73 !important;font-size:.92rem !important;font-weight:950 !important;}
+    .preview-modal .preview-note{margin:8px 2px 0 !important;font-size:.72rem !important;color:#dce9fb !important;font-weight:650 !important;}
+    @media (max-width:600px){
+      .preview-modal .preview-dialog{width:calc(100vw - 14px) !important;max-height:94dvh !important;border-radius:24px !important;}
+      .preview-modal .preview-header{min-height:62px !important;padding:10px 12px 10px 17px !important;}
+      .preview-modal .preview-header strong{font-size:.8rem !important;}
+      .preview-modal .preview-close{width:42px !important;height:42px !important;min-width:42px !important;}
+      .preview-modal .preview-body{padding:15px 14px 18px !important;}
+      .preview-modal .cs-preview-status{gap:7px !important;margin-bottom:13px !important;}
+      .preview-modal .cs-preview-stop,.preview-modal .cs-preview-time,.preview-modal .cs-preview-counter{min-height:38px !important;font-size:.78rem !important;}
+      .preview-modal .cs-preview-stop{padding:0 12px !important;}
+      .preview-modal .cs-preview-time{padding:0 11px !important;}
+      .preview-modal .cs-preview-counter{padding:0 12px !important;}
+      .preview-modal #previewTitle{font-size:1.75rem !important;margin-bottom:14px !important;}
+      .preview-modal #previewImage{height:205px !important;border-radius:18px !important;margin-bottom:15px !important;}
+      .preview-modal #previewDescription{font-size:.94rem !important;margin-bottom:15px !important;}
+      .preview-modal .preview-why{padding:14px !important;}
+      .preview-modal .cs-preview-actions{margin-left:0 !important;margin-right:0 !important;gap:8px !important;}
+      .preview-modal .cs-preview-actions a,.preview-modal .cs-preview-actions button{font-size:.82rem !important;min-height:52px !important;padding:7px 8px !important;}
+      .preview-modal .cs-preview-timer{margin-left:0 !important;margin-right:0 !important;}
+      .preview-modal .cs-preview-timer-main{grid-template-columns:44px 1fr !important;gap:8px !important;}
+      .preview-modal .cs-preview-buffer{grid-column:2 !important;justify-self:start !important;margin-top:2px !important;}
+      .preview-modal .cs-preview-clock{font-size:1.68rem !important;}
+      .preview-modal .cs-preview-unlock{margin-left:0 !important;margin-right:0 !important;}
+    }
+  </style>
+
 </head>
 <body class="home-page landing-v160">
   <nav class="cs-desktop-nav cs-desktop-only" aria-label="Desktop-Navigation">
@@ -819,7 +921,7 @@
         <small>cruisestop.eu</small>
       </div>
     </section>
-    <section id="routes" class="routes" aria-labelledby="routes-title"><div class="section-title"><h2 id="routes-title">W&auml;hle die passende Route f&uuml;r deinen Stopp</h2></div><p class="section-copy">Drei einfache Arten, Funchal ohne Gruppentour zu entdecken.</p><div class="route-list"><article class="route-option"><a class="route-card" href="relax_summary_de.html" data-route="Relaxed Funchal" aria-label="Relaxed Funchal"><img src="images/RELAX/relax-stop4.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Entspannteste</span><strong>Relaxed Funchal</strong><span class="route-title-desc">Historische Caf&eacute;s, G&auml;rten und lokale K&ouml;stlichkeiten</span><span class="route-meta"><span>5h</span><span>~3 km</span><span>Leicht</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="easy">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="relax">F&uuml;r &euro;4,99 starten</button></div></article><article class="route-option"><a class="route-card" href="foodie_summary_de.html" data-route="Taste Madeira" aria-label="Taste Madeira"><img src="images/FOODIE/foodie-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Bestes Essen</span><strong>Taste Madeira</strong><span class="route-title-desc">Lokale Aromen und Stra&szlig;en mit Charakter</span><span class="route-meta"><span>5h</span><span>~3,5 km</span><span>Leicht</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="food">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="foodie">F&uuml;r &euro;4,99 starten</button></div></article><article class="route-option"><a class="route-card" href="panoramic_summary_de.html" data-route="Panoramic Funchal" aria-label="Panoramic Funchal"><img src="images/panoramic/panoramic-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Beste Ausblicke</span><strong>Panoramic Funchal</strong><span class="route-title-desc">Seilbahn, Monte, Ausblicke über Funchal und ruhige Rückkehr zum Schiff</span><span class="route-meta"><span>5h</span><span>~4 km</span><span>Mittel</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="panoramic">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="panoramic">F&uuml;r &euro;4,99 starten</button></div></article></div><div class="conversion-panel"><strong>Eine komplette Funchal-Route f&uuml;r &euro;4,99</strong><p>Einmal zahlen. Am Handy &ouml;ffnen. W&auml;hrend deines Kreuzfahrtstopps folgen.</p></div></section>
+    <section id="routes" class="routes" aria-labelledby="routes-title"><div class="section-title"><h2 id="routes-title">W&auml;hle die passende Route f&uuml;r deinen Stopp</h2></div><p class="section-copy">Drei einfache Arten, Funchal ohne Gruppentour zu entdecken.</p><div class="route-list"><article class="route-option"><a class="route-card" href="relax_summary_de.html" data-route="Relaxed Funchal" aria-label="Relaxed Funchal"><img src="images/RELAX/relax-stop4.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Entspannteste</span><strong>Relaxed Funchal</strong><span class="route-title-desc">Historische Caf&eacute;s, G&auml;rten und lokale K&ouml;stlichkeiten</span><span class="route-meta"><span>5h</span><span>~3 km</span><span>Leicht</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="easy">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="relax">F&uuml;r &euro;4,99 starten</button></div></article><article class="route-option"><a class="route-card" href="foodie_summary_de.html" data-route="Taste Madeira" aria-label="Taste Madeira"><img src="images/FOODIE/foodie-stop1.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Bestes Essen</span><strong>Taste Madeira</strong><span class="route-title-desc">Lokale Aromen und Stra&szlig;en mit Charakter</span><span class="route-meta"><span>5h</span><span>~3,5 km</span><span>Leicht</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="food">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="foodie">F&uuml;r &euro;4,99 starten</button></div></article><article class="route-option"><a class="route-card" href="panoramic_summary_de.html" data-route="Panoramic Funchal" aria-label="Panoramic Funchal"><img src="images/panoramic/panoramic-stop3.jpg" loading="lazy" decoding="async" alt=""><span class="route-copy"><span class="route-badge">Beste Ausblicke</span><strong>Panoramic Funchal</strong><span class="route-title-desc">Seilbahn, Monte, Ausblicke über Funchal und ruhige Rückkehr zum Schiff</span><span class="route-meta"><span>5h</span><span>~4 km</span><span>Mittel</span></span></span></a><div class="route-actions"><button class="preview-btn" type="button" data-preview="panoramic">Vorschau</button><button class="buy-route-btn route-buy" type="button" data-buy-route="panoramic">F&uuml;r &euro;4,99 starten</button></div></article></div><div class="conversion-panel"><strong>Eine komplette Funchal-Route f&uuml;r &euro;4,99</strong><p>Einmal zahlen. Am Handy &ouml;ffnen. W&auml;hrend deines Kreuzfahrtstopps folgen.</p></div></section>
     <section class="landing-section faq-section" id="faq" aria-labelledby="faq-title"><p class="section-eyebrow">Fragen</p><h2 id="faq-title">Einfach vor dem Kauf</h2><div class="faq-list"><details><summary><span class="faq-icon" aria-hidden="true">&#128241;</span><span>Muss ich eine App installieren?</span></summary><p>Nein. &Ouml;ffne CruiseStop auf deinem Handy und folge der Route im Browser.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#128674;</span><span>Ist es f&uuml;r Kreuzfahrtg&auml;ste gemacht?</span></summary><p>Ja. Die Routen starten nahe am Hafen von Funchal und sind f&uuml;r begrenzte Landgangszeit geplant.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#128246;</span><span>Funktioniert es offline?</span></summary><p>Die wichtigsten Routenseiten bleiben nach dem Laden verf&uuml;gbar, hilfreich bei schwachem Mobilnetz.</p></details><details><summary><span class="faq-icon" aria-hidden="true">&#9200;</span><span>Was passiert, wenn ich nicht rechtzeitig zur&uuml;ck bin?</span></summary><p>Das Versprechen ist einfach: rechtzeitig zur&uuml;ck zum Schiff oder Geld zur&uuml;ck.</p></details></div></section>
     <section class="desktop-extra seo-explainer" aria-labelledby="seo-explainer-title"><h2 id="seo-explainer-title">Selbstgeführte Funchal-Routen für Kreuzfahrtgäste</h2><p>Erkunde Funchal während eines kurzen Kreuzfahrtstopps unabhängig – mit klarer Route, praktischen Hinweisen und deiner Zeit im Blick.</p><p>Wähle Relaxed Funchal, Taste Madeira oder Panoramic Funchal – jede Route ist einfach zu folgen und endet nahe am Kreuzfahrthafen.</p></section>
   </main>
@@ -829,5 +931,150 @@
   <div class="preview-modal" id="previewModal" aria-hidden="true"><div class="preview-backdrop" data-close-preview></div><section class="preview-dialog" role="dialog" aria-modal="true" aria-labelledby="previewTitle"><header class="preview-header"><strong id="previewEyebrow">Kostenlose Vorschau - Stopp 1</strong><button class="preview-close" type="button" data-close-preview aria-label="Vorschau schlie&szlig;en">&times;</button></header><img class="preview-image" id="previewImage" src="images/RELAX/relax-stop4.jpg" alt=""><div class="preview-body"><h3 id="previewTitle">Jardim Municipal</h3><p class="preview-subtitle" id="previewSubtitle">Ein Garten im Herzen der Stadt</p><p id="previewDescription"></p><aside class="preview-why"><strong>Warum dieser Stopp?</strong><p id="previewWhy"></p></aside><p class="preview-duration" id="previewDuration"></p><button class="preview-cta" id="previewCta" type="button" data-buy-route="relax">F&uuml;r &euro;4,99 starten</button><p class="preview-note">Geld-zur&uuml;ck-Garantie, wenn du nicht rechtzeitig zum Schiff zur&uuml;ckkommst.</p></div></section></div>
   <script src="app.js?v=253" defer></script>
   <script src="site-update.js?v=253"></script>
+
+    <script id="cruisestop-real-route-preview-v1-script">
+  (function(){
+    const L = {"filename": "index_de.html", "previewHeader": "KOSTENLOSE VORSCHAU — STOPP 1", "stop": "STOPP 1", "here": "hier", "why": "Warum dieser Stopp?", "maps": "In Google Maps öffnen", "next": "NÄCHSTER STOPP →", "back": "Zurück zum Schiff", "returnBy": "Zurück bis:", "buffer": "+45 Min. Puffer", "routeBack": "Rückweg anzeigen", "unlockTitle": "Gefällt dir, was du siehst?", "unlockText": "Schalte die komplette Route frei, um zu den nächsten Stopps weiterzugehen, die vollständige Rückwegführung zu nutzen und den Schiffstimer bei dir zu haben.", "unlockCta": "Komplette Route freischalten — 4,99 €", "guarantee": "Rechtzeitig zurück am Schiff — oder Geld zurück.", "routeLocked": "Der nächste Stopp ist Teil der kompletten Route.", "previewTimer": "Demo-Timer"};
+    const ROUTES = {"easy": {"route": "relax", "stopNo": "5", "counter": "5/7", "duration": "20 Min.", "name": "Golden Gate", "subtitle": "Die ikonischste Terrasse in Funchal", "description": "Setz dich hin, bestelle etwas — einen Kaffee, eine Poncha oder einfach das, worauf du Lust hast — und beobachte nur. Menschen, die vorbeigehen, Boote in der Ferne und der Klang der Stadt um dich herum.", "why": "Das ist der Postkartenmoment der Route. Schlicht, schön und vollkommen authentisch.", "image": "images/RELAX/relax-stop4.jpg", "map": "Golden Gate Funchal, Madeira"}, "food": {"route": "foodie", "stopNo": "1", "counter": "1/5", "duration": "35 Min.", "name": "Mercado dos Lavradores", "subtitle": "Starte mit den Aromen Funchals", "description": "Beginne zwischen Obst, Blumen, Fischständen und lokalen Produkten an einem der lebendigsten kulinarischen Orte Funchals. Schau dich in Ruhe um und spüre den Rhythmus des Marktes, bevor du die Genussroute fortsetzt.", "why": "Eine der schnellsten Möglichkeiten, Funchals Esskultur und lokales Leben zu erleben.", "image": "images/FOODIE/foodie-stop1.jpg", "map": "Mercado dos Lavradores, Funchal, Madeira"}, "panoramic": {"route": "panoramic", "stopNo": "1", "counter": "1/6", "duration": "20 Min.", "name": "Seilbahn Funchal", "subtitle": "Funchal von oben", "description": "Fahr mit der Seilbahn von der Altstadt hinauf nach Monte und sieh zu, wie sich Funchal unter dir öffnet. Während der Fahrt blickst du über die roten Dächer, die Bucht, den Hafen und den Atlantik.", "why": "Die Fahrt selbst ist einer der großen Panoramamomente der Route — eine entspannte Möglichkeit, Funchal aus einer völlig neuen Perspektive zu erleben.", "image": "images/panoramic/panoramic-stop2.jpg", "map": "Teleférico Funchal-Monte, Funchal, Madeira"}};
+    let timerId = null;
+
+    function shipSvg(){
+      return '<svg viewBox="0 0 96 58" aria-hidden="true"><path d="M19 26c10-5 21-7 34-4 10 2 18 1 24-4 0 10-7 18-20 21-13 4-27 1-42-8 2-1 3-3 4-5Z"></path><path d="M30 13h30c3 0 6 2 7 5l2 7c-13 1-28-7-44-2l1-6c0-2 2-4 4-4Z"></path><path d="M43 5h8v8h-8z"></path><path d="M12 42c11-5 21 5 32 0s21 5 40-4" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path></svg>';
+    }
+
+    function formatClock(seconds){
+      const h = Math.floor(seconds/3600);
+      const m = Math.floor((seconds%3600)/60);
+      const s = seconds%60;
+      return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    }
+    function returnTime(){
+      const d = new Date(Date.now()+5*60*60*1000);
+      return d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    }
+    function startDemoTimer(){
+      if(timerId) clearInterval(timerId);
+      let remaining = 5*60*60-1;
+      const clock = document.getElementById('csPreviewClock');
+      const rtn = document.getElementById('csPreviewReturnTime');
+      if(rtn) rtn.textContent = returnTime();
+      if(clock) clock.textContent = formatClock(remaining);
+      timerId = setInterval(function(){
+        const modal = document.getElementById('previewModal');
+        if(!modal || modal.getAttribute('aria-hidden') === 'true'){
+          clearInterval(timerId); timerId=null; return;
+        }
+        remaining = Math.max(0, remaining-1);
+        if(clock) clock.textContent = formatClock(remaining);
+      },1000);
+    }
+
+    function buildShell(){
+      const modal = document.getElementById('previewModal');
+      if(!modal) return;
+      if(modal.dataset.realRoutePreview === '1' && document.getElementById('csPreviewCounter') && document.getElementById('csPreviewMaps')) return;
+      modal.dataset.realRoutePreview = '0';
+      const body = modal.querySelector('.preview-body');
+      const title = document.getElementById('previewTitle');
+      const subtitle = document.getElementById('previewSubtitle');
+      const image = document.getElementById('previewImage');
+      const desc = document.getElementById('previewDescription');
+      const whyBox = modal.querySelector('.preview-why');
+      const why = document.getElementById('previewWhy');
+      const duration = document.getElementById('previewDuration');
+      const cta = document.getElementById('previewCta');
+      const note = modal.querySelector('.preview-note');
+      if(!body || !title || !image || !desc || !whyBox || !why || !duration || !cta) return;
+
+      const status = document.createElement('div');
+      status.className = 'cs-preview-status';
+      status.innerHTML = '<span class="cs-preview-stop" id="csPreviewStop">'+L.stop+'</span><span class="cs-preview-time" id="csPreviewTime"></span><span class="cs-preview-counter" id="csPreviewCounter">1/7</span>';
+      status.querySelector('#csPreviewTime').appendChild(duration);
+
+      const actions = document.createElement('div');
+      actions.className = 'cs-preview-actions';
+      actions.innerHTML = '<a class="cs-preview-maps" id="csPreviewMaps" href="#" target="_blank" rel="noopener">📍&nbsp; '+L.maps+'</a><button class="cs-preview-next" id="csPreviewNext" type="button">'+L.next+'</button>';
+
+      const timer = document.createElement('div');
+      timer.className = 'cs-preview-timer';
+      timer.innerHTML = '<div class="cs-preview-timer-main"><div class="cs-preview-ship">'+shipSvg()+'</div><div><span class="cs-preview-back-label">'+L.back+'</span><strong class="cs-preview-clock" id="csPreviewClock">04:59:59</strong><span class="cs-preview-return">'+L.returnBy+' <b id="csPreviewReturnTime">--:--</b></span></div><span class="cs-preview-buffer">'+L.buffer+'</span></div><button class="cs-preview-return-btn" id="csPreviewReturnBtn" type="button">🗺️&nbsp; '+L.routeBack+' &nbsp;›</button><p class="cs-preview-demo-note">'+L.previewTimer+'</p>';
+
+      const unlock = document.createElement('div');
+      unlock.className = 'cs-preview-unlock';
+      unlock.id = 'csPreviewUnlock';
+      const us = document.createElement('strong'); us.textContent = L.unlockTitle;
+      const up = document.createElement('p'); up.textContent = L.unlockText;
+      unlock.append(us,up,cta);
+      if(note) unlock.appendChild(note);
+
+      const whyStrong = whyBox.querySelector('strong');
+      if(whyStrong) whyStrong.textContent = L.why;
+
+      body.innerHTML = '';
+      body.append(status,title);
+      if(subtitle) body.appendChild(subtitle);
+      body.append(image,desc,whyBox,actions,timer,unlock);
+      modal.dataset.realRoutePreview = '1';
+
+      const revealUnlock = function(){
+        unlock.classList.add('is-visible');
+        const msg = unlock.querySelector('p');
+        if(msg) msg.textContent = L.routeLocked+' '+L.unlockText;
+        setTimeout(function(){unlock.scrollIntoView({behavior:'smooth',block:'nearest'});},30);
+      };
+      document.getElementById('csPreviewNext').addEventListener('click',revealUnlock);
+      document.getElementById('csPreviewReturnBtn').addEventListener('click',revealUnlock);
+    }
+
+    function applyRoute(type){
+      buildShell();
+      const d = ROUTES[type];
+      const modal = document.getElementById('previewModal');
+      if(!d || !modal) return;
+      const eyebrow = document.getElementById('previewEyebrow');
+      const title = document.getElementById('previewTitle');
+      const subtitle = document.getElementById('previewSubtitle');
+      const image = document.getElementById('previewImage');
+      const desc = document.getElementById('previewDescription');
+      const why = document.getElementById('previewWhy');
+      const duration = document.getElementById('previewDuration');
+      const stopBadge = document.getElementById('csPreviewStop');
+      const counter = document.getElementById('csPreviewCounter');
+      const maps = document.getElementById('csPreviewMaps');
+      const unlock = document.getElementById('csPreviewUnlock');
+      const cta = document.getElementById('previewCta');
+      const note = modal.querySelector('.preview-note');
+      if(eyebrow) eyebrow.textContent = L.previewHeader.replace(/1$/, d.stopNo);
+      if(stopBadge) stopBadge.textContent = L.stop.replace(/1$/, d.stopNo);
+      if(title) title.textContent = d.name;
+      if(subtitle) subtitle.textContent = d.subtitle;
+      if(image){image.src=d.image;image.alt=d.name;}
+      if(desc) desc.textContent = d.description;
+      if(why) why.textContent = d.why;
+      if(duration) duration.textContent = d.duration+' '+L.here;
+      if(counter) counter.textContent = d.counter;
+      if(maps) maps.href = 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(d.map);
+      if(cta){cta.textContent=L.unlockCta;cta.setAttribute('data-buy-route',d.route);}
+      if(note) note.textContent = L.guarantee;
+      if(unlock){unlock.classList.remove('is-visible');const p=unlock.querySelector('p');if(p)p.textContent=L.unlockText;}
+      const dialog = modal.querySelector('.preview-dialog');
+      if(dialog) dialog.scrollTop = 0;
+      startDemoTimer();
+    }
+
+    document.addEventListener('DOMContentLoaded',function(){
+      buildShell();
+      document.querySelectorAll('.preview-btn[data-preview]').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          const type = btn.getAttribute('data-preview');
+          [0,40,120,260].forEach(function(delay){
+            setTimeout(function(){applyRoute(type);},delay);
+          });
+        });
+      });
+    });
+  })();
+  </script>
+
 </body>
 </html>
