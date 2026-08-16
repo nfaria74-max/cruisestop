@@ -1,7 +1,7 @@
 const ROUTES = {
   relax: { name: "Relaxed Funchal", price: 499 },
-  foodie: { name: "Taste Madeira", price: 499 },
-  panoramic: { name: "Panoramic", price: 499 }
+  foodie: { name: "Taste Madeira", price: 499, available: false },
+  panoramic: { name: "Panoramic Funchal", price: 499 }
 };
 
 const ALLOWED_ORIGINS = new Set([
@@ -35,6 +35,10 @@ export async function onRequestPost({ request, env }) {
 
     if (!ROUTES[route]) {
       return Response.json({ error: "Invalid route" }, { status: 400, headers });
+    }
+
+    if (ROUTES[route].available === false) {
+      return Response.json({ error: "Route not available yet" }, { status: 409, headers });
     }
 
     if (!env.STRIPE_SECRET_KEY) {

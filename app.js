@@ -348,8 +348,23 @@ function setPreview(routeKey) {
   document.querySelector("#previewDescription").textContent = preview.description;
   document.querySelector("#previewWhy").textContent = preview.why;
   document.querySelector("#previewDuration").textContent = preview.duration;
-  document.querySelector("#previewCta").textContent = preview.cta;
-  document.querySelector("#previewCta").dataset.buyRoute = preview.route;
+  const previewCta = document.querySelector("#previewCta");
+  const foodieComingSoon = {
+    en: "Coming soon",
+    pt: "Brevemente",
+    de: "Demnächst",
+    fr: "Bientôt"
+  };
+
+  if (preview.route === "foodie" && foodieComingSoon[activeLang]) {
+    previewCta.textContent = foodieComingSoon[activeLang];
+    previewCta.disabled = true;
+    previewCta.removeAttribute("data-buy-route");
+  } else {
+    previewCta.textContent = preview.cta;
+    previewCta.disabled = false;
+    previewCta.dataset.buyRoute = preview.route;
+  }
 }
 
 function openPreview(routeKey) {
