@@ -682,6 +682,27 @@
     }
   </style>
 
+
+  <style id="cruisestop-desktop-hero-lighter">
+    /* Lighter hero image on desktop only. Mobile remains unchanged. */
+    @media (min-width: 900px) {
+      html body.home-page.landing-v160 .hero-photo {
+        filter: brightness(1.10) saturate(1.04) !important;
+      }
+
+      html body.home-page.landing-v160 .hero-shade {
+        background: linear-gradient(
+          90deg,
+          rgba(2,15,43,.58) 0%,
+          rgba(2,15,43,.48) 28%,
+          rgba(2,15,43,.28) 50%,
+          rgba(2,15,43,.10) 72%,
+          rgba(2,15,43,.04) 100%
+        ) !important;
+      }
+    }
+  </style>
+
 </head>
 <body class="home-page landing-v160">
   <nav class="cs-desktop-nav cs-desktop-only" aria-label="Navegação desktop">
