@@ -1043,7 +1043,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // DEV: if (!requireRouteAccess()) return;
+        if (!requireRouteAccess()) return;
 
         restoreProgress();
         updateStopDisplay();
