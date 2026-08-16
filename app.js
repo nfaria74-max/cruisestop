@@ -72,7 +72,7 @@ if (stickyCta) {
   updateStickyCtaVisibility();
 }
 
-const TEST_MODE_NO_STRIPE = true;
+const TEST_MODE_NO_STRIPE = false;
 const pageLang = (document.documentElement.lang || "en").slice(0, 2).toLowerCase();
 const activeLang = supportedLangs.includes(pageLang) ? pageLang : "en";
 const pageSuffix = activeLang === "en" ? "" : `_${activeLang}`;
