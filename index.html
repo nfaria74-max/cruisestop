@@ -976,7 +976,11 @@
 
     function buildShell(){
       const modal = document.getElementById('previewModal');
-      if(!modal || modal.dataset.realRoutePreview === '1') return;
+      if(!modal) return;
+      /* app.js can rebuild the legacy preview for some routes (notably Relaxed).
+         Only skip when our real-route shell is still actually present. */
+      if(modal.dataset.realRoutePreview === '1' && document.getElementById('csPreviewCounter') && document.getElementById('csPreviewMaps')) return;
+      modal.dataset.realRoutePreview = '0';
       const body = modal.querySelector('.preview-body');
       const title = document.getElementById('previewTitle');
       const subtitle = document.getElementById('previewSubtitle');
@@ -1068,8 +1072,12 @@
       document.querySelectorAll('.preview-btn[data-preview]').forEach(function(btn){
         btn.addEventListener('click',function(){
           const type = btn.getAttribute('data-preview');
-          /* Let the existing CruiseStop preview logic open the modal first, then replace only its content. */
-          setTimeout(function(){applyRoute(type);},0);
+          /* Let the existing CruiseStop preview logic open the modal first.
+             Relaxed is also refreshed a few milliseconds later because the legacy
+             app.js preview can rewrite that modal after the initial click. */
+          [0,40,120,260].forEach(function(delay){
+            setTimeout(function(){applyRoute(type);},delay);
+          });
         });
       });
     });
