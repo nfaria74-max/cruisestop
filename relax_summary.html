@@ -297,7 +297,7 @@ body.route-summary-page .start-now-btn:active {
     </div>
   </main>
   
-  <script>function vibrateTap(){if('vibrate' in navigator)navigator.vibrate(45);}function startRoute(){vibrateTap();const now=Date.now();const route='relax';localStorage.setItem('access_'+route,JSON.stringify({expiry:now+30*24*60*60*1000,sessionId:'test-mode'}));localStorage.setItem('progress_'+route,JSON.stringify({route:route,currentStopIndex:0,currentSeconds:0,isRunning:true,isPaused:false,savedAt:now}));window.location.href='relex.html';}</script>
+  <script>function vibrateTap(){if('vibrate' in navigator)navigator.vibrate(45);}async function startRoute(){vibrateTap();const now=Date.now();const route='relax';let access=null;try{access=JSON.parse(localStorage.getItem('access_'+route)||'null');}catch(e){}if(!access||!access.expiry||Number(access.expiry)<=now){localStorage.removeItem('access_'+route);const lang=(document.documentElement.lang||'en').slice(0,2).toLowerCase();try{const response=await fetch('/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({route:route,lang:lang})});const data=await response.json();if(data.url){window.location.href=data.url;return;}}catch(e){}alert('Could not open checkout. Please try again.');return;}localStorage.setItem('progress_'+route,JSON.stringify({route:route,currentStopIndex:0,currentSeconds:0,isRunning:true,isPaused:false,savedAt:now}));window.location.href='relex.html';}</script>
   
   <script src="site-update.js?v=253"></script>
 </body>
