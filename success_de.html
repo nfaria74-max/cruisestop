@@ -1,1 +1,161 @@
-<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"><meta name="theme-color" content="#062f73"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="stylesheet" href="styles.css?v=253"><link rel="stylesheet" href="styles-route.css?v=253"><link rel="stylesheet" href="styles-ux-optimized.css?v=253"><script src="ux-performance.js?v=253" defer></script><title>Zahlung erfolgreich - CruiseStop</title><link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script></head><body><div id="app" class="route-container"><div class="route-column" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;text-align:center;gap:1.5rem;padding:2rem;"><div id="stateLoading"><div class="spinner"></div><p style="color:rgba(255,255,255,.82);margin-top:1rem;">Zahlung wird geprüft...</p></div><div id="stateSuccess" style="display:none;"><div style="font-size:4rem;margin-bottom:.5rem;">&#127881;</div><h1 style="color:#FFC107;font-size:1.6rem;margin-bottom:.5rem;">Zahlung bestätigt!</h1><p style="color:rgba(255,255,255,.9);margin-bottom:2rem;">Deine Route ist bereit. Viel Spaß in Funchal!</p><button id="startBtn" class="next-stop-btn" style="font-size:1.1rem;padding:1rem 2rem;">ROUTE STARTEN -></button><p style="color:rgba(255,255,255,.65);font-size:.85rem;margin-top:1.5rem;">Zugang 30 Tage auf diesem Gerät gespeichert.</p></div><div id="stateError" style="display:none;"><div style="font-size:3rem;margin-bottom:.5rem;">!</div><h1 style="color:#ff6b6b;font-size:1.4rem;margin-bottom:.5rem;">Etwas ist schiefgelaufen</h1><p style="color:rgba(255,255,255,.82);margin-bottom:2rem;" id="errorMsg">Wir konnten die Zahlung nicht prüfen.</p><button onclick="window.location.href='index_de.html'" class="action-btn secondary">Zur Startseite</button><p style="color:rgba(255,255,255,.65);font-size:.85rem;margin-top:1rem;">Falls dir etwas berechnet wurde, kontaktiere uns auf WhatsApp.</p></div></div></div><style>.spinner{width:48px;height:48px;border:4px solid rgba(255,255,255,.15);border-top-color:#FFC107;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto}@keyframes spin{to{transform:rotate(360deg)}}</style><script>const ROUTE_PAGES={relax:'relex_de.html',foodie:'foddie_de.html',panoramic:'panoramic_de.html'};const params=new URLSearchParams(window.location.search);const sessionId=params.get('session_id');async function verifyPayment(){if(!sessionId){showError('Keine Zahlungssitzung gefunden.');return;}try{const res=await fetch('/verify?session_id='+encodeURIComponent(sessionId));const data=await res.json();if(data.paid&&data.route&&ROUTE_PAGES[data.route]){const expiry=Number(data.accessExpiresAt)||Date.now()+30*24*60*60*1000;if(data.customerEmail)localStorage.setItem('cruisestop_customer_email',data.customerEmail);localStorage.setItem('access_'+data.route,JSON.stringify({expiry:expiry,sessionId:sessionId}));showSuccess(data.route);}else{showError('Zahlung nicht bestätigt. Bitte erneut versuchen oder Support kontaktieren.');}}catch(err){showError('Server nicht erreichbar. Prüfe deine Verbindung und versuche es erneut.');}}function showSuccess(route){document.getElementById('stateLoading').style.display='none';document.getElementById('stateSuccess').style.display='block';document.getElementById('startBtn').onclick=function(){window.location.href=ROUTE_PAGES[route];};}function showError(msg){document.getElementById('stateLoading').style.display='none';document.getElementById('stateError').style.display='block';document.getElementById('errorMsg').textContent=msg;}verifyPayment();</script><script src="site-update.js?v=253"></script></body></html>
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"><meta name="theme-color" content="#062f73"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="stylesheet" href="styles.css?v=253"><link rel="stylesheet" href="styles-route.css?v=253"><link rel="stylesheet" href="styles-ux-optimized.css?v=253"><script src="ux-performance.js?v=253" defer></script><title>Zahlung bestätigt - CruiseStop</title><link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script></head><body><div id="app" class="route-container"><div class="route-column" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;text-align:center;gap:1.5rem;padding:2rem;"><div id="stateLoading"><div class="spinner"></div><p style="color:rgba(255,255,255,.82);margin-top:1rem;">Zahlung wird überprüft...</p></div><div id="stateSuccess" style="display:none;">
+  <div style="font-size:4rem;margin-bottom:.5rem;">&#127881;</div>
+
+  <h1 style="color:#FFC107;font-size:1.6rem;margin-bottom:.5rem;">
+    Zahlung bestätigt!
+  </h1>
+
+  <p style="color:rgba(255,255,255,.9);margin-bottom:1.25rem;">
+    Deine Route ist bereit.
+  </p>
+
+  <div id="qrBox"
+       style="background:#fff;padding:12px;border-radius:14px;display:inline-block;margin-bottom:1rem;">
+  </div>
+
+  <p style="color:rgba(255,255,255,.82);font-size:.92rem;max-width:340px;margin:0 auto 1rem;">
+    Scanne diesen QR-Code mit dem Smartphone, das du auf Madeira verwenden möchtest.
+  </p>
+
+  <input id="accessLink"
+         type="text"
+         readonly
+         aria-label="Persönlicher Zugangslink"
+         style="width:100%;max-width:360px;padding:.8rem;border-radius:9px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:.78rem;">
+
+  <button id="copyLinkBtn"
+          class="action-btn secondary"
+          style="width:100%;max-width:360px;margin-top:.75rem;">
+    Zugangslink kopieren
+  </button>
+
+  <button id="openAccessBtn"
+          class="next-stop-btn"
+          style="width:100%;max-width:360px;font-size:1.05rem;padding:1rem 1.5rem;margin-top:.75rem;">
+    ZUGANGSSEITE ÖFFNEN
+  </button>
+
+  <p id="copyStatus"
+     style="color:#b9f6ca;font-size:.85rem;min-height:1.2rem;margin:.65rem 0 0;">
+  </p>
+
+  <p id="expiryText"
+     style="color:rgba(255,255,255,.65);font-size:.85rem;margin-top:1rem;">
+    30 Tage ab Kauf gültig · Bis zu 2 Geräte.
+  </p>
+</div><div id="stateError" style="display:none;"><div style="font-size:3rem;margin-bottom:.5rem;">!</div><h1 style="color:#ff6b6b;font-size:1.4rem;margin-bottom:.5rem;">Etwas ist schiefgelaufen</h1><p style="color:rgba(255,255,255,.82);margin-bottom:2rem;" id="errorMsg">Die Zahlung konnte nicht überprüft werden.</p><button onclick="window.location.href='index_de.html'" class="action-btn secondary">Zur Startseite</button><p style="color:rgba(255,255,255,.65);font-size:.85rem;margin-top:1rem;">Falls dir ein Betrag berechnet wurde, kontaktiere uns über WhatsApp.</p></div></div></div><style>.spinner{width:48px;height:48px;border:4px solid rgba(255,255,255,.15);border-top-color:#FFC107;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto}@keyframes spin{to{transform:rotate(360deg)}}</style><script src="vendor/qrcode.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const sessionId = params.get("session_id");
+
+let personalAccessUrl = "";
+
+async function verifyPayment() {
+  if (!sessionId) {
+    showError("Keine Zahlungssitzung gefunden.");
+    return;
+  }
+
+  try {
+    const res = await fetch(
+      "/verify?session_id=" + encodeURIComponent(sessionId)
+    );
+
+    const data = await res.json();
+
+    if (
+      data.paid &&
+      data.route &&
+      data.accessToken &&
+      Number(data.accessExpiresAt) > Date.now()
+    ) {
+      if (data.customerEmail) {
+        localStorage.setItem(
+          "cruisestop_customer_email",
+          data.customerEmail
+        );
+      }
+
+      personalAccessUrl =
+        window.location.origin +
+        "/access.html?lang=de&token=" +
+        encodeURIComponent(data.accessToken);
+
+      showSuccess(data.accessExpiresAt);
+      return;
+    }
+
+    showError(
+      "Zahlung nicht bestätigt. Bitte versuche es erneut oder kontaktiere den Support."
+    );
+
+  } catch (err) {
+    showError(
+      "Der Server ist nicht erreichbar. Prüfe deine Verbindung und versuche es erneut."
+    );
+  }
+}
+
+function showSuccess(accessExpiresAt) {
+  document.getElementById("stateLoading").style.display = "none";
+  document.getElementById("stateSuccess").style.display = "block";
+
+  const accessLink = document.getElementById("accessLink");
+  accessLink.value = personalAccessUrl;
+
+  const qr = qrcode(0, "M");
+  qr.addData(personalAccessUrl);
+  qr.make();
+
+  const qrBox = document.getElementById("qrBox");
+  qrBox.innerHTML = qr.createImgTag(5, 8);
+
+  const qrImage = qrBox.querySelector("img");
+  if (qrImage) {
+    qrImage.alt = "QR-Code für deinen persönlichen CruiseStop-Zugangslink";
+    qrImage.style.display = "block";
+    qrImage.style.maxWidth = "220px";
+    qrImage.style.width = "100%";
+    qrImage.style.height = "auto";
+  }
+
+  const expiry = new Date(Number(accessExpiresAt));
+
+  document.getElementById("expiryText").textContent =
+    "Zugang gültig bis " +
+    expiry.toLocaleDateString("de-DE") +
+    " · Bis zu 2 Geräte.";
+}
+
+document.getElementById("openAccessBtn").onclick = function () {
+  if (personalAccessUrl) {
+    window.location.href = personalAccessUrl;
+  }
+};
+
+document.getElementById("copyLinkBtn").onclick = async function () {
+  if (!personalAccessUrl) return;
+
+  try {
+    await navigator.clipboard.writeText(personalAccessUrl);
+    document.getElementById("copyStatus").textContent =
+      "Zugangslink kopiert.";
+  } catch (err) {
+    const field = document.getElementById("accessLink");
+    field.focus();
+    field.select();
+    document.execCommand("copy");
+
+    document.getElementById("copyStatus").textContent =
+      "Zugangslink kopiert.";
+  }
+};
+
+function showError(msg) {
+  document.getElementById("stateLoading").style.display = "none";
+  document.getElementById("stateError").style.display = "block";
+  document.getElementById("errorMsg").textContent = msg;
+}
+
+verifyPayment();
+</script><script src="site-update.js?v=253"></script></body></html>

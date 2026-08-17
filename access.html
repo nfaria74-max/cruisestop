@@ -118,7 +118,7 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const requestedLang = params.get("lang");
-    const pageLang = requestedLang === "pt" ? "pt" : "en";
+    const pageLang = ["pt", "de"].includes(requestedLang) ? requestedLang : "en";
     const accessToken = params.get("token");
 
     const TEXT = {
@@ -156,6 +156,24 @@
         deviceLimit: "Esta compra já foi ativada no máximo de 2 dispositivos.",
         expired: "Este acesso CruiseStop expirou.",
         retry: "Não foi possível ativar este dispositivo. Tente novamente."
+      },
+
+      de: {
+        title: "Route aktivieren - CruiseStop",
+        readyTitle: "Deine Route ist bereit",
+        readyText: "Aktiviere dieses Gerät, um deine CruiseStop-Route zu nutzen.",
+        activateButton: "Dieses Gerät aktivieren",
+        activating: "Wird aktiviert...",
+        note: "Dein Kauf kann auf bis zu 2 Geräten aktiviert werden und bleibt bis zum ursprünglichen Ablaufdatum 30 Tage nach dem Kauf gültig.",
+        successTitle: "Gerät aktiviert",
+        successText: "Deine CruiseStop-Route ist jetzt auf diesem Gerät verfügbar.",
+        openButton: "Meine Route öffnen",
+        errorTitle: "Aktivierung nicht möglich",
+        genericError: "Dieses Gerät konnte nicht aktiviert werden.",
+        incomplete: "Dieser Zugangslink ist unvollständig.",
+        deviceLimit: "Dieser Kauf wurde bereits auf der maximalen Anzahl von 2 Geräten aktiviert.",
+        expired: "Dieser CruiseStop-Zugang ist abgelaufen.",
+        retry: "Dieses Gerät konnte nicht aktiviert werden. Bitte versuche es erneut."
       }
     };
 
@@ -169,6 +187,11 @@
         relax: "relex_pt.html",
         foodie: "foddie_pt.html",
         panoramic: "panoramic_pt.html"
+      },
+      de: {
+        relax: "relex_de.html",
+        foodie: "foddie_de.html",
+        panoramic: "panoramic_de.html"
       }
     };
 
