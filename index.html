@@ -30,6 +30,12 @@
 <link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script>
   <style>
     /* Override placed after all external CSS — higher specificity wins */
+    /* Microtexto sob o CTA — escondido por omissão, revelado no @media (max-width:719px)
+       mais abaixo. Tem de ficar ANTES desse bloco: mesma especificidade (0-1-0),
+       por isso decide a ordem no ficheiro. Assim o desktop (>=900px) nunca o mostra. */
+    .hero-access-note {
+      display: none;
+    }
     /* hero-title: 36px no mobile (era ~40px) — apenas font-size */
     @media (max-width: 719px) {
       body.home-page.landing-v160 .hero::after {
@@ -39,6 +45,43 @@
     @media (max-width: 719px) {
       body.home-page.landing-v160 #hero-title {
         font-size: clamp(2.25rem, 8.25vw, 3.38rem) !important;
+      }
+
+      /* Posição do CTA no mobile.
+         A regra que mandava mesmo era styles-fixes.css:148 —
+         `html body.home-page.landing-v160 .hero-actions` (0-3-2, !important),
+         com clamp(60px, 10svh, 90px). A regra que estava aqui no bloco dos 430px
+         era `body.home-page...` (0-3-1) e NUNCA chegou a aplicar-se.
+         Repetimos o seletor exato (0-3-2) — como este <style> vem depois do <link>,
+         empate de especificidade resolve-se pela ordem — e somamos 50px ao clamp
+         original, preservando o comportamento responsivo em altura. */
+      html body.home-page.landing-v160 .hero-actions {
+        margin-top: clamp(110px, calc(10svh + 50px), 140px) !important;
+      }
+
+      /* Microtexto: filho do .hero-actions, que no mobile é grid com
+         justify-items:start e gap:0, e cujo único filho visível é o botão
+         (o .secondary-link está display:none desde styles.css:5484).
+         Fica portanto encostado ao botão e alinhado com ele. */
+      .hero-access-note {
+        display: block;
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.3;
+        font-weight: 500;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.88);
+        text-shadow: 0 1px 3px rgba(2, 10, 25, 0.55);
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 380px) {
+      /* Abaixo dos ~380px os 47 caracteres a 13px deixam de caber no espaço
+         útil (largura menos o padding lateral do .hero-content). */
+      .hero-access-note {
+        white-space: normal;
+        max-width: 280px;
       }
     }
     .how-flow {
@@ -95,10 +138,9 @@
         display: none !important;
       }
 
-      /* CTA descido 20px — era margin-top:20px, passa a 40px */
-      body.home-page.landing-v160 .hero-actions {
-        margin-top: 40px !important;
-      }
+      /* A antiga regra do CTA (margin-top:40px) vivia aqui e era código morto —
+         perdia por especificidade para styles-fixes.css:148. Substituída pela
+         regra `html body...` no bloco dos 719px acima. Não repor aqui. */
 
     }
   </style>
@@ -830,7 +872,7 @@
     loading="eager"
     decoding="async"
     fetchpriority="high"
-    alt="Funchal coastline with cruise ship, cathedral and phone showing CruiseStop walking route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides for cruise passengers</p><h1 id="hero-title">See the best of Funchal in <span class="hero-time-highlight">5 hours</span></h1><p class="hero-subline">no tours, no stress &mdash; and always back to the ship on time</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>Start for &euro;4,99</span></a><a class="secondary-link" href="#preview">See how it works</a></div><div class="hero-product" aria-label="Phone route preview"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal Route</span><strong>5 hours</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Funchal Port <em>30 min</em></span><span><b>2</b> Historic Centre <em>45 min</em></span><span><b>3</b> Cathedral <em>20 min</em></span></div><div class="hero-phone__return">Back to the ship on time</div></div></div></section></div><div class="lang-picker" aria-label="Language selector">
+    alt="Funchal coastline with cruise ship, cathedral and phone showing CruiseStop walking route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides for cruise passengers</p><h1 id="hero-title">See the best of Funchal in <span class="hero-time-highlight">5 hours</span></h1><p class="hero-subline">no tours, no stress &mdash; and always back to the ship on time</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>Start for &euro;4,99</span></a><a class="secondary-link" href="#preview">See how it works</a><div class="hero-access-note">Valid for 30 days &middot; Activate on up to 2 devices</div></div><div class="hero-product" aria-label="Phone route preview"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal Route</span><strong>5 hours</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Funchal Port <em>30 min</em></span><span><b>2</b> Historic Centre <em>45 min</em></span><span><b>3</b> Cathedral <em>20 min</em></span></div><div class="hero-phone__return">Back to the ship on time</div></div></div></section></div><div class="lang-picker" aria-label="Language selector">
     <button class="lang-picker__toggle" aria-haspopup="listbox" aria-expanded="false" id="langToggle">
       <img src="icons/flag/EN.png" alt="" class="lang-picker__flag"><span class="lang-picker__code">EN</span><svg class="lang-picker__caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
     </button>
