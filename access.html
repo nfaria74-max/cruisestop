@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#062f73">
+  <title>Activate your route - CruiseStop</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #062f73;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: #0b427c;
+      border-radius: 20px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 18px 50px rgba(0,0,0,.25);
+    }
+
+    .brand {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      opacity: .9;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 1.7rem;
+      color: #ffc107;
+    }
+
+    p {
+      line-height: 1.5;
+      color: rgba(255,255,255,.88);
+    }
+
+    .note {
+      font-size: .9rem;
+      color: rgba(255,255,255,.65);
+      margin-top: 18px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 16px 18px;
+      border: 0;
+      border-radius: 12px;
+      background: #ffc107;
+      color: #062f73;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .65;
+      cursor: wait;
+    }
+
+    .error {
+      color: #ffb4b4;
+    }
+
+    .success {
+      color: #b9f6ca;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="brand">CruiseStop</div>
+
+    <div id="readyState">
+      <h1>Your route is ready</h1>
+      <p>
+        Activate this device to use your CruiseStop route.
+      </p>
+      <button id="activateBtn" type="button">Activate this device</button>
+      <p class="note">
+        Your purchase can be activated on up to 2 devices and remains valid
+        until the original 30-day expiry date.
+      </p>
+    </div>
+
+    <div id="successState" style="display:none;">
+      <h1>Device activated</h1>
+      <p class="success">
+        Your CruiseStop route is now available on this device.
+      </p>
+      <button id="openRouteBtn" type="button">Open my route</button>
+    </div>
+
+    <div id="errorState" style="display:none;">
+      <h1>Unable to activate</h1>
+      <p id="errorMessage" class="error">
+        We could not activate this device.
+      </p>
+    </div>
+  </main>
+
+  <script>
+    const ROUTE_PAGES = {
+      relax: "relex.html",
+      foodie: "foddie.html",
+      panoramic: "panoramic.html"
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const accessToken = params.get("token");
+
+    const readyState = document.getElementById("readyState");
+    const successState = document.getElementById("successState");
+    const errorState = document.getElementById("errorState");
+    const errorMessage = document.getElementById("errorMessage");
+    const activateBtn = document.getElementById("activateBtn");
+    const openRouteBtn = document.getElementById("openRouteBtn");
+
+    let activatedRoute = null;
+
+    function getDeviceToken() {
+      let token = localStorage.getItem("cruisestop_device_token");
+
+      if (!token) {
+        token = crypto.randomUUID().replace(/-/g, "");
+        localStorage.setItem("cruisestop_device_token", token);
+      }
+
+      return token;
+    }
+
+    function showError(message) {
+      readyState.style.display = "none";
+      successState.style.display = "none";
+      errorState.style.display = "block";
+      errorMessage.textContent = message;
+    }
+
+    async function activateDevice() {
+      if (!accessToken) {
+        showError("This access link is incomplete.");
+        return;
+      }
+
+      activateBtn.disabled = true;
+      activateBtn.textContent = "Activating...";
+
+      try {
+        const response = await fetch("/activate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            accessToken,
+            deviceToken: getDeviceToken()
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          if (response.status === 409) {
+            showError(
+              "This purchase has already been activated on the maximum of 2 devices."
+            );
+            return;
+          }
+
+          if (response.status === 410) {
+            showError("This CruiseStop access has expired.");
+            return;
+          }
+
+          throw new Error(data.error || "Activation failed");
+        }
+
+        if (!data.activated || !data.route || !ROUTE_PAGES[data.route]) {
+          throw new Error("Invalid activation response");
+        }
+
+        activatedRoute = data.route;
+
+        localStorage.setItem(
+          "access_" + data.route,
+          JSON.stringify({
+            expiry: Number(data.accessExpiresAt),
+            accessToken: accessToken,
+            deviceToken: getDeviceToken()
+          })
+        );
+
+        readyState.style.display = "none";
+        errorState.style.display = "none";
+        successState.style.display = "block";
+
+      } catch (err) {
+        showError("Could not activate this device. Please try again.");
+      }
+    }
+
+    activateBtn.addEventListener("click", activateDevice);
+
+    openRouteBtn.addEventListener("click", function () {
+      if (activatedRoute && ROUTE_PAGES[activatedRoute]) {
+        window.location.href = ROUTE_PAGES[activatedRoute];
+      }
+    });
+
+    if (!accessToken) {
+      showError("This access link is incomplete.");
+    }
+  </script>
+</body>
+</html>
