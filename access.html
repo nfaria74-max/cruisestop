@@ -118,7 +118,7 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const requestedLang = params.get("lang");
-    const pageLang = ["pt", "de"].includes(requestedLang) ? requestedLang : "en";
+    const pageLang = ["pt", "de", "fr"].includes(requestedLang) ? requestedLang : "en";
     const accessToken = params.get("token");
 
     const TEXT = {
@@ -174,6 +174,24 @@
         deviceLimit: "Dieser Kauf wurde bereits auf der maximalen Anzahl von 2 Geräten aktiviert.",
         expired: "Dieser CruiseStop-Zugang ist abgelaufen.",
         retry: "Dieses Gerät konnte nicht aktiviert werden. Bitte versuche es erneut."
+      },
+
+      fr: {
+        title: "Activer votre itinéraire - CruiseStop",
+        readyTitle: "Votre itinéraire est prêt",
+        readyText: "Activez cet appareil pour utiliser votre itinéraire CruiseStop.",
+        activateButton: "Activer cet appareil",
+        activating: "Activation...",
+        note: "Votre achat peut être activé sur jusqu’à 2 appareils et reste valable jusqu’à la date d’expiration initiale, 30 jours après l’achat.",
+        successTitle: "Appareil activé",
+        successText: "Votre itinéraire CruiseStop est maintenant disponible sur cet appareil.",
+        openButton: "Ouvrir mon itinéraire",
+        errorTitle: "Activation impossible",
+        genericError: "Cet appareil n’a pas pu être activé.",
+        incomplete: "Ce lien d’accès est incomplet.",
+        deviceLimit: "Cet achat a déjà été activé sur le maximum de 2 appareils.",
+        expired: "Cet accès CruiseStop a expiré.",
+        retry: "Cet appareil n’a pas pu être activé. Veuillez réessayer."
       }
     };
 
@@ -192,6 +210,11 @@
         relax: "relex_de.html",
         foodie: "foddie_de.html",
         panoramic: "panoramic_de.html"
+      },
+      fr: {
+        relax: "relex_fr.html",
+        foodie: "foddie_fr.html",
+        panoramic: "panoramic_fr.html"
       }
     };
 
