@@ -30,6 +30,12 @@
 <link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script>
   <style>
     /* Override placed after all external CSS â€” higher specificity wins */
+    /* Micro-copy under the CTA: hidden by default, revealed in the
+       @media (max-width: 719px) block below. Must stay BEFORE that block --
+       same specificity (0-1-0), so file order decides. Desktop never shows it. */
+    .hero-access-note {
+      display: none;
+    }
     @media (max-width: 719px) {
       body.home-page.landing-v160 .hero::after {
         display: none !important;
@@ -38,6 +44,40 @@
     @media (max-width: 719px) {
       body.home-page.landing-v160 #hero-title {
         font-size: clamp(2.25rem, 8.25vw, 3.38rem) !important;
+      }
+
+      /* Mobile CTA position. The rule that actually won was styles-fixes.css:148
+         -- `html body.home-page.landing-v160 .hero-actions` (0-3-2, !important),
+         clamp(60px, 10svh, 90px). We repeat the exact selector (0-3-2); since this
+         <style> comes after the <link>, the specificity tie is broken by order,
+         and we add 50px to the original clamp, keeping the height-responsive
+         behaviour. */
+      html body.home-page.landing-v160 .hero-actions {
+        margin-top: clamp(130px, calc(10svh + 80px), 160px) !important;
+      }
+
+      /* Micro-copy: child of .hero-actions, which on mobile is a grid with
+         justify-items:start and gap:0, and whose only visible child is the
+         button (.secondary-link is display:none from styles.css:5484).
+         So it sits right under the button, aligned with it. */
+      .hero-access-note {
+        display: block;
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.3;
+        font-weight: 500;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.88);
+        text-shadow: 0 1px 3px rgba(2, 10, 25, 0.55);
+        white-space: nowrap;
+      }
+    }
+    @media (max-width: 380px) {
+      /* Below ~380px the line no longer fits the usable width
+         (viewport minus the side padding of .hero-content). */
+      .hero-access-note {
+        white-space: normal;
+        max-width: 280px;
       }
     }
     .how-flow {
@@ -88,9 +128,9 @@
         display: none !important;
       }
 
-      body.home-page.landing-v160 .hero-actions {
-        margin-top: 40px !important;
-      }
+      /* The old CTA rule (margin-top:40px) lived here and was dead code --
+         it lost on specificity to styles-fixes.css:148. Replaced by the
+         `html body...` rule in the 719px block above. Do not restore here. */
 
     }
   </style>
@@ -822,7 +862,7 @@
     loading="eager"
     decoding="async"
     fetchpriority="high"
-    alt="Costa do Funchal com mar, navio de cruzeiro, torre da S&eacute; e telemo&acute;vel com a rota CruiseStop"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guias para passageiros de cruzeiro</p><h1 id="hero-title">Veja o melhor do Funchal em <span class="hero-time-highlight">5 horas</span></h1><p class="hero-subline">Rotas criadas para passageiros de cruzeiro.</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>Ver rotas dispon&iacute;veis</span></a><a class="secondary-link" href="#preview">Como funciona</a></div><div class="hero-product" aria-label="Pr&eacute;-visualiza&ccedil;&atilde;o da rota no telemo&acute;vel"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Rota Funchal</span><strong>5 horas</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Porto do Funchal <em>30 min</em></span><span><b>2</b> Centro Hist&oacute;rico <em>45 min</em></span><span><b>3</b> Catedral <em>20 min</em></span></div><div class="hero-phone__return">Regresso ao navio a tempo</div></div></div></section></div><div class="lang-picker" aria-label="Seletor de idioma">
+    alt="Costa do Funchal com mar, navio de cruzeiro, torre da S&eacute; e telemo&acute;vel com a rota CruiseStop"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guias para passageiros de cruzeiro</p><h1 id="hero-title">Veja o melhor do Funchal em <span class="hero-time-highlight">5 horas</span></h1><p class="hero-subline">Rotas criadas para passageiros de cruzeiro.</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>Come&ccedil;ar por &euro;4,99</span></a><a class="secondary-link" href="#preview">Como funciona</a><div class="hero-access-note">Acesso por 30 dias &middot; At&eacute; 2 dispositivos</div></div><div class="hero-product" aria-label="Pr&eacute;-visualiza&ccedil;&atilde;o da rota no telemo&acute;vel"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Rota Funchal</span><strong>5 horas</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Porto do Funchal <em>30 min</em></span><span><b>2</b> Centro Hist&oacute;rico <em>45 min</em></span><span><b>3</b> Catedral <em>20 min</em></span></div><div class="hero-phone__return">Regresso ao navio a tempo</div></div></div></section></div><div class="lang-picker" aria-label="Seletor de idioma">
     <button class="lang-picker__toggle" aria-haspopup="listbox" aria-expanded="false" id="langToggle">
       <img src="icons/flag/PT.png" alt="" class="lang-picker__flag"><span class="lang-picker__code">PT</span><svg class="lang-picker__caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
     </button>
@@ -837,7 +877,7 @@
     <div class="pt-trust-strip__grid">
       <div class="pt-trust-item">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-        <span class="pt-trust-item__label">Buffer de seguran&ccedil;a</span>
+        <span class="pt-trust-item__label">Margem de seguran&ccedil;a</span>
         <span class="pt-trust-item__desc">Tempo extra garantido</span>
       </div>
       <div class="pt-trust-item">

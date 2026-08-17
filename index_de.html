@@ -30,6 +30,12 @@
 <link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script>
   <style>
     /* Override placed after all external CSS â€” higher specificity wins */
+    /* Micro-copy under the CTA: hidden by default, revealed in the
+       @media (max-width: 719px) block below. Must stay BEFORE that block --
+       same specificity (0-1-0), so file order decides. Desktop never shows it. */
+    .hero-access-note {
+      display: none;
+    }
     /* hero-title: 36px im Mobile */
     @media (max-width: 719px) {
       body.home-page.landing-v160 .hero::after {
@@ -39,6 +45,40 @@
     @media (max-width: 719px) {
       body.home-page.landing-v160 #hero-title {
         font-size: clamp(2.25rem, 8.25vw, 3.38rem) !important;
+      }
+
+      /* Mobile CTA position. The rule that actually won was styles-fixes.css:148
+         -- `html body.home-page.landing-v160 .hero-actions` (0-3-2, !important),
+         clamp(60px, 10svh, 90px). We repeat the exact selector (0-3-2); since this
+         <style> comes after the <link>, the specificity tie is broken by order,
+         and we add 50px to the original clamp, keeping the height-responsive
+         behaviour. */
+      html body.home-page.landing-v160 .hero-actions {
+        margin-top: clamp(130px, calc(10svh + 80px), 160px) !important;
+      }
+
+      /* Micro-copy: child of .hero-actions, which on mobile is a grid with
+         justify-items:start and gap:0, and whose only visible child is the
+         button (.secondary-link is display:none from styles.css:5484).
+         So it sits right under the button, aligned with it. */
+      .hero-access-note {
+        display: block;
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.3;
+        font-weight: 500;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.88);
+        text-shadow: 0 1px 3px rgba(2, 10, 25, 0.55);
+        white-space: nowrap;
+      }
+    }
+    @media (max-width: 380px) {
+      /* Below ~380px the line no longer fits the usable width
+         (viewport minus the side padding of .hero-content). */
+      .hero-access-note {
+        white-space: normal;
+        max-width: 280px;
       }
     }
     .how-flow {
@@ -94,10 +134,9 @@
         display: none !important;
       }
 
-      /* CTA etwas tiefer */
-      body.home-page.landing-v160 .hero-actions {
-        margin-top: 40px !important;
-      }
+      /* The old CTA rule (margin-top:40px) lived here and was dead code --
+         it lost on specificity to styles-fixes.css:148. Replaced by the
+         `html body...` rule in the 719px block above. Do not restore here. */
 
     }
   </style>
@@ -829,7 +868,7 @@
     loading="eager"
     decoding="async"
     fetchpriority="high"
-    alt="Funchal KÃ¼ste mit Kreuzfahrtschiff, Kathedrale und Telefon mit der CruiseStop-Route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides f&uuml;r Kreuzfahrtg&auml;ste</p><h1 id="hero-title">Das Beste von Funchal in <span class="hero-time-highlight">5 Stunden</span></h1><p class="hero-subline">ohne Ausfl&uuml;ge, ohne Stress &mdash; und immer rechtzeitig zur&uuml;ck zum Schiff</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>F&uuml;r &euro;4,99 starten</span></a><a class="secondary-link" href="#preview">Wie es funktioniert</a></div><div class="hero-product" aria-label="Telefon-Routenvorschau"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal Route</span><strong>5 Stunden</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Hafen Funchal <em>30 Min</em></span><span><b>2</b> Historisches Zentrum <em>45 Min</em></span><span><b>3</b> Kathedrale <em>20 Min</em></span></div><div class="hero-phone__return">Rechtzeitig zur&uuml;ck zum Schiff</div></div></div></section></div><div class="lang-picker" aria-label="Sprachauswahl">
+    alt="Funchal KÃ¼ste mit Kreuzfahrtschiff, Kathedrale und Telefon mit der CruiseStop-Route"><div class="hero-shade" aria-hidden="true"></div><div class="hero-content"><section class="hero-copy" aria-labelledby="hero-title"><p class="hero-kicker">Guides f&uuml;r Kreuzfahrtg&auml;ste</p><h1 id="hero-title">Das Beste von Funchal in <span class="hero-time-highlight">5 Stunden</span></h1><p class="hero-subline">ohne Ausfl&uuml;ge, ohne Stress &mdash; und immer rechtzeitig zur&uuml;ck zum Schiff</p><div class="hero-actions"><a class="primary-cta" href="#routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13"></path><path d="m12 5 7 7-7 7"></path></svg><span>F&uuml;r &euro;4,99 starten</span></a><a class="secondary-link" href="#preview">Wie es funktioniert</a><div class="hero-access-note">30 Tage Zugriff &middot; Bis zu 2 Ger&auml;te</div></div><div class="hero-product" aria-label="Telefon-Routenvorschau"><div class="hero-phone" aria-hidden="true"><div class="hero-phone__top"><span>Funchal Route</span><strong>5 Stunden</strong></div><div class="hero-phone__map"><img src="images/mapa.png" alt=""><span class="hero-route-line"></span><span class="hero-map-pin hero-map-pin--one">1</span><span class="hero-map-pin hero-map-pin--two">2</span><span class="hero-map-pin hero-map-pin--three">3</span><span class="hero-map-pin hero-map-pin--four">4</span><span class="hero-map-pin hero-map-pin--five">5</span></div><div class="hero-phone__stops"><span><b>1</b> Hafen Funchal <em>30 Min</em></span><span><b>2</b> Historisches Zentrum <em>45 Min</em></span><span><b>3</b> Kathedrale <em>20 Min</em></span></div><div class="hero-phone__return">Rechtzeitig zur&uuml;ck zum Schiff</div></div></div></section></div><div class="lang-picker" aria-label="Sprachauswahl">
     <button class="lang-picker__toggle" aria-haspopup="listbox" aria-expanded="false" id="langToggle">
       <img src="icons/flag/DE.png" alt="" class="lang-picker__flag"><span class="lang-picker__code">DE</span><svg class="lang-picker__caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
     </button>
