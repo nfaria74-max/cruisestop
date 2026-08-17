@@ -63,7 +63,8 @@ export async function onRequestPost({ request, env }) {
         mode: "payment",
         success_url: `${siteUrl}/success${pageSuffix}.html?route=${route}&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${siteUrl}/index${pageSuffix}.html#routes`,
-        "metadata[route]": route
+        "metadata[route]": route,
+        "metadata[lang]": normalizedLang
       })
     });
 
