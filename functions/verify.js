@@ -53,9 +53,62 @@ export async function onRequestGet({ request, env }) {
     const paid  = session.payment_status === 'paid';
     const route = session.metadata?.route || null;
     const customerEmail = session.customer_details?.email || session.customer_email || null;
-    const accessExpiresAt = Date.now() + 30 * 24 * 60 * 60 * 1000;
+    const purchaseCreatedAt = Number(session.created) * 1000;
+    const accessExpiresAt = purchaseCreatedAt + 30 * 24 * 60 * 60 * 1000;
 
-    return Response.json({ paid, route, customerEmail, accessExpiresAt }, { headers });
+    if (!paid) {
+      return Response.json({ paid, route, customerEmail, accessExpiresAt }, { headers });
+    }
+
+    if (!route) {
+      return Response.json({ error: 'Missing route metadata' }, { status: 400, headers });
+    }
+
+    if (!env.ACCESS_DB) {
+      return Response.json({ error: 'Access database is not configured' }, { status: 500, headers });
+    }
+
+    let purchase = await env.ACCESS_DB
+      .prepare('SELECT access_token FROM purchases WHERE session_id = ?')
+      .bind(sessionId)
+      .first();
+
+    if (!purchase) {
+      const accessToken = crypto.randomUUID().replace(/-/g, '');
+
+      await env.ACCESS_DB
+        .prepare(`
+          INSERT OR IGNORE INTO purchases
+          (session_id, access_token, route, customer_email, purchased_at, expires_at)
+          VALUES (?, ?, ?, ?, ?, ?)
+        `)
+        .bind(
+          sessionId,
+          accessToken,
+          route,
+          customerEmail,
+          Math.floor(purchaseCreatedAt / 1000),
+          Math.floor(accessExpiresAt / 1000)
+        )
+        .run();
+
+      purchase = await env.ACCESS_DB
+        .prepare('SELECT access_token FROM purchases WHERE session_id = ?')
+        .bind(sessionId)
+        .first();
+    }
+
+    if (!purchase?.access_token) {
+      return Response.json({ error: 'Could not create access token' }, { status: 500, headers });
+    }
+
+    return Response.json({
+      paid,
+      route,
+      customerEmail,
+      accessExpiresAt,
+      accessToken: purchase.access_token
+    }, { headers });
 
   } catch (err) {
     console.error('Verify error:', err);
