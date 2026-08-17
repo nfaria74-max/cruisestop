@@ -116,14 +116,66 @@
   </main>
 
   <script>
-    const ROUTE_PAGES = {
-      relax: "relex.html",
-      foodie: "foddie.html",
-      panoramic: "panoramic.html"
+    const params = new URLSearchParams(window.location.search);
+    const requestedLang = params.get("lang");
+    const pageLang = requestedLang === "pt" ? "pt" : "en";
+    const accessToken = params.get("token");
+
+    const TEXT = {
+      en: {
+        title: "Activate your route - CruiseStop",
+        readyTitle: "Your route is ready",
+        readyText: "Activate this device to use your CruiseStop route.",
+        activateButton: "Activate this device",
+        activating: "Activating...",
+        note: "Your purchase can be activated on up to 2 devices and remains valid until the original 30-day expiry date.",
+        successTitle: "Device activated",
+        successText: "Your CruiseStop route is now available on this device.",
+        openButton: "Open my route",
+        errorTitle: "Unable to activate",
+        genericError: "We could not activate this device.",
+        incomplete: "This access link is incomplete.",
+        deviceLimit: "This purchase has already been activated on the maximum of 2 devices.",
+        expired: "This CruiseStop access has expired.",
+        retry: "Could not activate this device. Please try again."
+      },
+
+      pt: {
+        title: "Ativar a sua rota - CruiseStop",
+        readyTitle: "A sua rota está pronta",
+        readyText: "Ative este dispositivo para utilizar a sua rota CruiseStop.",
+        activateButton: "Ativar este dispositivo",
+        activating: "A ativar...",
+        note: "A sua compra pode ser ativada em até 2 dispositivos e mantém-se válida até à data original de expiração dos 30 dias.",
+        successTitle: "Dispositivo ativado",
+        successText: "A sua rota CruiseStop está agora disponível neste dispositivo.",
+        openButton: "Abrir a minha rota",
+        errorTitle: "Não foi possível ativar",
+        genericError: "Não foi possível ativar este dispositivo.",
+        incomplete: "Este link de acesso está incompleto.",
+        deviceLimit: "Esta compra já foi ativada no máximo de 2 dispositivos.",
+        expired: "Este acesso CruiseStop expirou.",
+        retry: "Não foi possível ativar este dispositivo. Tente novamente."
+      }
     };
 
-    const params = new URLSearchParams(window.location.search);
-    const accessToken = params.get("token");
+    const ROUTE_PAGES = {
+      en: {
+        relax: "relex.html",
+        foodie: "foddie.html",
+        panoramic: "panoramic.html"
+      },
+      pt: {
+        relax: "relex_pt.html",
+        foodie: "foddie_pt.html",
+        panoramic: "panoramic_pt.html"
+      }
+    };
+
+    const t = TEXT[pageLang];
+
+    document.documentElement.lang = pageLang;
+    document.title = t.title;
 
     const readyState = document.getElementById("readyState");
     const successState = document.getElementById("successState");
@@ -131,6 +183,18 @@
     const errorMessage = document.getElementById("errorMessage");
     const activateBtn = document.getElementById("activateBtn");
     const openRouteBtn = document.getElementById("openRouteBtn");
+
+    readyState.querySelector("h1").textContent = t.readyTitle;
+    readyState.querySelector("p").textContent = t.readyText;
+    readyState.querySelector(".note").textContent = t.note;
+    activateBtn.textContent = t.activateButton;
+
+    successState.querySelector("h1").textContent = t.successTitle;
+    successState.querySelector(".success").textContent = t.successText;
+    openRouteBtn.textContent = t.openButton;
+
+    errorState.querySelector("h1").textContent = t.errorTitle;
+    errorMessage.textContent = t.genericError;
 
     let activatedRoute = null;
 
@@ -154,12 +218,12 @@
 
     async function activateDevice() {
       if (!accessToken) {
-        showError("This access link is incomplete.");
+        showError(t.incomplete);
         return;
       }
 
       activateBtn.disabled = true;
-      activateBtn.textContent = "Activating...";
+      activateBtn.textContent = t.activating;
 
       try {
         const response = await fetch("/activate", {
@@ -177,21 +241,23 @@
 
         if (!response.ok) {
           if (response.status === 409) {
-            showError(
-              "This purchase has already been activated on the maximum of 2 devices."
-            );
+            showError(t.deviceLimit);
             return;
           }
 
           if (response.status === 410) {
-            showError("This CruiseStop access has expired.");
+            showError(t.expired);
             return;
           }
 
           throw new Error(data.error || "Activation failed");
         }
 
-        if (!data.activated || !data.route || !ROUTE_PAGES[data.route]) {
+        if (
+          !data.activated ||
+          !data.route ||
+          !ROUTE_PAGES[pageLang][data.route]
+        ) {
           throw new Error("Invalid activation response");
         }
 
@@ -211,21 +277,25 @@
         successState.style.display = "block";
 
       } catch (err) {
-        showError("Could not activate this device. Please try again.");
+        showError(t.retry);
       }
     }
 
     activateBtn.addEventListener("click", activateDevice);
 
     openRouteBtn.addEventListener("click", function () {
-      if (activatedRoute && ROUTE_PAGES[activatedRoute]) {
-        window.location.href = ROUTE_PAGES[activatedRoute];
+      const routePage =
+        activatedRoute &&
+        ROUTE_PAGES[pageLang][activatedRoute];
+
+      if (routePage) {
+        window.location.href = routePage;
       }
     });
 
     if (!accessToken) {
-      showError("This access link is incomplete.");
+      showError(t.incomplete);
     }
-  </script>
+</script>
 </body>
 </html>
