@@ -413,7 +413,8 @@ async function buyRoute(route, button) {
     try {
       const access = JSON.parse(saved);
       if (access.expiry && access.expiry > Date.now() && routePages[route]) {
-        window.location.href = routePages[route];
+        window.location.href =
+          (route === "relax" && routeSummaryPages[route]) || routePages[route];
         return;
       }
     } catch {
