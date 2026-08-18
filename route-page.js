@@ -369,6 +369,49 @@
         updateCruiseTimerInfo(remainingSeconds);
     }
 
+    function previousStopLabel() {
+        const fallback = {
+            en: '\u2190 PREVIOUS STOP',
+            pt: '\u2190 PARAGEM ANTERIOR',
+            de: '\u2190 VORHERIGER STOPP',
+            fr: '\u2190 ARR\u00caT PR\u00c9C\u00c9DENT',
+            nl: '\u2190 VORIGE STOP'
+        };
+
+        return label('previousStop', fallback[pageLanguage] || fallback.en);
+    }
+
+    function ensurePreviousStopButton() {
+        let button = document.getElementById('previousStopBtn');
+        if (button) return button;
+
+        const title = document.getElementById('stop-title');
+        if (!title || !title.parentNode) return null;
+
+        button = document.createElement('button');
+        button.id = 'previousStopBtn';
+        button.type = 'button';
+        button.onclick = previousStop;
+        button.style.cssText = [
+            'display:none',
+            'align-items:center',
+            'justify-content:flex-start',
+            'width:max-content',
+            'max-width:100%',
+            'margin:2px 0 8px',
+            'padding:5px 2px',
+            'border:0',
+            'background:transparent',
+            'color:#062f73',
+            'font:800 0.78rem/1.2 Inter,system-ui,sans-serif',
+            'letter-spacing:.02em',
+            'cursor:pointer',
+            'touch-action:manipulation'
+        ].join(';');
+
+        title.parentNode.insertBefore(button, title);
+        return button;
+    }
     function updateStopDisplay() {
         if (!stops.length) {
             return;
@@ -388,6 +431,12 @@
             setText('.stop-step', `${label('stopLabel', 'STOP')} ${stopNumber}`);
             const displayTotal = getDisplayStopCount();
             setText('.stop-counter', `${Math.min(stopNumber, displayTotal)}/${displayTotal}`);
+            const previousBtn = ensurePreviousStopButton();
+            if (previousBtn) {
+                previousBtn.textContent = previousStopLabel();
+                previousBtn.setAttribute('aria-label', previousStopLabel());
+                previousBtn.style.display = currentStopIndex > 0 ? 'inline-flex' : 'none';
+            }
             // total-stops-indicator removed
             setText('#stop-title', stop.name || `${label('stopFallback', 'Stop')} ${stopNumber}`);
             setText('#stopDescription', stop.description || '');
