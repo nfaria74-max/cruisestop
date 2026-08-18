@@ -408,13 +408,17 @@ async function buyRoute(route, button) {
     return;
   }
 
+  if (route === "relax" && routeSummaryPages[route]) {
+    window.location.href = routeSummaryPages[route];
+    return;
+  }
+
   const saved = localStorage.getItem(`access_${route}`);
   if (saved) {
     try {
       const access = JSON.parse(saved);
       if (access.expiry && access.expiry > Date.now() && routePages[route]) {
-        window.location.href =
-          (route === "relax" && routeSummaryPages[route]) || routePages[route];
+        window.location.href = routePages[route];
         return;
       }
     } catch {
