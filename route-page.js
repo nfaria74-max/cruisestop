@@ -1091,10 +1091,190 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    function getResumeRouteCopy(stopNumber, totalStops) {
+        const copies = {
+            en: {
+                title: 'Route in progress',
+                text: `Your route is at Stop ${stopNumber} of ${totalStops}.`,
+                continueLabel: 'CONTINUE ROUTE',
+                restartLabel: 'RESTART FROM BEGINNING'
+            },
+            pt: {
+                title: 'Rota em andamento',
+                text: `A sua rota está na Paragem ${stopNumber} de ${totalStops}.`,
+                continueLabel: 'CONTINUAR ROTA',
+                restartLabel: 'RECOMEÇAR DO INÍCIO'
+            },
+            de: {
+                title: 'Route läuft',
+                text: `Ihre Route befindet sich bei Stopp ${stopNumber} von ${totalStops}.`,
+                continueLabel: 'ROUTE FORTSETZEN',
+                restartLabel: 'VON VORNE BEGINNEN'
+            },
+            fr: {
+                title: 'Itinéraire en cours',
+                text: `Votre itinéraire est à l’arrêt ${stopNumber} sur ${totalStops}.`,
+                continueLabel: 'CONTINUER L’ITINÉRAIRE',
+                restartLabel: 'RECOMMENCER DEPUIS LE DÉBUT'
+            },
+            nl: {
+                title: 'Route bezig',
+                text: `Je route staat bij stop ${stopNumber} van ${totalStops}.`,
+                continueLabel: 'ROUTE VOORTZETTEN',
+                restartLabel: 'OPNIEUW BEGINNEN'
+            }
+        };
+
+        return copies[pageLanguage] || copies.en;
+    }
+
+    function askResumeOrRestart() {
+        const progress = readStoredJson(progressStorageKey);
+        if (!progress) return Promise.resolve('fresh');
+
+        const storedIndex = Number(progress.currentStopIndex);
+        const storedSeconds = Number(progress.currentSeconds);
+
+        const hasProgress =
+            (Number.isFinite(storedIndex) && storedIndex > 0) ||
+            (Number.isFinite(storedSeconds) && storedSeconds > 0);
+
+        if (!hasProgress) return Promise.resolve('continue');
+
+        const safeIndex = Number.isFinite(storedIndex)
+            ? Math.min(Math.max(0, Math.floor(storedIndex)), Math.max(0, stops.length - 1))
+            : 0;
+
+        const stopNumber = safeIndex + 1;
+        const totalStops = getDisplayStopCount();
+        const copy = getResumeRouteCopy(stopNumber, totalStops);
+
+        return new Promise((resolve) => {
+            const previousOverflow = document.body.style.overflow;
+
+            const overlay = document.createElement('div');
+            overlay.id = 'routeResumeOverlay';
+            overlay.setAttribute('role', 'presentation');
+            overlay.style.cssText = [
+                'position:fixed',
+                'inset:0',
+                'z-index:99999',
+                'display:flex',
+                'align-items:center',
+                'justify-content:center',
+                'padding:20px',
+                'background:rgba(6,31,76,.72)'
+            ].join(';');
+
+            const dialog = document.createElement('section');
+            dialog.className = 'route-resume-dialog';
+            dialog.setAttribute('role', 'dialog');
+            dialog.setAttribute('aria-modal', 'true');
+            dialog.setAttribute('aria-labelledby', 'routeResumeTitle');
+            dialog.style.cssText = [
+                'width:min(100%,390px)',
+                'padding:26px 22px 22px',
+                'border-radius:22px',
+                'background:#ffffff',
+                'box-shadow:0 24px 60px rgba(0,0,0,.28)',
+                'text-align:center',
+                'font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif'
+            ].join(';');
+
+            const title = document.createElement('h2');
+            title.id = 'routeResumeTitle';
+            title.textContent = copy.title;
+            title.style.cssText = [
+                'margin:0 0 9px',
+                'color:#062f73',
+                'font-size:1.55rem',
+                'line-height:1.1',
+                'font-weight:900',
+                'letter-spacing:-.025em'
+            ].join(';');
+
+            const text = document.createElement('p');
+            text.textContent = copy.text;
+            text.style.cssText = [
+                'margin:0 0 22px',
+                'color:#405876',
+                'font-size:.98rem',
+                'line-height:1.45',
+                'font-weight:650'
+            ].join(';');
+
+            const continueBtn = document.createElement('button');
+            continueBtn.type = 'button';
+            continueBtn.className = 'route-resume-continue';
+            continueBtn.textContent = copy.continueLabel;
+            continueBtn.style.cssText = [
+                'width:100%',
+                'min-height:54px',
+                'margin:0 0 10px',
+                'padding:10px 16px',
+                'border:2px solid #c98e00',
+                'border-radius:15px',
+                'background:#ffc400',
+                'color:#062f73',
+                'font-size:.95rem',
+                'font-weight:900',
+                'cursor:pointer',
+                'touch-action:manipulation'
+            ].join(';');
+
+            const restartBtn = document.createElement('button');
+            restartBtn.type = 'button';
+            restartBtn.className = 'route-resume-restart';
+            restartBtn.textContent = copy.restartLabel;
+            restartBtn.style.cssText = [
+                'width:100%',
+                'min-height:50px',
+                'padding:9px 16px',
+                'border:2px solid #c6d3e5',
+                'border-radius:15px',
+                'background:#ffffff',
+                'color:#0a3476',
+                'font-size:.88rem',
+                'font-weight:850',
+                'cursor:pointer',
+                'touch-action:manipulation'
+            ].join(';');
+
+            dialog.append(title, text, continueBtn, restartBtn);
+            overlay.appendChild(dialog);
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+
+            const close = (choice) => {
+                document.body.style.overflow = previousOverflow;
+                overlay.remove();
+                resolve(choice);
+            };
+
+            continueBtn.addEventListener('click', () => close('continue'));
+
+            restartBtn.addEventListener('click', () => {
+                localStorage.removeItem(progressStorageKey);
+                close('restart');
+            });
+
+            window.setTimeout(() => continueBtn.focus(), 50);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', async () => {
         if (!requireRouteAccess()) return;
 
-        restoreProgress();
+        const startMode = await askResumeOrRestart();
+
+        if (startMode === 'continue') {
+            restoreProgress();
+        } else {
+            currentStopIndex = 0;
+            currentSeconds = 0;
+            isPaused = false;
+            isRunning = false;
+        }
+
         updateStopDisplay();
         addRippleEffects();
         initMicroUX();
