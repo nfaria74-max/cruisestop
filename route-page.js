@@ -207,6 +207,7 @@
     let currentSeconds = 0;
     let isPaused = false;
     let isRunning = false;
+    let isFinishing = false;
 
     const audioDuration = Number(config.audioDurationSeconds) || 30;
     const totalSeconds = Number(config.totalSeconds) || 5 * 60 * 60;
@@ -321,7 +322,7 @@
     }
 
     function saveProgress() {
-        if (!hasValidRouteAccess()) return;
+        if (isFinishing || !hasValidRouteAccess()) return;
 
         localStorage.setItem(progressStorageKey, JSON.stringify({
             route: routeKey,
@@ -522,6 +523,7 @@
 
     function finishRoute() {
         vibrateTap();
+        isFinishing = true;
 
         // Record completed route and date
         const completedRoutes = JSON.parse(localStorage.getItem('cruisestop_completed_routes') || '[]');
