@@ -408,7 +408,10 @@ async function buyRoute(route, button) {
     return;
   }
 
-  if (route === "relax" && routeSummaryPages[route]) {
+  if (
+    (route === "relax" || route === "panoramic") &&
+    routeSummaryPages[route]
+  ) {
     window.location.href = routeSummaryPages[route];
     return;
   }
