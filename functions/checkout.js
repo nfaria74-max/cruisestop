@@ -1,6 +1,6 @@
 const ROUTES = {
   relax: { name: "Relaxed Funchal", price: 499 },
-  foodie: { name: "Taste Madeira", price: 499, available: false },
+  foodie: { name: "Taste Madeira", price: 499 },
   panoramic: { name: "Panoramic Funchal", price: 499 }
 };
 
