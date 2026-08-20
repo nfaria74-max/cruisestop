@@ -714,15 +714,15 @@
             if (isIOS) {
                 url = `http://maps.apple.com/?daddr=${stop.lat},${stop.lng}&dirflg=w`;
             } else if (isAndroid) {
-                url = `https://www.google.com/maps/dir/?api=1&destination=${stop.lat},${stop.lng}&travelmode=walking`;
+                url = `https://www.google.com/maps/dir/?api=1&destination=${stop.lat},${stop.lng}&travelmode=walking&dir_action=navigate`;
             } else {
-                url = `https://www.google.com/maps/dir/?api=1&destination=${stop.lat},${stop.lng}&travelmode=walking`;
+                url = `https://www.google.com/maps/dir/?api=1&destination=${stop.lat},${stop.lng}&travelmode=walking&dir_action=navigate`;
             }
         } else {
             const query = (stop && stop.mapQuery) || `${(stop && stop.name) || 'Funchal'}, Madeira, Portugal`;
             url = isIOS
                 ? `http://maps.apple.com/?q=${encodeURIComponent(query)}&dirflg=w`
-                : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}&travelmode=walking`;
+                : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}&travelmode=walking&dir_action=navigate`;
         }
 
         return url;
