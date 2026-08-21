@@ -17,7 +17,103 @@
   <script src="../ux-performance.js?v=238" defer></script>
   <link rel="manifest" href="../manifest.webmanifest">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://cruisestop.eu/funchal-walk-relax/#webpage","url":"https://cruisestop.eu/funchal-walk-relax/","name":"Easy Funchal Cruise Port Walk | Self-Guided Route","headline":"Easy Funchal Cruise Port Walk | Self-Guided Route","description":"Easy self-guided Funchal cruise port walk for passengers with 4-5 hours ashore. Starts near the port, no app download, Back to Ship timing included.","inLanguage":"en","isPartOf":{"@id":"https://cruisestop.eu/#website"},"about":["easy walking route funchal","Funchal cruise port walk","Self-guided walking route for cruise passengers","Exploring Funchal on foot during a short cruise stop"],"primaryEntity":{"@id":"https://cruisestop.eu/funchal-walk-relax/#product"}},{"@type":"Product","@id":"https://cruisestop.eu/funchal-walk-relax/#product","name":"Relaxed Funchal Cruise Port Walk","description":"Easy self-guided Funchal cruise port walk for passengers with 4-5 hours ashore. Starts near the port, no app download, Back to Ship timing included.","brand":{"@type":"Brand","name":"CruiseStop"},"category":"Digital self-guided walking route for cruise passengers","url":"https://cruisestop.eu/funchal-walk-relax/","image":"https://cruisestop.eu/images/RELAX/relax-stop1.png","areaServed":{"@type":"Place","name":"Funchal, Madeira, Portugal"},"audience":{"@type":"Audience","audienceType":"Cruise passengers stopping in Funchal for 4-5 hours"},"additionalProperty":[{"@type":"PropertyValue","name":"Start and finish","value":"Within walking distance of the Funchal cruise port"},{"@type":"PropertyValue","name":"Format","value":"Mobile-first PWA self-guided route"},{"@type":"PropertyValue","name":"App download","value":"No app download required"},{"@type":"PropertyValue","name":"Route duration","value":"Designed for a 4-5 hour cruise stop"}],"offers":{"@type":"Offer","price":"4.99","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://cruisestop.eu/funchal-walk-relax/"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","bestRating":"5","worstRating":"1","reviewCount":"1"}},{"@type":"BreadcrumbList","@id":"https://cruisestop.eu/funchal-walk-relax/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"CruiseStop","item":"https://cruisestop.eu/"},{"@type":"ListItem","position":2,"name":"Funchal cruise port walks","item":"https://cruisestop.eu/#routes"},{"@type":"ListItem","position":3,"name":"Relaxed Funchal Cruise Port Walk","item":"https://cruisestop.eu/funchal-walk-relax/"}]}]}</script>
-<link rel="stylesheet" href="../mobile-scroll-fix.css?v=253"><script src="../mobile-scroll-touch.js?v=253" defer></script></head>
+<link rel="stylesheet" href="../mobile-scroll-fix.css?v=253"><script src="../mobile-scroll-touch.js?v=253" defer></script>
+  <style>
+    /* seo-route-mobile-layout-v1 */
+    @media (max-width: 700px) {
+
+      /* Home + nome da rota na mesma linha */
+      .seo-route-nav {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+        padding: 16px 16px 0 !important;
+      }
+
+      /* Esconde "Funchal cruise port walks" */
+      .seo-route-nav > a:nth-of-type(2) {
+        display: none !important;
+      }
+
+      .seo-route-nav > a,
+      .seo-route-nav > span[aria-current="page"] {
+        min-height: 38px !important;
+        padding: 9px 12px !important;
+        font-size: .78rem !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
+      }
+
+      .seo-route-nav > span[aria-current="page"] {
+        margin-left: auto !important;
+      }
+      /* Hero mobile */
+      .seo-route-kicker {
+        display: none !important;
+      }
+
+      .seo-route-hero__copy {
+        padding: 52px 18px 42px !important;
+      }
+
+      .seo-route-hero__copy h1 {
+        max-width: 14ch !important;
+        font-size: clamp(2.05rem, 10vw, 2.55rem) !important;
+        line-height: 1.03 !important;
+      }
+
+      .seo-route-hero__copy > p:not(.seo-route-kicker) {
+        margin-top: 16px !important;
+        font-size: 1rem !important;
+        line-height: 1.45 !important;
+      }
+
+      .seo-route-cta {
+        display: flex !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        justify-content: center !important;
+        text-align: center !important;
+      }
+      /* Main mobile layout: one column */
+      .seo-route-main {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 18px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 24px 16px 48px !important;
+        box-sizing: border-box !important;
+      }
+
+      .seo-route-article,
+      .seo-route-panel {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+      }
+
+      .seo-route-article {
+        padding: 22px 18px !important;
+      }
+
+      .seo-route-article p {
+        font-size: 1rem !important;
+        line-height: 1.62 !important;
+      }
+      /* Panel is not sticky on mobile */
+      .seo-route-panel {
+        position: static !important;
+        top: auto !important;
+        align-self: auto !important;
+        padding: 20px 18px !important;
+      }
+    }
+  </style>
+</head>
 <body class="seo-route-page">
   <header class="seo-route-hero">
     <img src="../images/RELAX/relax-stop1.png" alt="Relaxed Funchal cruise port walk garden stop near the Funchal port">
