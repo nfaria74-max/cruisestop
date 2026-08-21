@@ -112,6 +112,67 @@
         padding: 20px 18px !important;
       }
     }
+
+    /* seo-route-conversion-flow-v1 */
+    .seo-route-main {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 360px) !important;
+      grid-template-areas:
+        "intro panel"
+        "article panel" !important;
+      align-items: start !important;
+    }
+
+    .seo-route-intro {
+      grid-area: intro;
+      background: #fff;
+      border: 1px solid rgba(18,52,91,.18);
+      border-radius: 18px;
+      padding: 24px 28px;
+      box-shadow: 0 10px 30px rgba(16,42,74,.08);
+    }
+
+    .seo-route-intro p {
+      margin: 0;
+      color: #17385f;
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
+
+    .seo-route-article {
+      grid-area: article;
+    }
+
+    .seo-route-panel {
+      grid-area: panel;
+    }
+
+    @media (max-width: 760px) {
+      .seo-route-main {
+        grid-template-columns: minmax(0, 1fr) !important;
+        grid-template-areas:
+          "intro"
+          "panel"
+          "article" !important;
+      }
+
+      .seo-route-intro {
+        width: 100% !important;
+        padding: 22px 24px !important;
+        margin: 0 !important;
+      }
+
+      .seo-route-intro p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+      }
+
+      .seo-route-panel {
+        width: 100% !important;
+        max-width: none !important;
+        position: static !important;
+      }
+    }
   </style>
 </head>
 <body class="seo-route-page">
@@ -130,30 +191,30 @@
     </div>
   </header>
 
-  <main class="seo-route-main">
-    <article class="seo-route-article"><p>CruiseStop is not for cruise booking or broad travel content. This page describes a digital self-guided walking route in Funchal for cruise passengers who want to explore on foot during a short port stop.</p>
-      <p>If you are looking for an <strong>easy walking route Funchal</strong> passengers can follow straight from the cruise port, Relaxed Funchal is built for exactly that moment. It works as a simple Funchal cruise port walk for a short stop ashore. You have a few hours ashore, you want to see the city properly, but you do not want to lose time joining a group tour, downloading an app or guessing which streets are worth it.</p>
-
-      <p>This route is designed for cruise passengers who prefer a relaxed pace. It focuses on walkable highlights, calm places to pause and simple local details that make Funchal feel human. The idea is not to rush from landmark to landmark. It is to turn a short port call into a smooth local walk with enough structure to feel confident and enough freedom to enjoy the city.</p>
-
-      <p>Relaxed Funchal includes seven sequential stops. Each stop has an emotional stop name, a suggested time and a clear Continue or Skip choice. You can pause for coffee, stay longer in a garden or move on when you are ready. A Back to Ship timer stays part of the experience so the return to the cruise port never becomes a last-minute worry.</p>
-
-      <p>All routes start and finish within walking distance of the Funchal cruise port. That matters because a short cruise stop is not the time for complicated transfers. You can leave the ship, open the route on your phone and begin walking. No app download is required, and the route is made for use outdoors with clear buttons, high contrast and simple instructions.</p>
-
-      <p>Choose Relaxed Funchal if you want a calm overview of the city: gardens, sea views, central streets and local atmosphere without pressure. It is best for travellers who want the highlights, but also want time to breathe. For a food-focused walk, see the <a href="../funchal-walk-gourmet/">Taste Madeira cruise port food walk</a>. To compare both options, go back to the <a href="../index.html#routes">Funchal cruise port walk homepage</a>.</p>
-    </article>
-
+    <main class="seo-route-main">
+    <section class="seo-route-intro"><p><strong>Explore Funchal at an easy pace.</strong> Relaxed Funchal is a self-guided 5-hour walk from the cruise port through gardens, central streets, sea views and local atmosphere — without rushing from landmark to landmark.</p></section>
     <aside class="seo-route-panel" aria-label="Relaxed Funchal route details">
-      <h2>Relaxed Funchal cruise port walk</h2>
-      <ul>
-        <li>5 hours ashore</li>
-        <li>7 calm stops</li>
-        <li>Starts near the cruise port</li>
-        <li>Back to Ship timer</li>
-        <li>One route: EUR 4.99</li>
-      </ul>
-      <a class="primary-cta seo-route-cta" href="../relax_summary.html">Start with Relaxed Funchal</a>
-    </aside>
+  <h2>Relaxed Funchal cruise port walk</h2>
+  <ul>
+    <li>5 hours ashore</li>
+    <li>7 calm stops</li>
+    <li>Starts near the cruise port</li>
+    <li>Back to Ship timer</li>
+    <li>One route: EUR 4.99</li>
+  </ul>
+  <a class="primary-cta seo-route-cta" href="../relax_summary.html">Start with Relaxed Funchal</a>
+</aside>
+    <article class="seo-route-article">
+  <p>If you are looking for an <strong>easy walking route Funchal</strong> passengers can follow straight from the cruise port, Relaxed Funchal is built for exactly that moment. It works as a simple Funchal cruise port walk for a short stop ashore. You have a few hours ashore, you want to see the city properly, but you do not want to lose time joining a group tour, downloading an app or guessing which streets are worth it.</p>
+
+  <p>This route is designed for cruise passengers who prefer a relaxed pace. It focuses on walkable highlights, calm places to pause and simple local details that make Funchal feel human. The idea is not to rush from landmark to landmark. It is to turn a short port call into a smooth local walk with enough structure to feel confident and enough freedom to enjoy the city.</p>
+
+  <p>Relaxed Funchal includes seven sequential stops. Each stop has an emotional stop name, a suggested time and a clear Continue or Skip choice. You can pause for coffee, stay longer in a garden or move on when you are ready. A Back to Ship timer stays part of the experience so the return to the cruise port never becomes a last-minute worry.</p>
+
+  <p>All routes start and finish within walking distance of the Funchal cruise port. That matters because a short cruise stop is not the time for complicated transfers. You can leave the ship, open the route on your phone and begin walking. No app download is required, and the route is made for use outdoors with clear buttons, high contrast and simple instructions.</p>
+
+  <p>Choose Relaxed Funchal if you want a calm overview of the city: gardens, sea views, central streets and local atmosphere without pressure. It is best for travellers who want the highlights, but also want time to breathe. For a food-focused walk, see the <a href="../funchal-walk-gourmet/">Taste Madeira cruise port food walk</a>. To compare the options, go back to the <a href="../index.html#routes">Funchal cruise port walk homepage</a>.</p>
+</article>
   </main>
 <script src="../site-update.js?v=238"></script></body>
 </html>

@@ -104,10 +104,93 @@
         padding: 20px 18px !important;
       }
     }
+
+    /* seo-route-conversion-flow-v1 */
+    .seo-route-main {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 360px) !important;
+      grid-template-areas:
+        "intro panel"
+        "article panel" !important;
+      align-items: start !important;
+    }
+
+    .seo-route-intro {
+      grid-area: intro;
+      background: #fff;
+      border: 1px solid rgba(18,52,91,.18);
+      border-radius: 18px;
+      padding: 24px 28px;
+      box-shadow: 0 10px 30px rgba(16,42,74,.08);
+    }
+
+    .seo-route-intro p {
+      margin: 0;
+      color: #17385f;
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
+
+    .seo-route-article {
+      grid-area: article;
+    }
+
+    .seo-route-panel {
+      grid-area: panel;
+    }
+
+    @media (max-width: 760px) {
+      .seo-route-main {
+        grid-template-columns: minmax(0, 1fr) !important;
+        grid-template-areas:
+          "intro"
+          "panel"
+          "article" !important;
+      }
+
+      .seo-route-intro {
+        width: 100% !important;
+        padding: 22px 24px !important;
+        margin: 0 !important;
+      }
+
+      .seo-route-intro p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+      }
+
+      .seo-route-panel {
+        width: 100% !important;
+        max-width: none !important;
+        position: static !important;
+      }
+    }
   </style>
 </head>
 <body class="seo-route-page">
   <header class="seo-route-hero"><img src="../images/panoramic/panoramic-stop1.jpg" alt="PANORAMIC Funchal viewpoint walk near the cruise port"><nav class="seo-route-nav seo-breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><a href="../index.html#routes">Funchal cruise port walks</a><span aria-current="page">PANORAMIC</span></nav><div class="seo-route-hero__copy"><p class="seo-route-kicker">Main focus: panoramic walking route Funchal</p><h1>Panoramic walking route Funchal from the cruise port</h1><p>A self-guided Funchal cruise port walk built around sea views, old-town colour and a calm return to the ship.</p><a class="primary-cta seo-route-cta" href="../panoramic_summary.html">Unlock PANORAMIC - EUR 4.99</a></div></header>
-  <main class="seo-route-main"><article class="seo-route-article"><p>CruiseStop is not for cruise booking or broad travel content. This page describes a digital self-guided walking route in Funchal for cruise passengers who want a scenic route during a short port stop.</p><p>PANORAMIC is made for travellers who want the city to open up quickly: blue water, rooftops, old streets and easy orientation from the cruise port. It is a structured Funchal cruise port walk, not a group tour, and it works directly in the browser on your phone.</p><p>The route is organised into five scenic moments. Each stop gives you a place name, suggested timing and simple navigation, while the Back to Ship timer keeps the real cruise deadline visible.</p><p>Choose PANORAMIC if your ideal Funchal stop is less about shopping and more about seeing the bay, the city texture and the Atlantic from a few different angles.</p><p>For a calmer city route, see the <a href="../funchal-walk-relax/">Slow Funchal cruise port walk</a>. For local food, see the <a href="../funchal-walk-gourmet/">Taste Madeira food walk</a>.</p></article><aside class="seo-route-panel" aria-label="PANORAMIC route details"><h2>PANORAMIC cruise port walk</h2><ul><li>5 hours ashore</li><li>5 scenic moments</li><li>Starts near the cruise port</li><li>Back to Ship timer</li><li>One route: EUR 4.99</li></ul><a class="primary-cta seo-route-cta" href="../panoramic_summary.html">Start with PANORAMIC</a></aside></main>
+    <main class="seo-route-main">
+    <section class="seo-route-intro"><p><strong>See Funchal from its best angles.</strong> PANORAMIC is a self-guided 5-hour walk from the cruise port, combining sea views, old-town colour and easy navigation while helping you keep your return-to-ship time under control.</p></section>
+    <aside class="seo-route-panel" aria-label="PANORAMIC route details">
+  <h2>PANORAMIC cruise port walk</h2>
+  <ul>
+    <li>5 hours ashore</li>
+    <li>5 scenic moments</li>
+    <li>Starts near the cruise port</li>
+    <li>Back to Ship timer</li>
+    <li>One route: EUR 4.99</li>
+  </ul>
+  <a class="primary-cta seo-route-cta" href="../panoramic_summary.html">Start with PANORAMIC</a>
+</aside>
+    <article class="seo-route-article">
+  <p>PANORAMIC is made for travellers who want the city to open up quickly: blue water, rooftops, old streets and easy orientation from the cruise port. It is a structured Funchal cruise port walk, not a group tour, and it works directly in the browser on your phone.</p>
+
+  <p>The route is organised into five scenic moments. Each stop gives you a place name, suggested timing and simple navigation, while the Back to Ship timer keeps the real cruise deadline visible.</p>
+
+  <p>Choose PANORAMIC if your ideal Funchal stop is less about shopping and more about seeing the bay, the city texture and the Atlantic from a few different angles.</p>
+
+  <p>For a calmer city route, see the <a href="../funchal-walk-relax/">Relaxed Funchal cruise port walk</a>. For local food, see the <a href="../funchal-walk-gourmet/">Taste Madeira food walk</a>.</p>
+</article>
+  </main>
 <script src="../site-update.js?v=238"></script></body>
 </html>
