@@ -620,6 +620,58 @@
         object-position: center 68% !important;
       }
     }
+
+    /* seo-guide-hero-mobile-layout-v2 */
+    @media (max-width: 520px) {
+
+      /* Home + nome da página na mesma linha */
+      .seo-route-nav {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+      }
+
+      /* Esconde "Funchal cruise port walks" no mobile */
+      .seo-route-nav > a:nth-of-type(2) {
+        display: none !important;
+      }
+
+      /* Mostra o nome da página à direita */
+      .seo-route-nav > span[aria-current="page"] {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: auto !important;
+        padding: 10px 14px !important;
+        border: 1px solid #f7c400 !important;
+        border-radius: 999px !important;
+        color: #ffd21a !important;
+        font-size: .78rem !important;
+        font-weight: 800 !important;
+        line-height: 1.15 !important;
+        white-space: nowrap !important;
+      }
+
+      /* Evita repetir "Funchal cruise port guide" abaixo */
+      .seo-route-kicker {
+        display: none !important;
+      }
+
+      /* Sobe o conteúdo do hero */
+      .seo-route-hero__copy {
+        transform: translateY(-24px) !important;
+      }
+
+      /* Título ligeiramente menor para deixar ver mais a Sé */
+      .seo-route-hero__copy h1 {
+        font-size: clamp(2.35rem, 10.6vw, 2.65rem) !important;
+        line-height: 1.02 !important;
+        letter-spacing: -.025em !important;
+        margin-top: 0 !important;
+        margin-bottom: 16px !important;
+      }
+    }
   </style>
 </head>
 
