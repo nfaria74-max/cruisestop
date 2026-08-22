@@ -172,32 +172,224 @@
         margin-top: 40px !important;
       }
     }
-  </style>
+  /* panoramic-funnel-v2 */
+
+.seo-route-intro-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.seo-route-intro-icon,
+.seo-route-detail-icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: #0b2d5c;
+}
+
+.seo-route-intro-icon svg,
+.seo-route-detail-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.seo-route-intro-head p {
+  margin: 0;
+}
+
+.seo-route-intro-head p span {
+  display: block;
+  margin-top: 4px;
+}
+
+.seo-route-intro-cta {
+  margin-top: 18px;
+  display: inline-flex;
+}
+
+.seo-route-panel ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seo-route-more {
+  margin-top: 24px;
+  border: 1px solid #d7e0ea;
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.seo-route-more summary {
+  padding: 18px 20px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #0b2d5c;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.seo-route-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.seo-route-more summary::after {
+  content: "+";
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.seo-route-more[open] summary::after {
+  content: "−";
+}
+
+.seo-route-more__content {
+  padding: 0 20px 18px;
+}
+
+@media (max-width: 760px) {
+  .seo-route-more summary {
+    padding: 16px 18px;
+  }
+
+  .seo-route-more__content {
+    padding: 0 18px 18px;
+  }
+}
+
+@media (max-width: 390px) {
+  .seo-route-main {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .seo-route-hero__copy {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .seo-route-intro {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+</style>
 </head>
 <body class="seo-route-page">
-  <header class="seo-route-hero"><img src="../images/panoramic/panoramic-stop1.jpg" alt="PANORAMIC Funchal viewpoint walk near the cruise port"><nav class="seo-route-nav seo-breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><a href="../index.html#routes">Funchal cruise port walks</a><span aria-current="page">PANORAMIC</span></nav><div class="seo-route-hero__copy"><p class="seo-route-kicker">Main focus: panoramic walking route Funchal</p><h1>Panoramic walking route Funchal from the cruise port</h1><p>A self-guided Funchal cruise port walk built around sea views, old-town colour and a calm return to the ship.</p><a class="primary-cta seo-route-cta" href="../panoramic_summary.html">Unlock PANORAMIC - EUR 4.99</a></div></header>
-    <main class="seo-route-main">
-    <section class="seo-route-intro"><p><strong>See Funchal from its best angles.</strong> PANORAMIC is a self-guided 5-hour walk from the cruise port, combining sea views, old-town colour and easy navigation while helping you keep your return-to-ship time under control.</p></section>
-    <aside class="seo-route-panel" aria-label="PANORAMIC route details">
-  <h2>PANORAMIC cruise port walk</h2>
+  <header class="seo-route-hero">
+    <img src="../images/panoramic/panoramic-stop3.jpg" alt="Panoramic Funchal scenic route near the cruise port">
+    <nav class="seo-route-nav seo-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#routes">Funchal cruise port walks</a>
+      <span aria-current="page">Panoramic Funchal</span>
+    </nav>
+    <div class="seo-route-hero__copy">
+      <p class="seo-route-kicker">Panoramic Funchal</p>
+      <h1>Panoramic walking route Funchal from the cruise port</h1>
+      <p>Explore Funchal on your own — with everything already planned.</p>
+    </div>
+  </header>
+
+<main class="seo-route-main">
+    <section class="seo-route-intro">
+  <div class="seo-route-intro-head">
+    <span class="seo-route-intro-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8"></circle>
+        <path d="M12 7v5l3 2"></path>
+        <path d="M5 5l2 2M19 5l-2 2"></path>
+      </svg>
+    </span>
+    <p>
+      <strong>Your Panoramic Funchal route is already planned.</strong>
+      <span>Five scenic moments, simple directions and time to return comfortably to your ship.</span>
+    </p>
+  </div>
+  <a class="primary-cta seo-route-intro-cta" href="../panoramic_summary.html">Start Panoramic Funchal — €4.99</a>
+</section>
+
+    <aside class="seo-route-panel" aria-label="Panoramic Funchal route details">
+  <h2>Panoramic Funchal cruise port walk</h2>
   <ul>
-    <li>5 hours ashore</li>
-    <li>5 scenic moments</li>
-    <li>Starts near the cruise port</li>
-    <li>Back to Ship timer</li>
-    <li>One route: EUR 4.99</li>
+    <li>
+      <span class="seo-route-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 7v5l3 2"></path></svg>
+      </span>
+      <span>5 hours ashore</span>
+    </li>
+    <li>
+      <span class="seo-route-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 15l4-5 4 3 4-6 4 3"></path><path d="M4 19h16"></path></svg>
+      </span>
+      <span>5 scenic moments</span>
+    </li>
+    <li>
+      <span class="seo-route-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+      </span>
+      <span>Starts near the cruise port</span>
+    </li>
+    <li>
+      <span class="seo-route-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M5 10h14l2 5H3l2-5Z"></path><path d="M8 10V6h8v4M10 6V3h4v3M4 18c2 2 4-1 6 0s4 2 6 0 3 1 4 0"></path></svg>
+      </span>
+      <span>Back to Ship timer</span>
+    </li>
+    <li>
+      <span class="seo-route-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 5v6l9 9 7-7-9-9H5a1 1 0 0 0-1 1Z"></path><circle cx="8" cy="8" r="1.2"></circle></svg>
+      </span>
+      <span>One route: EUR 4.99</span>
+    </li>
   </ul>
-  <a class="primary-cta seo-route-cta" href="../panoramic_summary.html">Start with PANORAMIC</a>
+
 </aside>
+
     <article class="seo-route-article">
-  <p>PANORAMIC is made for travellers who want the city to open up quickly: blue water, rooftops, old streets and easy orientation from the cruise port. It is a structured Funchal cruise port walk, not a group tour, and it works directly in the browser on your phone.</p>
+  <p>Panoramic Funchal is an <strong>easy scenic walking route in Funchal</strong> designed for cruise passengers with a few hours ashore. Open the route on your phone, follow five scenic moments and explore the city without a group tour or fixed schedule.</p>
 
-  <p>The route is organised into five scenic moments. Each stop gives you a place name, suggested timing and simple navigation, while the Back to Ship timer keeps the real cruise deadline visible.</p>
+  <details class="seo-route-more">
+    <summary>More about Panoramic Funchal</summary>
+    <div class="seo-route-more__content">
 
-  <p>Choose PANORAMIC if your ideal Funchal stop is less about shopping and more about seeing the bay, the city texture and the Atlantic from a few different angles.</p>
+      <p>This route is designed for cruise passengers who want to see Funchal from its best angles. It focuses on sea views, rooftops, old streets and scenic pauses that help the city feel open and memorable. The idea is not to rush. It is to turn a short port call into a clear and enjoyable walk with enough structure to feel confident and enough freedom to enjoy the views.</p>
 
-  <p>For a calmer city route, see the <a href="../funchal-walk-relax/">Relaxed Funchal cruise port walk</a>. For local food, see the <a href="../funchal-walk-gourmet/">Taste Madeira food walk</a>. Need practical port and timing information? Read the <a href="../funchal-cruise-port-guide/">Funchal Cruise Port Guide</a>.</p>
+      <p>Panoramic Funchal includes five sequential scenic moments. Each stop has a place name, a suggested time and a clear Continue or Skip choice. You can stop for photos, take in the bay a little longer or move on when you are ready. A Back to Ship timer stays part of the experience so the return to the cruise port never becomes a last-minute worry.</p>
+
+      <p>All routes start and finish within walking distance of the Funchal cruise port. That matters because a short cruise stop is not the time for complicated transfers. You can leave the ship, open the route on your phone and begin walking. No app download is required, and the route is made for use outdoors with clear buttons, high contrast and simple instructions.</p>
+
+      <p>Choose Panoramic Funchal if you want sea views, city texture and a broader visual feel of Funchal without pressure. It is best for travellers who want a more scenic stop with easy orientation. For a calmer city route, see the <a href="../funchal-walk-relax/">Relaxed Funchal cruise port walk</a>. For local food, see the <a href="../funchal-walk-gourmet/">Taste Madeira cruise port food walk</a>. Need practical port and timing information? Read the <a href="../funchal-cruise-port-guide/">Funchal Cruise Port Guide</a>.</p>
+
+    </div>
+  </details>
 </article>
   </main>
+
+<footer class="site-footer" aria-label="CruiseStop footer">
+  <a class="footer-brand" href="../" aria-label="CruiseStop home">
+    <svg viewBox="0 0 96 58" aria-hidden="true">
+      <path d="M19 26c10-5 21-7 34-4 10 2 18 1 24-4 0 10-7 18-20 21-13 4-27 1-42-8 2-1 3-3 4-5Z" fill="currentColor"></path>
+      <path d="M30 13h30c3 0 6 2 7 5l2 7c-13 1-28-7-44-2l1-6c0-2 2-4 4-4Z" fill="currentColor"></path>
+      <path d="M43 5h8v8h-8z" fill="currentColor"></path>
+      <path d="M12 42c11-5 21 5 32 0s21 5 40-4" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path>
+    </svg>
+    <span>CruiseStop</span>
+  </a>
+  <p>Smart walks for cruise passengers.<br>More time to explore.<br class="footer-mobile-break"> Always back on time.</p>
+</footer>
 <script src="../site-update.js?v=238"></script></body>
 </html>
