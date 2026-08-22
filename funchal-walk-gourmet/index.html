@@ -181,6 +181,47 @@
       }
     }
   </style>
+<style>
+/* seo-route-more-v1 */
+.seo-route-more {
+  margin-top: 24px;
+  border: 1px solid #d7e0ea;
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.seo-route-more summary {
+  padding: 18px 20px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #0b2d5c;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.seo-route-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.seo-route-more summary::after {
+  content: "+";
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.seo-route-more[open] summary::after {
+  content: "−";
+}
+
+.seo-route-more__content {
+  padding: 0 20px 18px;
+}
+</style>
 </head>
 <body class="seo-route-page">
   <header class="seo-route-hero">
@@ -191,15 +232,15 @@
       <span aria-current="page">Taste Madeira</span>
     </nav>
     <div class="seo-route-hero__copy">
-      <p class="seo-route-kicker">Main focus: foodie walking tour funchal</p>
+      <p class="seo-route-kicker">Taste Madeira</p>
       <h1>Foodie walking tour Funchal from the cruise port</h1>
-      <p>A self-guided Funchal cruise port food walk for tasting Madeira at your own pace, without tourist traps or group-tour pressure.</p>
-      <a class="primary-cta seo-route-cta" href="../foodie_summary.html">Unlock Taste Madeira - EUR 4.99</a>
+      <p>Explore Funchal on your own — with everything already planned.</p>
+      <a class="primary-cta seo-route-cta" href="../foodie_summary.html">Start Taste Madeira — €4.99</a>
     </div>
   </header>
 
     <main class="seo-route-main">
-    <section class="seo-route-intro"><p><strong>Taste Funchal at your own pace.</strong> Taste Madeira is a self-guided 5-hour food walk from the cruise port, designed for cruise passengers who want to discover local flavours without a group tour or fixed schedule.</p></section>
+    <section class="seo-route-intro"><p><strong>Your Taste Madeira route is already planned.</strong> Five food moments, simple directions and time to return comfortably to your ship.</p></section>
     <aside class="seo-route-panel" aria-label="Taste Madeira route details">
   <h2>Taste Madeira cruise port food walk</h2>
   <ul>
@@ -209,10 +250,13 @@
     <li>Back to Ship timer</li>
     <li>One route: EUR 4.99</li>
   </ul>
-  <a class="primary-cta seo-route-cta" href="../foodie_summary.html">Start with Taste Madeira</a>
+  <a class="primary-cta seo-route-cta" href="../foodie_summary.html">Start Taste Madeira</a>
 </aside>
     <article class="seo-route-article">
   <p>Taste Madeira is built for the limited time of a cruise stop. Open the route on your phone, follow the food moments and explore Funchal without a long restaurant booking or a fixed group schedule.</p>
+  <details class="seo-route-more">
+    <summary>More about Taste Madeira</summary>
+    <div class="seo-route-more__content">
 
   <p>The route is designed around local flavour rather than tourist traps. It points you toward food moments, streets and small pauses that help Funchal feel real. You can move at your own pace, stop when something looks good and keep the walk flexible. That makes it useful for couples, families and solo cruise passengers who want a taste of Madeira but still need a clear plan.</p>
 
@@ -221,6 +265,8 @@
   <p>All routes start and finish within walking distance of the Funchal cruise port. That is important because the ship schedule is the real deadline. The route includes back-to-ship timing, clear outdoor-friendly buttons and phone-first pages that are easy to read in bright light. No app download is needed.</p>
 
   <p>Choose Taste Madeira if your ideal Funchal stop includes local food, hidden streets and a more authentic feel than the first restaurant beside the port. If you prefer a calmer sightseeing route with gardens and relaxed highlights, see the <a href="../funchal-walk-relax/">Relaxed Funchal cruise port walk</a>. To compare the options, return to the <a href="../index.html#routes">Funchal cruise port walk homepage</a>. Need practical port and timing information? Read the <a href="../funchal-cruise-port-guide/">Funchal Cruise Port Guide</a>.</p>
+    </div>
+  </details>
 </article>
   </main>
 <script src="../site-update.js?v=238"></script></body>
