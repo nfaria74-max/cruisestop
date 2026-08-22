@@ -222,10 +222,311 @@
   padding: 0 20px 18px;
 }
 </style>
+
+<style>
+/* taste-madeira-exact-funnel-v2 */
+
+/* Desktop/base */
+.seo-route-hero > img {
+  object-position: center center !important;
+}
+
+.seo-route-intro p {
+  margin: 0 !important;
+}
+
+.seo-route-intro-cta {
+  display: flex !important;
+  width: 100% !important;
+  min-height: 64px;
+  margin-top: 20px !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
+
+.seo-route-intro-head {
+  display: grid;
+  grid-template-columns: 58px minmax(0,1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.seo-route-intro-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #edf4ff;
+  color: #0b2d5c;
+}
+
+.seo-route-intro-icon svg,
+.seo-route-detail-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.seo-route-detail-icon {
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #0b2d5c;
+}
+
+
+/* MOBILE — referência exata aprovada */
+@media (max-width: 760px) {
+
+  body.seo-route-page {
+    background: #f5f7f8 !important;
+  }
+
+  /* HERO */
+  .seo-route-hero {
+    min-height: 590px !important;
+    height: 590px !important;
+    position: relative !important;
+  }
+
+  .seo-route-hero > img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  /* só Home + Taste Madeira */
+  .seo-route-nav {
+    position: absolute !important;
+    top: 24px !important;
+    left: 20px !important;
+    right: 20px !important;
+    width: auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    z-index: 5 !important;
+  }
+
+  .seo-route-nav > a:nth-child(2) {
+    display: none !important;
+  }
+
+  .seo-route-nav > a:first-child,
+  .seo-route-nav > span {
+    margin: 0 !important;
+  }
+
+  /* esconder kicker duplicado */
+  .seo-route-kicker {
+    display: none !important;
+  }
+
+  .seo-route-hero__copy {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 46px !important;
+    padding: 0 22px !important;
+    z-index: 4 !important;
+  }
+
+  .seo-route-hero__copy h1 {
+    max-width: 17ch !important;
+    margin: 0 !important;
+    font-size: clamp(2.15rem, 10.4vw, 2.55rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -.025em !important;
+  }
+
+  .seo-route-hero__copy > p:not(.seo-route-kicker) {
+    max-width: 30ch !important;
+    margin: 18px 0 0 !important;
+    font-size: 1rem !important;
+    line-height: 1.45 !important;
+    font-weight: 500 !important;
+  }
+
+  /* MAIN */
+  .seo-route-main {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) !important;
+    grid-template-areas:
+      "intro"
+      "panel"
+      "article" !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 20px 32px !important;
+    gap: 28px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* cartão sobreposto ao hero */
+  .seo-route-intro {
+    grid-area: intro !important;
+    position: relative !important;
+    z-index: 6 !important;
+    width: 100% !important;
+    margin: -42px 0 0 !important;
+    padding: 26px 24px 24px !important;
+    border: 0 !important;
+    border-radius: 26px !important;
+    background: #fff !important;
+    box-shadow: 0 14px 34px rgba(12,42,78,.11) !important;
+    box-sizing: border-box !important;
+  }
+
+  .seo-route-intro-head {
+    grid-template-columns: 58px minmax(0,1fr) !important;
+    gap: 16px !important;
+  }
+
+  .seo-route-intro p {
+    font-size: 1rem !important;
+    line-height: 1.45 !important;
+    color: #17385f !important;
+  }
+
+  .seo-route-intro p strong {
+    display: block !important;
+    margin-bottom: 7px !important;
+    color: #0b2d5c !important;
+    font-size: 1.06rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .seo-route-intro p span {
+    display: block !important;
+  }
+
+  .seo-route-intro-cta {
+    min-height: 64px !important;
+    margin-top: 20px !important;
+    border-radius: 14px !important;
+    font-size: 1.06rem !important;
+  }
+
+  /* CARTÃO DOS 5 PONTOS */
+  .seo-route-panel {
+    grid-area: panel !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 26px 20px 22px !important;
+    border: 0 !important;
+    border-radius: 26px !important;
+    background: #fff !important;
+    box-shadow: 0 12px 30px rgba(12,42,78,.09) !important;
+    box-sizing: border-box !important;
+  }
+
+  .seo-route-panel h2 {
+    margin: 0 0 22px !important;
+    text-align: center !important;
+    color: #0b2d5c !important;
+    font-size: 1.34rem !important;
+    line-height: 1.22 !important;
+  }
+
+  .seo-route-panel ul {
+    display: grid !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+
+  .seo-route-panel li {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    min-height: 58px !important;
+    margin: 0 !important;
+    padding: 10px 14px !important;
+    border-radius: 12px !important;
+    background: #eef4fb !important;
+    color: #0b2d5c !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* TEXTO + MORE */
+  .seo-route-article {
+    grid-area: article !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 26px 24px 24px !important;
+    border-radius: 26px !important;
+    background: #fff !important;
+    box-shadow: 0 10px 26px rgba(12,42,78,.07) !important;
+    box-sizing: border-box !important;
+  }
+
+  .seo-route-article > p {
+    margin: 0 !important;
+    color: #17385f !important;
+    font-size: 1rem !important;
+    line-height: 1.58 !important;
+    font-weight: 400 !important;
+  }
+
+  .seo-route-more {
+    margin-top: 22px !important;
+    border: 1px solid #17385f !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+  }
+
+  .seo-route-more summary {
+    min-height: 56px !important;
+    padding: 14px 16px !important;
+    font-size: 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .seo-route-more__content {
+    padding: 0 16px 18px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .seo-route-main {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .seo-route-hero__copy {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .seo-route-intro {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+</style>
 </head>
 <body class="seo-route-page">
   <header class="seo-route-hero">
-    <img src="../images/FOODIE/foodie-stop1.jpg" alt="Taste Madeira food walk stop near the Funchal cruise port">
+    <img src="../images/FOODIE/taste-index.png" alt="Taste Madeira food walk stop near the Funchal cruise port">
     <nav class="seo-route-nav seo-breadcrumb" aria-label="Breadcrumb">
       <a href="../index.html">Home</a>
       <a href="../index.html#routes">Funchal cruise port walks</a>
@@ -235,22 +536,61 @@
       <p class="seo-route-kicker">Taste Madeira</p>
       <h1>Foodie walking tour Funchal from the cruise port</h1>
       <p>Explore Funchal on your own — with everything already planned.</p>
-      <a class="primary-cta seo-route-cta" href="../foodie_summary.html">Start Taste Madeira — €4.99</a>
+
     </div>
   </header>
 
     <main class="seo-route-main">
-    <section class="seo-route-intro"><p><strong>Your Taste Madeira route is already planned.</strong> Five food moments, simple directions and time to return comfortably to your ship.</p></section>
+    <section class="seo-route-intro">
+  <div class="seo-route-intro-head">
+    <span class="seo-route-intro-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8"></circle>
+        <path d="M12 7v5l3 2"></path>
+        <path d="M5 5l2 2M19 5l-2 2"></path>
+      </svg>
+    </span>
+    <p>
+      <strong>Your Taste Madeira route is already planned.</strong>
+      <span>Five food moments, simple directions and time to return comfortably to your ship.</span>
+    </p>
+  </div>
+  <a class="primary-cta seo-route-intro-cta" href="../foodie_summary.html">Start Taste Madeira — €4.99</a>
+</section>
     <aside class="seo-route-panel" aria-label="Taste Madeira route details">
   <h2>Taste Madeira cruise port food walk</h2>
   <ul>
-    <li>5 hours ashore</li>
-    <li>5 food moments</li>
-    <li>Starts near the cruise port</li>
-    <li>Back to Ship timer</li>
-    <li>One route: EUR 4.99</li>
+    <li>
+      <span class="seo-route-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 7v5l3 2"></path></svg>
+      </span>
+      <span>5 hours ashore</span>
+    </li>
+    <li>
+      <span class="seo-route-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M7 4v7M5 4v4M9 4v4M7 11v9M15 4v16M15 4c3 2 3 7 0 9"></path></svg>
+      </span>
+      <span>5 food moments</span>
+    </li>
+    <li>
+      <span class="seo-route-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+      </span>
+      <span>Starts near the cruise port</span>
+    </li>
+    <li>
+      <span class="seo-route-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M5 10h14l2 5H3l2-5Z"></path><path d="M8 10V6h8v4M10 6V3h4v3M4 18c2 2 4-1 6 0s4 2 6 0 3 1 4 0"></path></svg>
+      </span>
+      <span>Back to Ship timer</span>
+    </li>
+    <li>
+      <span class="seo-route-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 5v6l9 9 7-7-9-9H5a1 1 0 0 0-1 1Z"></path><circle cx="8" cy="8" r="1.2"></circle></svg>
+      </span>
+      <span>One route: EUR 4.99</span>
+    </li>
   </ul>
-  <a class="primary-cta seo-route-cta" href="../foodie_summary.html">Start Taste Madeira</a>
 </aside>
     <article class="seo-route-article">
   <p>Taste Madeira is built for the limited time of a cruise stop. Open the route on your phone, follow the food moments and explore Funchal without a long restaurant booking or a fixed group schedule.</p>
