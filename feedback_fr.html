@@ -564,11 +564,6 @@
                 timestamp: new Date().toISOString()
             };
 
-            // Check if user has already submitted feedback for this route
-            if (hasUserAlreadySubmittedFeedback(feedbackData.routeName, feedbackData.customerEmail)) {
-                alert('Vous avez déjà envoyé un avis pour ce parcours. Merci !');
-                return;
-            }
             
             // Store feedback in history array (in a real app, this would be sent to a server)
             const feedbackHistory = JSON.parse(localStorage.getItem('cruisestop_feedback_history') || '[]');
@@ -581,6 +576,33 @@
             // Show thank you message
             showThankYou();
             console.log('Feedback submitted:', feedbackData);
+
+            // Backend rating - the localStorage above stays as the offline fallback
+            sendFeedbackToServer(selectedRating);
+        }
+
+        function sendFeedbackToServer(rating) {
+            const params = new URLSearchParams(window.location.search);
+            const routeKey = params.get('key');
+            if (!routeKey) return;
+
+            let access = null;
+            try {
+                access = JSON.parse(localStorage.getItem('access_' + routeKey) || 'null');
+            } catch (e) {}
+
+            if (!access || !access.accessToken || !access.deviceToken) return;
+
+            fetch('/feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    accessToken: access.accessToken,
+                    deviceToken: access.deviceToken,
+                    rating: rating,
+                    language: (document.documentElement.lang || 'en').slice(0, 2)
+                })
+            }).catch(function () {});
         }
 
         function showThankYou() {

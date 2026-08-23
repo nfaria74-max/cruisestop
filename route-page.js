@@ -553,7 +553,7 @@
         const feedbackPage = ['pt', 'fr', 'de'].includes(feedbackLang)
             ? `feedback_${feedbackLang}.html`
             : 'feedback.html';
-        window.location.href = `${feedbackPage}?route=${routeName}`;
+        window.location.href = `${feedbackPage}?route=${routeName}&key=${routeKey}`;
     }
 
     function setAudioButton(html, disabled) {
