@@ -1,9 +1,9 @@
 const supportedLangs = ["en", "de", "fr", "pt"];
 const languageHomePages = {
   en: "index.html",
-  de: "index_de.html",
-  fr: "index_fr.html",
-  pt: "index_pt.html"
+  de: "index_de",
+  fr: "index_fr",
+  pt: "index_pt"
 };
 
 function readStoredLanguage() {
