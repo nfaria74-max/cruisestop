@@ -2,7 +2,10 @@
     'use strict';
 
     const config = window.ROUTE_CONFIG || {};
-    const stops = Array.isArray(config.stops) ? config.stops : [];
+    const usesServerProtectedData = config.serverProtected === true;
+    let stops = usesServerProtectedData
+        ? []
+        : (Array.isArray(config.stops) ? config.stops : []);
     const fallbackImage = config.fallbackImage || 'images/funchal-hero.webp.jpg';
     let defaultDuration = config.defaultDuration || '';
     const routeName = config.name || 'route';
@@ -279,13 +282,176 @@
         }
     }
 
+    function protectedRouteCacheKey() {
+        return `protected_route_${routeKey}_${pageLanguage}`;
+    }
+
+    function clearProtectedRouteAccess() {
+        localStorage.removeItem(accessStorageKey);
+        localStorage.removeItem(protectedRouteCacheKey());
+    }
+
+    function hasProtectedCredentials(access) {
+        const expiry = Number(access?.expiry || 0);
+
+        return Boolean(
+            access &&
+            expiry &&
+            Date.now() < expiry &&
+            /^[a-f0-9]{32}$/i.test(String(access.accessToken || '')) &&
+            /^[A-Za-z0-9_-]{16,128}$/.test(String(access.deviceToken || ''))
+        );
+    }
+
+    function applyProtectedStops(routeStops) {
+        if (!Array.isArray(routeStops) || !routeStops.length) {
+            return false;
+        }
+
+        stops = routeStops;
+        config.stops = routeStops;
+        return true;
+    }
+
+    function readProtectedRouteCache(access) {
+        const cached = readStoredJson(protectedRouteCacheKey());
+        const expiry = Number(cached?.expiry || 0);
+
+        if (
+            !cached ||
+            cached.route !== routeKey ||
+            cached.language !== pageLanguage ||
+            !expiry ||
+            Date.now() >= expiry ||
+            cached.accessToken !== access.accessToken ||
+            cached.deviceToken !== access.deviceToken ||
+            !Array.isArray(cached.stops) ||
+            !cached.stops.length
+        ) {
+            return null;
+        }
+
+        return cached;
+    }
+
+    function saveProtectedRouteCache(access, expiry) {
+        localStorage.setItem(
+            protectedRouteCacheKey(),
+            JSON.stringify({
+                route: routeKey,
+                language: pageLanguage,
+                expiry,
+                accessToken: access.accessToken,
+                deviceToken: access.deviceToken,
+                stops
+            })
+        );
+    }
+
+    async function validateAndLoadProtectedRoute() {
+        const access = readStoredJson(accessStorageKey);
+
+        if (!hasProtectedCredentials(access)) {
+            clearProtectedRouteAccess();
+            return false;
+        }
+
+        try {
+            const response = await fetch('/route-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    route: routeKey,
+                    language: pageLanguage,
+                    accessToken: access.accessToken,
+                    deviceToken: access.deviceToken
+                })
+            });
+
+            let data = null;
+
+            try {
+                data = await response.json();
+            } catch (err) {
+                data = null;
+            }
+
+            if (!response.ok) {
+                if ([400, 403, 404, 410].includes(response.status)) {
+                    clearProtectedRouteAccess();
+                    return false;
+                }
+
+                const cached = readProtectedRouteCache(access);
+
+                if (cached && applyProtectedStops(cached.stops)) {
+                    return true;
+                }
+
+                return false;
+            }
+
+            if (
+                !data ||
+                data.ok !== true ||
+                data.route !== routeKey ||
+                data.language !== pageLanguage ||
+                !applyProtectedStops(data.stops)
+            ) {
+                return false;
+            }
+
+            const serverExpiry = Number(data.accessExpiresAt || access.expiry);
+
+            if (!serverExpiry || Date.now() >= serverExpiry) {
+                clearProtectedRouteAccess();
+                return false;
+            }
+
+            const updatedAccess = {
+                expiry: serverExpiry,
+                accessToken: access.accessToken,
+                deviceToken: access.deviceToken
+            };
+
+            localStorage.setItem(
+                accessStorageKey,
+                JSON.stringify(updatedAccess)
+            );
+
+            saveProtectedRouteCache(updatedAccess, serverExpiry);
+
+            return true;
+
+        } catch (err) {
+            const cached = readProtectedRouteCache(access);
+
+            if (cached && applyProtectedStops(cached.stops)) {
+                return true;
+            }
+
+            return false;
+        }
+    }
+
     function hasValidRouteAccess() {
         const access = readStoredJson(accessStorageKey);
         const expiry = Number(access?.expiry || 0);
 
         if (!access || !expiry || Date.now() >= expiry) {
             localStorage.removeItem(accessStorageKey);
+
+            if (usesServerProtectedData) {
+                localStorage.removeItem(protectedRouteCacheKey());
+            }
+
             return false;
+        }
+
+        if (usesServerProtectedData) {
+            return hasProtectedCredentials(access) && stops.length > 0;
         }
 
         return true;
@@ -1264,7 +1430,26 @@
         });
     }
     document.addEventListener('DOMContentLoaded', async () => {
-        if (!requireRouteAccess()) return;
+        if (usesServerProtectedData) {
+            const app = document.getElementById('app');
+
+            if (app) {
+                app.style.visibility = 'hidden';
+            }
+
+            const accessGranted = await validateAndLoadProtectedRoute();
+
+            if (app) {
+                app.style.visibility = '';
+            }
+
+            if (!accessGranted) {
+                showLockedRoute();
+                return;
+            }
+        } else {
+            if (!requireRouteAccess()) return;
+        }
 
         const startMode = await askResumeOrRestart();
 

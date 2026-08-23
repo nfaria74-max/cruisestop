@@ -1,122 +1,15 @@
-<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"><meta name="theme-color" content="#062f73"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="stylesheet" href="styles.css?v=253"><link rel="stylesheet" href="styles-route.css?v=253"><link rel="stylesheet" href="styles-ux-optimized.css?v=253"><script src="ux-performance.js?v=253" defer></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"><title>Slow Funchal Route App | CruiseStop</title><meta name="description" content="Slow Funchal is een ontspannen zelfgeleide wandeling voor cruisepassagiers die Funchal in 5 uur zonder haast willen beleven."><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://cruisestop.eu/relax_summary_nl.html"><link rel="alternate" hreflang="en" href="https://cruisestop.eu/relax_summary.html"><link rel="alternate" hreflang="de" href="https://cruisestop.eu/relax_summary_de.html"><link rel="alternate" hreflang="fr" href="https://cruisestop.eu/relax_summary_fr.html"><link rel="alternate" hreflang="pt" href="https://cruisestop.eu/relax_summary_pt.html"><link rel="alternate" hreflang="x-default" href="https://cruisestop.eu/relax_summary.html"><meta property="og:title" content="Slow Funchal Route App | CruiseStop"><meta property="og:description" content="Slow Funchal is een ontspannen zelfgeleide wandeling voor cruisepassagiers die Funchal in 5 uur zonder haast willen beleven."><meta property="og:type" content="website"><meta property="og:url" content="https://cruisestop.eu/relax_summary_nl.html"><meta property="og:image" content="https://cruisestop.eu/assets/hero-main.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="mobile-scroll-fix.css?v=254"><script src="mobile-scroll-touch.js?v=254" defer></script></head><body class="route-stop-page"><div id="app" class="route-container"><div class="route-column"><section class="stop-card" aria-labelledby="stop-title"><header class="stop-header"><div class="stop-progress"><span class="stop-step">STOP 1</span><span class="stop-counter" aria-label="Voortgang">1/6</span></div><h1 id="stop-title" class="stop-title">Route laden...</h1><p class="stop-spend" id="stopSpend">&#9201; 15-20 min hier</p></header><div class="landscape-image-widget"><img id="stopImage" src="images/RELAX/relax-stop1.png" alt="Routestop" class="landscape-image"></div><p class="stop-description" id="stopDescription">Routegegevens laden...</p><aside class="stop-why" aria-label="Waarom deze stop?"><strong class="stop-why-title">Waarom deze stop?</strong><p class="stop-why-text" id="stopWhyText">Hoogtepunt laden...</p></aside><div class="stop-actions"><button class="btn btn-secondary" id="mapsBtn" type="button" onclick="openInGoogleMaps()">Openen in Google Maps</button></div><button class="btn btn-primary btn-next" id="nextBtn" type="button" onclick="nextStop()">VOLGENDE STOP -></button><div class="timer-widget" id="timerWidget" style="display:none;" role="status" aria-live="polite"><div class="time-remaining-label">Terug naar schip</div><div class="timer-display cruise-timer"><div class="timer-info"><div class="timer-value" id="timeRemaining">05:00:00</div><div class="return-time" id="returnTime">Terug om: 16:30</div><div class="buffer-badge" id="bufferBadge">+45 min buffer</div></div></div></div></section></div></div><style>.map-widget{padding:0 0 .5rem 0}.map-toggle-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;padding:.6rem 1.2rem;border-radius:50px;font-size:.85rem;font-weight:500;cursor:pointer;width:100%;transition:background .2s}.map-toggle-btn:hover{background:rgba(255,255,255,.15)}.leaflet-popup-content-wrapper{border-radius:8px;font-family:Inter,sans-serif}</style><script>window.ROUTE_CONFIG = {
-  "name": "RELAX - Slow Funchal",
-  "key": "relax",
-  "summaryUrl": "relax_summary_nl.html",
-  "defaultDuration": "20 minuten",
-  "fallbackImage": "images/RELAX/relax-stop1.png",
-  "labels": {
-    "navAria": "Hoofdnavigatie",
-    "navStart": "Start",
-    "navRoutes": "Routes",
-    "navHelp": "Help",
-    "stopLabel": "STOP",
-    "stopFallback": "Stop",
-    "suggestedDuration": "Aanbevolen tijd:",
-    "nextStop": "VOLGENDE STOP ->",
-    "finishRoute": "ROUTE AFRONDEN",
-    "navigateHere": "Openen in Google Maps",
-    "whyThisStop": "Waarom deze stop?",
-    "backToShip": "Terug naar schip",
-    "returnBy": "Terug om:",
-    "buffer45": "+45 min buffer",
-    "buffer30": "+30 min buffer",
-    "buffer15": "+15 min buffer",
-    "timeUp": "Tijd is op - ga terug naar het schip",
-    "lockedTitle": "Route vergrendeld",
-    "lockedText": "Deze route is beschikbaar na aankoop op dit toestel.",
-    "unlockRoute": "Route ontgrendelen",
-    "mapsBackButton": "Terug naar route",
-    "mapsReturnText": "Na het navigeren kom je terug naar CruiseStop.",
-    "cancel": "Annuleren",
-    "mapUnavailable": "Kaart niet beschikbaar voor deze stop.",
-    "showMap": "Toon kaart",
-    "hideMap": "Verberg kaart",
-    "loadingRoute": "Route laden...",
-    "loadingDetails": "Routegegevens laden...",
-    "loadingHighlight": "Hoogtepunt laden...",
-    "usefulStop": "Een nuttige stop op deze Funchal-route.",
-    "audioLoading": "Audio laden...",
-    "audioPause": "Pauze",
-    "audioPlay": "Afspelen"
-  },
-  "urls": {
-    "home": "index_nl.html#inicio",
-    "routes": "index_nl.html#routes",
-    "help": "help_nl.html",
-    "whatsapp": "https://wa.me/351919430252?text=Hallo!%20Ik%20heb%20hulp%20nodig%20met%20mijn%20CruiseStop-route."
-  },
-  "stops": [
-    {
-      "name": "Jardim Municipal",
-      "title": "Een tuin in het hart van de stad",
-      "summary": "Een rustige tuin start in het hart van de stad.",
-      "description": "Stap van het schip en wandel naar een van de rustigste plekken van Funchal. Ga even zitten en laat de stad rustig beginnen.",
-      "whyText": "Deze stop zet het tempo van de hele route: kalm, lokaal en zonder haast.",
-      "duration": "20 minuten",
-      "image": "images/RELAX/relax-stop1.png",
-      "mapQuery": "Jardim Municipal, Funchal, Madeira",
-      "lat": 32.6477,
-      "lng": -16.9087
-    },
-    {
-      "name": "Golden Gate",
-      "title": "De meest iconische terras van Funchal",
-      "summary": "Een klassiek terrasmoment om Funchal aan je voorbij te zien komen.",
-      "description": "Neem een korte pauze op een centrale plek en kijk hoe Funchal om je heen beweegt.",
-      "whyText": "Een makkelijke stop om de stad te voelen zonder je schema te verliezen.",
-      "duration": "20 minuten",
-      "image": "images/RELAX/relax-stop2.png",
-      "mapQuery": "Golden Gate Funchal, Madeira",
-      "lat": 32.648,
-      "lng": -16.911
-    },
-    {
-      "name": "Sé Kathedraal",
-      "title": "Gotische stilte midden in alles",
-      "summary": "Een rustige historische pauze midden in de oude stad.",
-      "description": "Sta even stil bij een van de belangrijkste gebouwen van Funchal, midden in de oude stad.",
-      "whyText": "Een compact historisch moment dat perfect past in een korte cruisestop.",
-      "duration": "20 minuten",
-      "image": "images/RELAX/relax-stop3.jpg",
-      "mapQuery": "Sé Catedral, Funchal, Madeira",
-      "lat": 32.6491,
-      "lng": -16.9078
-    },
-    {
-      "name": "UAUCACAU",
-      "title": "Chocolade zonder shortcuts",
-      "summary": "Een kleine chocoladestop met een lokaal, rustig gevoel.",
-      "description": "Maak ruimte voor een lokale zoete pauze zonder ver van de route af te wijken.",
-      "whyText": "Het geeft de wandeling een ontspannen, lokaal detail dat je makkelijk onthoudt.",
-      "duration": "20 minuten",
-      "image": "images/RELAX/relax-stop4.jpg",
-      "mapQuery": "UAUCACAU Rua da Queimada de Cima Funchal Madeira",
-      "lat": 32.6488,
-      "lng": -16.9072
-    },
-    {
-      "name": "Mercado dos Lavradores",
-      "title": "Waar Funchal tot leven komt",
-      "summary": "Kleur, bloemen en lokaal leven voor de terugweg.",
-      "description": "Loop door een van de levendigste plekken van Funchal voordat je rustig terugkeert.",
-      "whyText": "De markt geeft je kleur, beweging en een sterk gevoel van plaats.",
-      "duration": "20 minuten",
-      "image": "images/RELAX/relax-stop5.png",
-      "mapQuery": "Mercado dos Lavradores, Funchal, Madeira",
-      "lat": 32.6484,
-      "lng": -16.9058
-    },
-    {
-      "name": "Cruisehaven van Funchal",
-      "title": "Terug naar je schip",
-      "summary": "Rustig terug naar het cruiseschip met de timer zichtbaar.",
-      "description": "Keer rustig terug naar de haven met de timer nog zichtbaar.",
-      "whyText": "De route eindigt waar het telt: veilig en op tijd terug bij je cruiseschip.",
-      "duration": "15 minuten",
-      "image": "images/funchal-hero.webp.jpg",
-      "mapQuery": "Funchal Cruise Port, Madeira",
-      "lat": 32.6419,
-      "lng": -16.9166
-    }
-  ]
-};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script src="route-page.js?v=263"></script><script src="site-update.js?v=253"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url=relex.html">
+  <title>CruiseStop</title>
+  <script>
+    window.location.replace("relex.html");
+  </script>
+</head>
+<body>
+  <p>Redirecting to CruiseStop...</p>
+</body>
+</html>

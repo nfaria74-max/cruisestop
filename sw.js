@@ -1,4 +1,4 @@
-const CACHE_NAME = "cruisestop-funchal-v254";
+const CACHE_NAME = "cruisestop-funchal-v264";
 const APP_ASSETS = [
   // NOTE: "./" removed intentionally — it was fetching cruisestop.eu/ which
   // app.js was redirecting to index_pt.html, so the cache stored PT content
@@ -64,7 +64,7 @@ const APP_ASSETS = [
   "./mobile-scroll-touch.js?v=254",
   "./styles-ux-optimized.css?v=254",
   "./app.js?v=254",
-  "./route-page.js?v=254",
+  "./route-page.js?v=264",
   "./manifest.webmanifest",
   "./manifest.json",
   "./sitemap.xml",
@@ -117,10 +117,14 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    // Delete ALL existing caches unconditionally — ensures no stale PT
+    // Delete old caches while keeping the current cache — ensures no stale PT
     // content cached under "/" survives across the version bump.
     caches.keys().then((keys) =>
-      Promise.all(keys.map((key) => caches.delete(key)))
+      Promise.all(
+        keys
+          .filter((key) => key !== CACHE_NAME)
+          .map((key) => caches.delete(key))
+      )
     ).then(() => self.clients.claim())
   );
 });
