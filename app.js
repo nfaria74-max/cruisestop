@@ -408,14 +408,6 @@ async function buyRoute(route, button) {
     return;
   }
 
-  if (
-    (route === "relax" || route === "panoramic") &&
-    routeSummaryPages[route]
-  ) {
-    window.location.href = routeSummaryPages[route];
-    return;
-  }
-
   const saved = localStorage.getItem(`access_${route}`);
   if (saved) {
     try {

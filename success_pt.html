@@ -32,7 +32,7 @@
   <button id="openAccessBtn"
           class="next-stop-btn"
           style="width:100%;max-width:360px;font-size:1.05rem;padding:1rem 1.5rem;margin-top:.75rem;">
-    ABRIR PÁGINA DE ACESSO
+    ABRIR A MINHA ROTA
   </button>
 
   <p id="copyStatus"
@@ -129,7 +129,7 @@ function showSuccess(accessExpiresAt) {
 
 document.getElementById("openAccessBtn").onclick = function () {
   if (personalAccessUrl) {
-    window.location.href = personalAccessUrl;
+    window.location.href = personalAccessUrl + "&auto=1";
   }
 };
 

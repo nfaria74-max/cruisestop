@@ -120,6 +120,7 @@
     const requestedLang = params.get("lang");
     const pageLang = ["pt", "de", "fr"].includes(requestedLang) ? requestedLang : "en";
     const accessToken = params.get("token");
+    const autoActivate = params.get("auto") === "1";
 
     const TEXT = {
       en: {
@@ -318,6 +319,11 @@
           })
         );
 
+        if (autoActivate) {
+          window.location.href = ROUTE_PAGES[pageLang][data.route];
+          return;
+        }
+
         readyState.style.display = "none";
         errorState.style.display = "none";
         successState.style.display = "block";
@@ -341,6 +347,8 @@
 
     if (!accessToken) {
       showError(t.incomplete);
+    } else if (autoActivate) {
+      activateDevice();
     }
 </script>
 </body>
