@@ -193,7 +193,6 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (!isSameOrigin(event.request)) {
-    event.respondWith(fetch(event.request));
     return;
   }
 
