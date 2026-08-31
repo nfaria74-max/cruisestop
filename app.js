@@ -328,12 +328,60 @@ languageLinks.forEach((link) => {
   });
 });
 
+function routeKeyFromCard(card) {
+  const href = (card.getAttribute("href") || "").toLowerCase();
+  if (href.includes("relax_summary")) return "relax";
+  if (href.includes("foodie_summary")) return "foodie";
+  if (href.includes("panoramic_summary")) return "panoramic";
+  return null;
+}
+
 routeCards.forEach((card) => {
-  card.addEventListener("click", () => {
+  card.addEventListener("click", (event) => {
     routeCards.forEach((item) => item.classList.remove("is-selected"));
     card.classList.add("is-selected");
     localStorage.setItem("cruisestop-route", card.dataset.route);
     if (cta) cta.textContent = i18n.routeSelectedCta.replace("{route}", card.dataset.route);
+
+    const route = routeKeyFromCard(card);
+    const analytics = window.CruiseStopAnalytics;
+
+    const canDelay =
+      route &&
+      analytics &&
+      analytics.consentStatus &&
+      analytics.consentStatus() === "granted" &&
+      event.button === 0 &&
+      !event.metaKey &&
+      !event.ctrlKey &&
+      !event.shiftKey &&
+      !event.altKey &&
+      (!card.target || card.target === "_self");
+
+    if (route && analytics) {
+      if (canDelay) {
+        event.preventDefault();
+
+        let redirected = false;
+
+        const goToSummary = function () {
+          if (redirected) return;
+          redirected = true;
+          window.location.href = card.href;
+        };
+
+        analytics.track("select_route", {
+          route,
+          event_callback: goToSummary,
+          event_timeout: 500
+        });
+
+        setTimeout(goToSummary, 600);
+        return;
+      }
+
+      analytics.track("select_route", { route });
+    }
   });
 });
 
@@ -380,7 +428,17 @@ function closePreview() {
 }
 
 previewButtons.forEach((button) => {
-  button.addEventListener("click", () => openPreview(button.dataset.preview));
+  button.addEventListener("click", () => {
+    const preview = previews[button.dataset.preview] || previews.easy;
+
+    if (window.CruiseStopAnalytics && preview && preview.route) {
+      window.CruiseStopAnalytics.track("preview_route", {
+        route: preview.route
+      });
+    }
+
+    openPreview(button.dataset.preview);
+  });
 });
 
 closePreviewButtons.forEach((button) => {
@@ -388,6 +446,10 @@ closePreviewButtons.forEach((button) => {
 });
 
 async function buyRoute(route, button) {
+  if (window.CruiseStopAnalytics && route) {
+    window.CruiseStopAnalytics.track("select_route", { route });
+  }
+
   if (TEST_MODE_NO_STRIPE) {
     if (!routeSummaryPages[route]) return;
 
@@ -421,6 +483,14 @@ async function buyRoute(route, button) {
     }
   }
 
+  if (window.CruiseStopAnalytics) {
+    window.CruiseStopAnalytics.track("unlock_click", {
+      route,
+      value: 4.99,
+      currency: "EUR"
+    });
+  }
+
   const originalText = button ? button.textContent : "";
   if (button) {
     button.disabled = true;
@@ -436,6 +506,39 @@ async function buyRoute(route, button) {
     const data = await response.json();
 
     if (data.url) {
+      const analytics = window.CruiseStopAnalytics;
+
+      if (
+        analytics &&
+        analytics.consentStatus &&
+        analytics.consentStatus() === "granted"
+      ) {
+        let redirected = false;
+
+        const goToCheckout = function () {
+          if (redirected) return;
+          redirected = true;
+          window.location.href = data.url;
+        };
+
+        analytics.track("begin_checkout", {
+          route,
+          value: 4.99,
+          currency: "EUR",
+          items: [{
+            item_id: route,
+            item_name: route,
+            price: 4.99,
+            quantity: 1
+          }],
+          event_callback: goToCheckout,
+          event_timeout: 700
+        });
+
+        setTimeout(goToCheckout, 800);
+        return;
+      }
+
       window.location.href = data.url;
       return;
     }
