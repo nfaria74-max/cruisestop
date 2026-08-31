@@ -135,3 +135,14 @@
   }
 })();
 
+
+// CruiseStop analytics + privacy consent
+(function () {
+  if (document.querySelector('script[data-cruisestop-analytics]')) return;
+
+  const script = document.createElement('script');
+  script.src = '/analytics.js?v=1';
+  script.setAttribute('data-cruisestop-analytics', '1');
+
+  document.head.appendChild(script);
+})();
