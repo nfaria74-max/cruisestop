@@ -81,6 +81,7 @@ async function verifyPayment() {
         "/access.html?lang=de&token=" +
         encodeURIComponent(data.accessToken);
 
+      trackVerifiedPurchase(data.route);
       showSuccess(data.accessExpiresAt);
       return;
     }
@@ -155,6 +156,56 @@ function showError(msg) {
   document.getElementById("stateLoading").style.display = "none";
   document.getElementById("stateError").style.display = "block";
   document.getElementById("errorMsg").textContent = msg;
+}
+
+
+function trackVerifiedPurchase(route) {
+  if (!sessionId || !route) return;
+
+  const key = "cruisestop_purchase_tracked_" + sessionId;
+
+  try {
+    if (localStorage.getItem(key) === "1") return;
+  } catch (e) {}
+
+  let attempts = 0;
+
+  function tryTrack() {
+    attempts++;
+
+    const analytics = window.CruiseStopAnalytics;
+
+    if (
+      analytics &&
+      analytics.consentStatus &&
+      analytics.consentStatus() === "granted"
+    ) {
+      analytics.track("purchase", {
+        transaction_id: sessionId,
+        route: route,
+        value: 4.99,
+        currency: "EUR",
+        items: [{
+          item_id: route,
+          item_name: route,
+          price: 4.99,
+          quantity: 1
+        }]
+      });
+
+      try {
+        localStorage.setItem(key, "1");
+      } catch (e) {}
+
+      return;
+    }
+
+    if (attempts < 40) {
+      setTimeout(tryTrack, 250);
+    }
+  }
+
+  tryTrack();
 }
 
 verifyPayment();
