@@ -146,3 +146,45 @@
 
   document.head.appendChild(script);
 })();
+
+/* GA4: send route_started after route page has loaded */
+(function () {
+  const key = "cruisestop_pending_route_started";
+  let pending = null;
+
+  try {
+    pending = JSON.parse(localStorage.getItem(key) || "null");
+  } catch (e) {
+    localStorage.removeItem(key);
+    return;
+  }
+
+  if (!pending || !pending.route || !pending.createdAt) return;
+
+  if (Date.now() - Number(pending.createdAt) > 300000) {
+    localStorage.removeItem(key);
+    return;
+  }
+
+  let attempts = 0;
+
+  function sendRouteStarted() {
+    const analytics = window.CruiseStopAnalytics;
+
+    if (!analytics || typeof analytics.track !== "function" || typeof analytics.consentStatus !== "function") {
+      attempts += 1;
+      if (attempts < 40) setTimeout(sendRouteStarted, 250);
+      return;
+    }
+
+    if (analytics.consentStatus() !== "granted") {
+      localStorage.removeItem(key);
+      return;
+    }
+
+    analytics.track("route_started", { route: pending.route });
+    localStorage.removeItem(key);
+  }
+
+  sendRouteStarted();
+})();
