@@ -68,6 +68,67 @@
     }
   }
 
+  async function validateAccess() {
+    const route = getRouteKey();
+    if (!route) return false;
+
+    const access = readAccess(route);
+    if (!hasCredentials(access)) return false;
+
+    try {
+      const response = await fetch("/route-data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          route,
+          language: getLanguage(),
+          accessToken: access.accessToken,
+          deviceToken: access.deviceToken
+        })
+      });
+
+      if (!response.ok) return false;
+
+      const data = await response.json();
+
+      if (
+        !data ||
+        data.ok !== true ||
+        data.route !== route ||
+        !Array.isArray(data.stops) ||
+        !data.stops.length
+      ) {
+        return false;
+      }
+
+      const expiry = Number(data.accessExpiresAt || access.expiry);
+
+      if (!expiry || Date.now() >= expiry) {
+        localStorage.removeItem("access_" + route);
+        return false;
+      }
+
+      localStorage.setItem(
+        "access_" + route,
+        JSON.stringify({
+          expiry,
+          accessToken: access.accessToken,
+          deviceToken: access.deviceToken
+        })
+      );
+
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  window.CruiseStopSummaryAccess = {
+    validate: validateAccess
+  };
+
   async function init() {
     const route = getRouteKey();
     if (!route) return;
